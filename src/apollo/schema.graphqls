@@ -1,0 +1,38 @@
+type User {
+  phone: String
+  fio: String
+}
+input  UserInput  {
+  phone: String
+  fio: String
+}
+
+type Discipline {
+  id: ID
+  name: String
+}
+
+
+type Answer {
+  id: ID
+  user: User
+  content: String
+  firstDiscipline: String
+  secondDiscipline: String
+  userSuggestionDiscipline: String
+}
+
+
+type Query {
+  getRandomDiscipline: [Discipline]
+}
+
+type Mutation {
+  createAnswer(
+  user: UserInput,
+  content: String,
+  firstDiscipline: String,
+  secondDiscipline: String,
+  userSuggestionDiscipline: String
+): Answer
+}

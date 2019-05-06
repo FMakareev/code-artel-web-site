@@ -1,0 +1,92 @@
+{
+  "ssr": {
+    "start:ssr:prod": {
+      "mode": "production",
+      "watch": true,
+      "hmr": true,
+      "ssr_fetch": true,
+      "server_entry": "./src/server/index.tsx",
+      "client_entry": "./src/client/index.tsx",
+      "output": "dist",
+      "endpoint_server": "'http://localhost:5001'",
+      "endpoint_client": "'http://localhost:5001'",
+      "port": 3000
+    },
+    "start:ssr:dev":  {
+      "mode": "development",
+      "watch": true,
+      "hmr": true,
+      "ssr_fetch": true,
+      "server_entry": "./src/server/index.tsx",
+      "client_entry": "./src/client/index.tsx",
+      "output": "dist",
+      "endpoint_server": "'http://localhost:5001'",
+      "endpoint_client": "'http://localhost:5001'",
+      "port": 3001
+    },
+    "build:ssr:prod": {
+      "mode": "production",
+      "watch": false,
+      "hmr": false,
+      "ssr_fetch": true,
+      "server_entry": "./src/server/index.tsx",
+      "client_entry": "./src/client/index.tsx",
+      "output": "dist",
+      "endpoint_server": "'http://localhost:5001'",
+      "endpoint_client": "'http://localhost:5001'",
+      "port": 3000
+    },
+    "build:ssr:dev": {
+      "mode": "development",
+      "watch": false,
+      "hmr": false,
+      "ssr_fetch": true,
+      "server_entry": "./src/server/index.tsx",
+      "client_entry": "./src/client/index.tsx",
+      "output": "dist",
+      "endpoint_server": "'http://localhost:5001'",
+      "endpoint_client": "'http://localhost:5001'",
+      "port": 3000
+    },
+    "start:ssr:server": {
+      "port": 3000,
+      "public": "dist"
+    }
+  },
+  "csr": {
+    "start:csr:prod":{
+      "mode": "production",
+      "hmr": true,
+      "watch": true,
+      "client_entry": "./src/client/index.tsx",
+      "port": 3000
+    },
+    "start:csr:dev":{
+      "mode": "development",
+      "hmr": true,
+      "watch": true,
+      "client_entry": "./src/client/index.tsx",
+      "port": 3000
+    },
+    "build:csr:prod":{
+      "mode": "production",
+      "watch": false,
+      "hmr": false,
+      "client_entry": "./src/client/index.tsx",
+      "output": "dist",
+      "port": 3000
+    },
+    "build:csr:dev":{
+      "mode": "development",
+      "watch": false,
+      "hmr": false,
+      "client_entry": "./src/client/index.tsx",
+      "output": "dist",
+      "port": 3000
+    },
+    "start:csr:server": {
+      "port": 3005,
+      "public": "dist"
+    }
+  }
+}

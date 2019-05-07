@@ -61,6 +61,7 @@
     "react-router": "^5.0.0",
     "react-router-config": "^5.0.0",
     "react-router-dom": "^5.0.0",
+    "react-text-loop": "^2.0.2",
     "redux": "^4.0.0",
     "redux-form": "^8.2.0",
     "router-lib": "git+https://github.com/MICHAspb/code-artel-router.git",

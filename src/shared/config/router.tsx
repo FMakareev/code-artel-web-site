@@ -4,10 +4,11 @@ import {
   _defaultRoutesLayout,
   DefaultRoutesDecorator,
 } from '../../modules/router/decorators/DefaultRoutesDecorator';
-import { LAYOUT_AUTH, LAYOUT_RENDER_EMAIL } from '../layouts';
+import { LAYOUT_AUTH, LAYOUT_RENDER_EMAIL, LAYOUT_ROOT } from '../layouts';
 import GetCurrentRouteHOC from '../../modules/router/decorators/GetCurrentRouteHOC';
 import * as React from 'react';
 import { LayoutAuth } from '../../components/LayoutAuth/layoutAuth';
+import { LayoutApp } from '../../components/LayoutApp/LayoutApp';
 
 _defaultRoutesLayout[LAYOUT_RENDER_EMAIL] = {
   layout: LAYOUT_RENDER_EMAIL,
@@ -19,6 +20,13 @@ _defaultRoutesLayout[LAYOUT_AUTH] = {
   layout: LAYOUT_AUTH,
   path: `/${LAYOUT_AUTH}`,
   component: GetCurrentRouteHOC((props: any) => <LayoutAuth {...props} />),
+  routes: [],
+};
+
+_defaultRoutesLayout[LAYOUT_ROOT] = {
+  layout: LAYOUT_ROOT,
+  path: '/',
+  component: GetCurrentRouteHOC((props: any) => <LayoutApp {...props} />),
   routes: [],
 };
 

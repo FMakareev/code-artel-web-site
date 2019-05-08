@@ -1,8 +1,7 @@
 import * as React from 'react';
-import codeArtelUiLib from 'code-artel-ui-lib';
 
 // @ts-ignore
-const { Flex, Card } = codeArtelUiLib['code-artel-ui-lib'];
+import { Flex, Card } from 'code-artel-ui-lib';
 
 export class LayoutAuth extends React.Component<any, any> {
   state: any = {};

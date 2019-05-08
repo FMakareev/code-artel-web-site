@@ -6,13 +6,14 @@ import { Flex } from 'code-artel-ui-lib';
 export const Wrapper = ({ id, children, backgroundImage }: any) => (
   <Flex
     id={id}
-    height={'720px'}
+    justifyContent={'center'}
+    minHeight={'720px'}
     width={'100%'}
-    alignItems={'center'}
     margin={'0 auto'}
     backgroundImage={backgroundImage}
     backgroundRepeat={'no-repeat'}
-    backgroundSize={'cover'}>
+    backgroundSize={'cover'}
+    marginBottom={13}>
     {children}
   </Flex>
 );

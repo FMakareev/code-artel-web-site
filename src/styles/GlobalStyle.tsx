@@ -12,9 +12,14 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
   }
-   a {
+   a, ul {
     text-decoration: none;
     color: inherit;
+  }
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
   }
 
   /** ❗ setting app container  */
@@ -23,7 +28,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100%;
     height: 100%;
     min-height: 100vh;
-    overflow: auto;
+    // overflow: auto;
   }
   
   

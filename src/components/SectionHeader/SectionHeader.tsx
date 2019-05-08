@@ -16,12 +16,22 @@ const variants = {
   },
   variant2: {
     title: {
-      variant: 'body1_normal',
+      variant: 'body1_bold',
       color: 'white',
     },
     description: {
       variant: 'h2_normal',
       color: 'white',
+    },
+  },
+  variant3: {
+    title: {
+      variant: 'body1_bold',
+      color: 'darkest_gray',
+    },
+    description: {
+      variant: 'h3_normal',
+      color: 'black',
     },
   },
 };
@@ -36,14 +46,14 @@ interface Props {
 export class SectionHeader extends Component<Props> {
   render() {
     const variantName: string = this.props.variant;
-    const variantChoosen = variants[variantName];
+    const variantChosen = variants[variantName];
     return (
-      <Flex flexDirection={'column'} marginBottom={10}>
-        <Text variant={variantChoosen.title.variant} color={variantChoosen.title.color}>
+      <Flex flexDirection={'column'}>
+        <Text variant={variantChosen.title.variant} color={variantChosen.title.color}>
           {this.props.title}
         </Text>
 
-        <Text variant={variantChoosen.description.variant} color={variantChoosen.description.color}>
+        <Text variant={variantChosen.description.variant} color={variantChosen.description.color}>
           {this.props.description}
         </Text>
 

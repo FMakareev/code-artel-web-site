@@ -1,31 +1,32 @@
 import React from 'react';
-import TextLoop from 'react-text-loop';
 
 /** Components */
-import { Box, Text, Button } from 'code-artel-ui-lib';
+import { Box, Flex, Button } from 'code-artel-ui-lib';
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
+import AnimatedText from './AnimatedText';
 
 const SectionMain = () => (
   <Wrapper id={'main'} backgroundImage={'url(../../assets/images/bg.png)'}>
     <Container>
-      <Box marginLeft={'160px'}>
-        <SectionHeader variant={'main'} title={'CODEARTEL'} description={'Мы разрабатываем'}>
-          <TextLoop>
-            <Text variant={'h1_normal'} color={'yellow'}>
-              сервисы
-            </Text>
-            <Text variant={'h1_normal'} color={'yellow'}>
-              софт
-            </Text>
-          </TextLoop>
-        </SectionHeader>
+      <Flex height={'100%'} flexDirection={'column'} justifyContent={'center'}>
+        <Box marginBottom={10}>
+          <SectionHeader variant={'main'} title={'CODEARTEL'} description={'Мы разрабатываем'}>
+            <AnimatedText />
+          </SectionHeader>
+        </Box>
 
-        <Button size={'medium'}>
-          <a href={'#contacts'}>Получить бесплатную консультацию</a>
+        <Button
+          size={'medium'}
+          as={'a'}
+          href={'#contacts'}
+          display={'inline-block'}
+          maxWidth={'380px'}
+          textAlign={'center'}>
+          Получить бесплатную консультацию
         </Button>
-      </Box>
+      </Flex>
     </Container>
   </Wrapper>
 );

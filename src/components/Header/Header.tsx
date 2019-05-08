@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 /** Components */
-import { Flex, Text, Button } from 'code-artel-ui-lib';
-import logo from '../icons/logo_icon.svg';
+import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
+import logo_white from '../icons/logo_white.svg';
+import logo_gray from '../icons/logo_gray.svg';
 
 export const HeaderStyled = styled(Flex)`
-  id: header;
   position: fixed;
   width: 100%;
   height: 80px;
@@ -26,17 +26,12 @@ class MenuList extends Component {
   render() {
     return text.map((item: any, index: any) => {
       return (
-        <Text
-          variant={'body1_normal'}
-          key={index}
-          marginLeft={'10px'}
-          marginRight={'10px'}
-          color={'inherit'}>
-          <a href={item.href}>
+        <Box as={'li'} key={index} marginLeft={'10px'} marginRight={'10px'} color={'inherit'}>
+          <Button as={'a'} variant={'link'} padding={'0 !important'} href={item.href}>
             {item.img}
             {item.name}
-          </a>
-        </Text>
+          </Button>
+        </Box>
       );
     });
   }
@@ -47,12 +42,12 @@ export class Header extends Component {
     isScrolled: false,
   };
 
-  togglBg = () => {
+  toggleBg = () => {
     console.log('hey');
     if (window.scrollY > 80) {
       this.setState(({ isScrolled }) => {
         return {
-          isScrolled: !isScrolled,
+          isScrolled: true,
         };
       });
     } else {
@@ -63,33 +58,39 @@ export class Header extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.togglBg);
+    window.addEventListener('scroll', this.toggleBg);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.togglBg);
+    window.removeEventListener('scroll', this.toggleBg);
   }
 
   render() {
     return (
-      <HeaderStyled
-        color={this.state.isScrolled ? 'black' : 'white'}
-        backgroundColor={this.state.isScrolled ? '#ffffff' : ''}>
-        <Flex alignItems={'center'}>
-          <img src={logo} alt={'logo'} />
-          <Text variant={'body1_normal'} margin={'0 16px'} color={'inherit'}>
-            <a href={'#main'}>CODE ARTEL</a>
-          </Text>
-        </Flex>
+      <header>
+        <HeaderStyled
+          color={this.state.isScrolled ? 'black' : 'white'}
+          backgroundColor={this.state.isScrolled ? '#ffffff' : ''}>
+          <Flex alignItems={'center'}>
+            <img src={this.state.isScrolled ? logo_gray : logo_white} alt={'logo'} />
+            <Text variant={'body1_normal'} margin={'0 16px'} color={'inherit'}>
+              <a href={'#main'}>CODE ARTEL</a>
+            </Text>
+          </Flex>
 
-        <Flex alignItems={'center'}>
-          <MenuList />
+          <Flex alignItems={'center'}>
+            <Flex as={'nav'}>
+              <Flex as={'ul'}>
+                <MenuList />
+              </Flex>
+            </Flex>
 
-          <Button marginLeft={'10px'}>
-            <a href={'#contacts'}>Оставить заявку</a>
-          </Button>
-        </Flex>
-      </HeaderStyled>
+            <Button as={'a'} marginLeft={'10px'} href={'#contacts'}>
+              Оставить заявку
+            </Button>
+          </Flex>
+        </HeaderStyled>
+      </header>
     );
   }
 }

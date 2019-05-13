@@ -1,5 +1,8 @@
 import * as React from 'react';
 
+import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
+
 export class LayoutApp extends React.Component<any, any> {
   state: any = {};
 
@@ -13,7 +16,13 @@ export class LayoutApp extends React.Component<any, any> {
   }
 
   render() {
-    return <div>{this.props.children}</div>;
+    return (
+      <div>
+        <Header />
+        {this.props.children}
+        <Footer />
+      </div>
+    );
   }
 }
 

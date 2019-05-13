@@ -2,18 +2,14 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 /** Components */
-import {
-  Flex,
-  Text,
-
-  // @ts-ignore
-  Button,
-} from 'code-artel-ui-lib';
 // @ts-ignore
-import logo_iconSvg from '../icons/logo_icon.svg';
+import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
+// @ts-ignore
+import logo_white from '../icons/logo_white.svg';
+// @ts-ignore
+import logo_gray from '../icons/logo_gray.svg';
 
 export const HeaderStyled = styled(Flex)`
-  id: header;
   position: fixed;
   width: 100%;
   height: 80px;
@@ -40,17 +36,12 @@ class MenuList extends Component {
   render() {
     return text.map((item: any, index: any) => {
       return (
-        <Text
-          variant={'body1_normal'}
-          key={index}
-          marginLeft={'10px'}
-          marginRight={'10px'}
-          color={'inherit'}>
-          <a href={item.href}>
+        <Box as={'li'} key={index} marginLeft={'10px'} marginRight={'10px'} color={'inherit'}>
+          <Button as={'a'} variant={'link'} padding={'0 !important'} href={item.href}>
             {item.img}
             {item.name}
-          </a>
-        </Text>
+          </Button>
+        </Box>
       );
     });
   }
@@ -62,7 +53,6 @@ export class Header extends Component {
   };
 
   toggleBg = () => {
-    console.log('toggleBg: ', window.scrollY);
     if (window.scrollY > 80 && !this.state.isScrolled) {
       this.setState(({ isScrolled }) => {
         return {
@@ -86,19 +76,23 @@ export class Header extends Component {
 
   render() {
     return (
-      <HeaderStyled className={this.state.isScrolled ? 'active' : ''}>
+      <HeaderStyled as={'header'} className={this.state.isScrolled ? 'active' : ''}>
         <Flex alignItems={'center'}>
-          <img src={logo_iconSvg} alt={'logo'} />
+          <img src={this.state.isScrolled ? logo_gray : logo_white} alt={'logo'} />
           <Text variant={'body1_normal'} margin={'0 16px'} color={'inherit'}>
             <a href={'#main'}>CODE ARTEL</a>
           </Text>
         </Flex>
 
         <Flex alignItems={'center'}>
-          <MenuList />
+          <Flex as={'nav'}>
+            <Flex as={'ul'}>
+              <MenuList />
+            </Flex>
+          </Flex>
 
-          <Button marginLeft={'10px'}>
-            <a href={'#contacts'}>Оставить заявку</a>
+          <Button as={'a'} marginLeft={'10px'} href={'#contacts'}>
+            Оставить заявку
           </Button>
         </Flex>
       </HeaderStyled>

@@ -1,12 +1,12 @@
 export const ButtonSize = (): any => {
   return {
     small: {
-      height: '32px',
-      width: '152px',
+      minHeight: '32px',
+      minWidth: '152px',
     },
     medium: {
-      height: '40px',
-      width: '380px',
+      minHeight: '40px',
+      minWidth: '380px',
     },
   };
 };

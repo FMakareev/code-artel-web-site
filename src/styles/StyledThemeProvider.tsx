@@ -31,10 +31,16 @@ export const Colors: IColors = {
 };
 
 export const Space: number[] = [0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104];
+
 const defaultThemeProps = {
   space: Space,
   colors: Colors,
 };
+
+const transition: string[] = [
+  'background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms',
+];
+
 export const ThemeCreate = (props: ITheme = defaultThemeProps): ITheme => {
   const { space, colors } = props;
 
@@ -43,6 +49,7 @@ export const ThemeCreate = (props: ITheme = defaultThemeProps): ITheme => {
     fontSizes: space || Space,
     lineHeight: space || Space,
     colors,
+    transition: transition,
     variant: {
       buttonVariant: {},
       buttonSize: {},

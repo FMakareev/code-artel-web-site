@@ -17,11 +17,11 @@ export class LayoutApp extends React.Component<any, any> {
 
   render() {
     return (
-      <div>
+      <React.Fragment>
         <Header />
         {this.props.children}
         <Footer />
-      </div>
+      </React.Fragment>
     );
   }
 }

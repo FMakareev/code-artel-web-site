@@ -1,7 +1,9 @@
-import React from 'react';
+import * as React from 'react';
+// @ts-ignore
 import TextLoop from 'react-text-loop';
 
 /** Components */
+// @ts-ignore
 import { Box, Text, Button } from 'code-artel-ui-lib';
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';

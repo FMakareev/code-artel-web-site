@@ -25,7 +25,7 @@ export const serverConfigGenerator = () => {
     node: {
       __dirname: true,
     },
-    devtool: 'inline-source-map',
+    devtool: process.env.NODE_ENV === 'development' ?'eval-source-map': '',
     output: {
       path: path.resolve(process.cwd(), process.env.output || 'dist'),
       filename: 'server.js',

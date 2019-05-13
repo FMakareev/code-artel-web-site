@@ -1,10 +1,7 @@
 import * as React from 'react';
-import codeArtelUiLib from 'code-artel-ui-lib';
+import { Box, Text } from 'code-artel-ui-lib';
 
 import FormRegistration from '../../component/FormRegistration/FormRegistration';
-
-// @ts-ignore
-const { Box, Text } = codeArtelUiLib['code-artel-ui-lib'];
 
 export class RegistrationPage extends React.Component {
   render() {

@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 /** Components */
-import { Flex, Text, Button } from 'code-artel-ui-lib';
-import logo from '../icons/logo_icon.svg';
+import {
+  Flex,
+  Text,
+
+  // @ts-ignore
+  Button,
+} from 'code-artel-ui-lib';
+// @ts-ignore
+import logo_iconSvg from '../icons/logo_icon.svg';
 
 export const HeaderStyled = styled(Flex)`
   id: header;
@@ -14,6 +21,13 @@ export const HeaderStyled = styled(Flex)`
   justify-content: space-between;
   padding: 0 80px;
   z-index: 10;
+  background-color: transparent;
+  color: #fff;
+
+  &.active {
+    background-color: #ffffff;
+    color: #000;
+  }
 `;
 const text = [
   { name: 'Услуги', href: '#services' },
@@ -47,15 +61,15 @@ export class Header extends Component {
     isScrolled: false,
   };
 
-  togglBg = () => {
-    console.log('hey');
-    if (window.scrollY > 80) {
+  toggleBg = () => {
+    console.log('toggleBg: ', window.scrollY);
+    if (window.scrollY > 80 && !this.state.isScrolled) {
       this.setState(({ isScrolled }) => {
         return {
           isScrolled: !isScrolled,
         };
       });
-    } else {
+    } else if (window.scrollY < 80) {
       this.setState({
         isScrolled: false,
       });
@@ -63,20 +77,18 @@ export class Header extends Component {
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.togglBg);
+    window.addEventListener('scroll', this.toggleBg);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('scroll', this.togglBg);
+    window.removeEventListener('scroll', this.toggleBg);
   }
 
   render() {
     return (
-      <HeaderStyled
-        color={this.state.isScrolled ? 'black' : 'white'}
-        backgroundColor={this.state.isScrolled ? '#ffffff' : ''}>
+      <HeaderStyled className={this.state.isScrolled ? 'active' : ''}>
         <Flex alignItems={'center'}>
-          <img src={logo} alt={'logo'} />
+          <img src={logo_iconSvg} alt={'logo'} />
           <Text variant={'body1_normal'} margin={'0 16px'} color={'inherit'}>
             <a href={'#main'}>CODE ARTEL</a>
           </Text>

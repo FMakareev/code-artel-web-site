@@ -11,6 +11,8 @@ export const HomePage: React.FC<any> = () => (
   <Box>
     <Header />
     <SectionMain />
+    <SectionMain />
+    <SectionMain />
 
     {/*<Link to={'/contact'}>contacts</Link>*/}
   </Box>

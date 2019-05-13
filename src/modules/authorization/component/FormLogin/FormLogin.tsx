@@ -1,11 +1,10 @@
 import * as React from 'react';
-import codeArtelUiLib from 'code-artel-ui-lib';
+// @ts-ignore
+import { Box, Flex, Button } from 'code-artel-ui-lib';
 import { Form, Field } from 'react-final-form';
 import faker from 'faker';
 
 import Input from '../Input/Input';
-// @ts-ignore
-const { Box, Flex, Button } = codeArtelUiLib['code-artel-ui-lib'];
 
 export class FormLogin extends React.Component<React.FC<any>> {
   state = { error: false };

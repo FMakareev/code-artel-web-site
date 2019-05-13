@@ -1,11 +1,10 @@
 import * as React from 'react';
-import codeArtelUiLib from 'code-artel-ui-lib';
+// @ts-ignore
+import { Box, Flex, Button } from 'code-artel-ui-lib';
 import { Form, Field } from 'react-final-form';
 import faker from 'faker';
 import { Redirect } from 'react-router-dom';
 import Input from '../Input/Input';
-// @ts-ignore
-const { Box, Flex, Button, Text } = codeArtelUiLib['code-artel-ui-lib'];
 
 export class FormRegistration extends React.Component {
   state = { redirect: null, error: false };

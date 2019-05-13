@@ -42,7 +42,7 @@ export const ThemeCreate = (props: ITheme = defaultThemeProps): ITheme => {
     space: space || Space,
     fontSizes: space || Space,
     lineHeight: space || Space,
-    colors: colors,
+    colors,
     variant: {
       buttonVariant: {},
       buttonSize: {},

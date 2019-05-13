@@ -1,8 +1,5 @@
 import * as React from 'react';
-import codeArtelUiLib from 'code-artel-ui-lib';
-
-// @ts-ignore
-const { Box, Text, Input: InputBase }: any = codeArtelUiLib['code-artel-ui-lib'];
+import { Box, Text, Input as InputBase } from 'code-artel-ui-lib';
 
 export const Input = (props: any) => {
   const { label, placeholder, meta, input, as = 'input' } = props;

@@ -37,10 +37,10 @@ const variants: any = {
 };
 
 interface Props {
-  variant: any;
-  title: string;
-  description: string;
-  children: any;
+  variant?: any;
+  title?: string;
+  description?: string;
+  children?: any;
 }
 
 export class SectionHeader extends Component<Props> {

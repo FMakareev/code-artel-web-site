@@ -1,7 +1,8 @@
-import React from 'react';
+import * as React from 'react';
 
 /** Components */
-import { Box, Flex, Button } from 'code-artel-ui-lib';
+// @ts-ignore
+import { Box, Text, Flex, Button } from 'code-artel-ui-lib';
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';

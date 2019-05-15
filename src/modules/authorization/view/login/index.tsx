@@ -1,11 +1,8 @@
 import * as React from 'react';
 import { hot } from 'react-hot-loader';
-import codeArtelUiLib from 'code-artel-ui-lib';
+import { Box, Text } from 'code-artel-ui-lib';
 
 import FormLogin from '../../component/FormLogin/FormLogin';
-
-// @ts-ignore
-const { Box, Text } = codeArtelUiLib['code-artel-ui-lib'];
 
 export const LoginPage: React.FC<any> = () => {
   return (

@@ -1,10 +1,7 @@
 import * as React from 'react';
-import codeArtelUiLib from 'code-artel-ui-lib';
+import { Box, Text } from 'code-artel-ui-lib';
 
 import FormPasswordRecovery from '../../component/FormPasswordRecovery/FormPasswordRecovery';
-
-// @ts-ignore
-const { Box, Text } = codeArtelUiLib['code-artel-ui-lib'];
 
 export class PasswordRecovery extends React.Component {
   render() {

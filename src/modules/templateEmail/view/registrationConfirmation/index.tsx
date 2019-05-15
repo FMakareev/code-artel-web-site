@@ -1,8 +1,8 @@
 // registrationConfirmation
 import * as React from 'react';
-import styled from 'styled-components';
+import styledComponents from 'styled-components';
 
-const Table = styled.table`
+const Table = styledComponents.table`
   border-collapse: collapse;
   border-spacing: 0;
   padding: 0;
@@ -11,12 +11,12 @@ const Table = styled.table`
   width: 100%;
 `;
 
-const TableContent = styled.table`
+const TableContent = styledComponents.table`
   width: 280px;
   margin: auto;
 `;
 
-const TableCard = styled.table`
+const TableCard = styledComponents.table`
   background: #ffffff;
   border-collapse: collapse;
   border-radius: 6px;
@@ -31,27 +31,27 @@ const TableCard = styled.table`
   width: 580px;
 `;
 
-const TBody = styled.tbody`
+const TBody = styledComponents.tbody`
   width: 100%;
 `;
 
-const TR = styled.tr`
+const TR = styledComponents.tr`
   width: 100%;
 `;
 
-const TD = styled.td`
+const TD = styledComponents.td`
   width: 100%;
 `;
-const Title = styled.h3`
+const Title = styledComponents.h3`
   width: 100%;
   text-align: left;
 `;
-const Text = styled.p`
+const Text = styledComponents.p`
   width: 100%;
   text-align: left;
 `;
 
-const Image = styled.img`
+const Image = styledComponents.img`
   -ms-interpolation-mode: bicubic;
   clear: both;
   display: block;
@@ -71,7 +71,7 @@ export const RegistrationConfirmation = () => (
           <Table>
             <TBody>
               <TR>
-                <TD height="30px" />
+                <TD height={'30px'} />
               </TR>
             </TBody>
           </Table>
@@ -93,7 +93,7 @@ export const RegistrationConfirmation = () => (
                           <Table>
                             <TBody>
                               <TR>
-                                <TD height="30px" />
+                                <TD height={'30px'} />
                               </TR>
                             </TBody>
                           </Table>
@@ -103,9 +103,11 @@ export const RegistrationConfirmation = () => (
                               <TR>
                                 <TD>
                                   <Image
-                                    width="250"
-                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE8sFlH0Ly5aNKA20oIfJJNiC50N_irEdj5Q3v-_hYt-QppG1v"
-                                    align="center"
+                                    width={'250'}
+                                    src={
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSE8sFlH0Ly5aNKA20oIfJJNiC50N_irEdj5Q3v-_hYt-QppG1v'
+                                    }
+                                    align={'center'}
                                   />
                                 </TD>
                               </TR>
@@ -114,7 +116,7 @@ export const RegistrationConfirmation = () => (
                           <Table>
                             <TBody>
                               <TR>
-                                <TD height="30px" />
+                                <TD height={'30px'} />
                               </TR>
                             </TBody>
                           </Table>
@@ -126,7 +128,7 @@ export const RegistrationConfirmation = () => (
                           <Table>
                             <TBody>
                               <TR>
-                                <TD height="30px" />
+                                <TD height={'30px'} />
                               </TR>
                             </TBody>
                           </Table>

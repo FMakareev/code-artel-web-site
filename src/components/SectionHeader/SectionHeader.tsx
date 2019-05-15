@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
 
-const variants = {
+const variants: any = {
   main: {
     title: {
       variant: 'body1_bold',
@@ -57,10 +57,10 @@ const variants = {
 };
 
 interface Props {
-  variant: any;
-  title: string;
-  description: string;
-  children: any;
+  variant?: any;
+  title?: string;
+  description?: string;
+  children?: any;
 }
 
 export class SectionHeader extends Component<Props> {

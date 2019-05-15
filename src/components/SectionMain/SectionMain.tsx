@@ -9,7 +9,11 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import AnimatedText from './AnimatedText';
 
 const SectionMain = () => (
-  <Wrapper id={'main'} backgroundImage={'url(../../assets/images/bg.png)'} color={true}>
+  <Wrapper
+    py={'228px'}
+    id={'main'}
+    backgroundImage={'url(../../assets/images/bg.png)'}
+    color={true}>
     <Container>
       <Flex height={'100%'} flexDirection={'column'} justifyContent={'center'} paddingLeft={'80px'}>
         <Box marginBottom={10}>

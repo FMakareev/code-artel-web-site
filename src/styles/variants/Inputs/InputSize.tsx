@@ -1,25 +1,25 @@
 import { IVariantSize } from '../../interfaces';
 
 const baseStyle = {
-  height: '40px',
+  height: 'auto',
 };
 
 export const InputSize = (): IVariantSize => {
   return {
     small: {
       ...baseStyle,
-      width: '232px',
-      height: '40px',
+      width: '100%',
+      minHeight: '40px',
     },
     medium: {
       ...baseStyle,
-      width: '480px',
-      height: '40px',
+      width: '100%',
+      minHeight: '40px',
     },
     large: {
       ...baseStyle,
-      width: '480px',
-      height: '80px',
+      width: '100%',
+      minHeight: '80px',
     },
   };
 };

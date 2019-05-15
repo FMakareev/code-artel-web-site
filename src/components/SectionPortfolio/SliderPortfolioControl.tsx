@@ -5,48 +5,90 @@ import '../../styles/CircularProgressbar.css';
 
 import { Text, Flex, Box } from 'code-artel-ui-lib';
 
-export const Circle = styled(Box)`
-  height: 24px;
-  width: 24px;
-  border-radius: 50%;
-  border: 1px solid black;
-  color: black;
-  text-align: center;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 24px;
-  font-family: 'Roboto', sans-serif;
-  animation: grow 5s;
-  @keyframes grow {
-    0% {
-      transform: scale(1);
-    }
-    100% {
-      transform: scale(0.33);
-      background-color: black;
-    }
-  }
-`;
-
 export const Dot = styled(Box)`
   height: 8px;
   width: 8px;
   border-radius: 50%;
   background: black;
+  cursor: pointer;
 `;
 
 interface Props {
   toggleItem: any;
+  currentPosition: number;
+  startCounter: number;
+  nextWork: () => void;
+
+  [prop: string]: any;
 }
 
 export class SliderPortfolioControl extends Component<Props> {
-  state = {
-    counter: 5,
-    senInterval: null,
+  constructor(props) {
+    super(props);
+    this.state = this.initialState;
+  }
+
+  get initialState() {
+    const { startCounter } = this.props;
+
+    return {
+      counter: startCounter,
+      setInterval: null,
+    };
+  }
+
+  componentDidMount(): void {
+    this.createSetInterval();
+  }
+
+  createSetInterval = () => {
+    this.setState(() => ({
+      setInterval: setInterval(this.autoCounter, 1000),
+    }));
+  };
+
+  clearSetInterval = () => {
+    const { setInterval } = this.state;
+
+    clearInterval(setInterval);
+
+    this.setState(() => this.initialState);
+  };
+
+  restartSetInterval = () => {
+    this.clearSetInterval();
+    this.createSetInterval();
+  };
+
+  autoCounter = () => {
+    const { startCounter } = this.props;
+
+    const { counter } = this.state;
+    if (counter > 1) {
+      this.setState(() => ({
+        counter: counter - 1,
+      }));
+    } else {
+      this.props.nextWork();
+      this.setState(() => ({
+        counter: startCounter,
+      }));
+    }
+  };
+
+  toggleItem = (index: number) => {
+    const { toggleItem } = this.props;
+
+    this.restartSetInterval();
+    toggleItem(index);
   };
 
   render() {
     const percentage = 100;
+
+    const { counter } = this.state;
+    const { portfolioData, currentPosition } = this.props;
+
     return (
       <Flex>
         <Flex
@@ -54,12 +96,12 @@ export class SliderPortfolioControl extends Component<Props> {
           justifyContent={'space-between'}
           alignItems={'center'}
           marginRight={7}>
-          <CircularProgressbar value={percentage} text={'01'} />
-
-          <Dot />
-          <Dot />
-          <Dot />
-          <Dot />
+          {portfolioData.map((item: any, index: number) => {
+            if (currentPosition === index) {
+              return <CircularProgressbar value={percentage / counter} text={counter} />;
+            }
+            return <Dot onClick={() => this.toggleItem(index)} />;
+          })}
         </Flex>
 
         <Text as={'a'} href={'#'} variant={'body1_normal'}>

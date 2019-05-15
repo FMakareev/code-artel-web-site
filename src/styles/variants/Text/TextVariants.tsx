@@ -89,8 +89,8 @@ export const TextVariants = (theme: ITheme): any => {
     },
     caption: {
       ...baseStyle,
-      fontSize: '12px',
-      lineHeight: '24px',
+      fontSize: '14px',
+      lineHeight: '22px',
       fontWeight: 300,
       fontFamily: '"Raleway", sans-serif',
     },

@@ -1,14 +1,19 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 /** Components */
-import { Text, Box, Button } from 'code-artel-ui-lib';
+import {
+  Text,
+  Box,
+  // @ts-ignore
+  Button,
+} from 'code-artel-ui-lib';
 import SectionHeader from '../SectionHeader/SectionHeader';
 
 interface Props {
   work: any;
 }
 
-export class SliderPortfolioInfo extends Component<Props> {
+export class SliderPortfolioInfo extends React.Component<Props> {
   render() {
     return (
       <Box width={'280px'}>

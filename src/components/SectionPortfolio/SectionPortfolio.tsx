@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 /** Components */
 import { Flex, Text, Box } from 'code-artel-ui-lib';
@@ -48,23 +48,38 @@ const portfolioData = [
   },
 ];
 
-export class SectionPortfolio extends Component {
-  state = {
-    counter: 0,
+export class SectionPortfolio extends React.Component<any, any> {
+  static defaultProps: any = {
+    portfolioData,
   };
 
-  togglItem = () => {
-    if (this.state.counter < 4) {
-      this.setState({ counter: this.state.counter + 1 });
+  state = {
+    currentPosition: 0,
+  };
+
+  toggleItem = (index: number): void => {
+    const { portfolioData } = this.props;
+
+    if (index < portfolioData.length - 1) {
+      this.setState({ currentPosition: index });
     } else {
-      this.setState({ counter: 0 });
+      this.setState({ currentPosition: 0 });
+    }
+  };
+
+  nextWork = () => {
+    if (this.state.currentPosition < portfolioData.length - 1) {
+      this.setState({ currentPosition: this.state.currentPosition + 1 });
+    } else {
+      this.setState({ currentPosition: 0 });
     }
   };
 
   render() {
-    setInterval(this.togglItem, 5000);
+    const { portfolioData } = this.props;
+    const { currentPosition } = this.state;
 
-    const work = portfolioData[this.state.counter];
+    const work = portfolioData[currentPosition];
 
     return (
       <Wrapper id={'portfolio'} color={true}>
@@ -80,12 +95,17 @@ export class SectionPortfolio extends Component {
                 </Text>
               </SectionHeader>
             </Box>
-
             <Flex justifyContent={'space-between'} alignItems={'center'}>
               <SliderPortfolioInfo work={work} />
               <Flex flexDirection={'column'} alignItems={'center'}>
                 <SliderPortfolioPreview work={work} />
-                <SliderPortfolioControl />
+                <SliderPortfolioControl
+                  portfolioData={portfolioData}
+                  currentPosition={currentPosition}
+                  nextWork={this.nextWork}
+                  toggleItem={this.toggleItem}
+                  startCounter={60}
+                />
               </Flex>
             </Flex>
           </Flex>

@@ -11,7 +11,6 @@ let baseStyle: any = {
   cursor: 'text',
   outline: 'none',
   fontFamily: '"Raleway", sans-serif',
-  margin: '0 0 16px 0',
 };
 
 export const InputVariant = (theme: ITheme): IVariantList => {

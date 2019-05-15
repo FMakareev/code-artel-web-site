@@ -1,10 +1,27 @@
-import React from 'react';
+import * as React from 'react';
+import styledComponents from 'styled-components';
 
 import { Text, Flex, Box } from 'code-artel-ui-lib';
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
-// import aboutUs from '../../assets/images/aboutUs.png';
+import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
+
+const WrapperStyled = styledComponents(Wrapper)`
+  position: relative;
+  &:before  {
+    content: '';
+    display: block;
+    ${props => BackgroundColorProperty({ ...props, backgroundColor: 'pink' })} 
+
+    position: absolute;
+    width: 70%;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -1;
+  }
+`;
 
 const stack = [
   'html',
@@ -27,11 +44,31 @@ const stack = [
   'custom solution',
 ];
 
+const sliceArray = (array: any[] = [], count: number = 3): [][] => {
+  const lengthSubArray: number = array.length / count;
+
+  let newArray: any[] = [];
+  let start: number = 0;
+  let end: number = lengthSubArray;
+
+  for (let i = 0; i < count; i += 1) {
+    newArray = [...newArray, array.slice(start, end)];
+    start = end;
+    end = start + lengthSubArray;
+  }
+  return newArray;
+};
+try {
+  console.log('sliceArray: ', sliceArray(stack, 3));
+} catch (e) {
+  console.log(e);
+}
+
 const SectionAboutUs = () => (
-  <Wrapper id={'about'} color={true}>
+  <WrapperStyled id={'about'}>
     <Container>
       <Flex>
-        <Flex flexDirection={'column'}>
+        <Flex pt={12} pb={12} pr={7} flexDirection={'column'}>
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant2'}
@@ -56,25 +93,25 @@ const SectionAboutUs = () => (
             технологии до проектирования и производства радиоэлектроники.
           </Text>
 
-          <Flex as={'ul'} flexDirection={'column'} flexWrap={'wrap'} height={'144px'}>
-            {stack.map((item, index) => (
-              <Text
-                as={'li'}
-                variant={'body1_normal'}
-                color={'white'}
-                key={index}
-                float={'left'}
-                width={'33.3%'}>
-                + {item}
-              </Text>
-            ))}
+          <Flex flexDirection={'row'} flexWrap={'wrap'}>
+            {sliceArray(stack, 3).map((column: any[], index: number) => {
+              return (
+                <Box width={1 / 3} key={`column-${index}`} as={'ul'}>
+                  {column.map((item: any, index: number) => (
+                    <Text as={'li'} variant={'body1_normal'} color={'white'} key={`${index}`}>
+                      + {item}
+                    </Text>
+                  ))}
+                </Box>
+              );
+            })}
           </Flex>
         </Flex>
 
         <img src={'../../assets/images/aboutUs.png'} />
       </Flex>
     </Container>
-  </Wrapper>
+  </WrapperStyled>
 );
 
 export default SectionAboutUs;

@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 /** Components */
-import { Box, Input, Select, Button, Text, Flex } from 'code-artel-ui-lib';
+import { Box, Select, Button, Text, Flex } from 'code-artel-ui-lib';
 import { Form, Field } from 'react-final-form';
+import Input from '../Input/Input';
 
 const ErrorStyled = styled.span`
   color: red;
@@ -100,87 +101,57 @@ export class ContactForm extends Component {
       <Form onSubmit={this.handleSubmit}>
         {({ handleSubmit, submitting, pristine, invalid, dirty }) => (
           <form onSubmit={handleSubmit}>
-            <Flex flexWrap={'wrap'} justifyContent={'space-between'}>
-              <Field name="name" type="text" validate={required} component={Input}>
-                {({ input, meta }) => (
-                  <div>
-                    <Text as={'label'} variant={'body1_normal'} color={'black'}>
-                      {' '}
-                      Имя{' '}
-                    </Text>
-                    <Input
-                      {...input}
-                      placeholder={'e.g John Doe'}
-                      size={'medium'}
-                      variant={inputVariant({ meta })}
-                    />
-                    {meta.error && meta.touched && <ErrorStyled> {meta.error} </ErrorStyled>}
-                  </div>
-                )}
-              </Field>
-
-              <Field name="email" type="email" validate={required} component={Input}>
-                {({ input, meta }) => (
-                  <div>
-                    <Text as={'label'} variant={'body1_normal'} color={'black'}>
-                      {' '}
-                      Почта{' '}
-                    </Text>
-                    <Input
-                      {...input}
-                      placeholder={'e.g john.doe@mail.com'}
-                      size={'small'}
-                      variant={inputVariant({ meta })}
-                    />
-                    {meta.error && meta.touched && <ErrorStyled> {meta.error} </ErrorStyled>}
-                  </div>
-                )}
-              </Field>
-
-              <Field name="phone" type="tel" validate={required} component={Input}>
-                {({ input, meta }) => (
-                  <div>
-                    <Text as={'label'} variant={'body1_normal'} color={'black'}>
-                      {' '}
-                      Телефон{' '}
-                    </Text>
-                    <Input
-                      {...input}
-                      placeholder={'+7 900 000 00 00'}
-                      size={'small'}
-                      variant={inputVariant({ meta })}
-                    />
-                    {meta.error && meta.touched && <ErrorStyled> {meta.error} </ErrorStyled>}
-                  </div>
-                )}
-              </Field>
-
-              <Field name="service" component={Select}>
-                <option> Веб-разработка</option>
-                <option> Блокчейн</option>
-                <option> Мобильные приложения</option>
-                <option> Сопровождение</option>
-                <option> Хостинг и техническая поддержка</option>
-                <option> Разработка аппратано-программных комплексов</option>
-              </Field>
-
-              <Field name="comment" type="text" component={Input}>
-                {({ input, meta }) => (
-                  <div>
-                    <Text as={'label'} variant={'body1_normal'} color={'black'}>
-                      {' '}
-                      Сообщение{' '}
-                    </Text>
-                    <Input
-                      {...input}
-                      placeholder={'Сообщение'}
-                      size={'large'}
-                      variant={inputVariant({ meta })}
-                    />
-                    {meta.error && meta.touched && <ErrorStyled> {meta.error} </ErrorStyled>}
-                  </div>
-                )}
-              </Field>
+            <Box>
+              <Box mb={5}>
+                <Field
+                  name="name"
+                  type="text"
+                  label={'Имя'}
+                  placeholder={'e.g. John Doe'}
+                  validate={required}
+                  component={Input}
+                />
+              </Box>
+              <Box mb={5}>
+                <Field
+                  name="email"
+                  type="email"
+                  validate={required}
+                  placeholder={'e.g john.doe@mail.com'}
+                  label={'Почта'}
+                  component={Input}
+                />
+              </Box>
+              <Box mb={5}>
+                <Field
+                  name="phone"
+                  type="tel"
+                  validate={required}
+                  placeholder={'+7 900 000 00 00'}
+                  label={'Телефон'}
+                  component={Input}
+                />
+              </Box>
+              <Box mb={5}>
+                <Field name="service" component={Select}>
+                  <option> Веб-разработка</option>
+                  <option> Блокчейн</option>
+                  <option> Мобильные приложения</option>
+                  <option> Сопровождение</option>
+                  <option> Хостинг и техническая поддержка</option>
+                  <option> Разработка аппратано-программных комплексов</option>
+                </Field>
+              </Box>
+              <Box mb={5}>
+                <Field
+                  name={'message'}
+                  type={'text'}
+                  validate={required}
+                  placeholder={'Сообщение'}
+                  label={'Сообщение'}
+                  component={Input}
+                />
+              </Box>
 
               <Field name="price" type="range" component="input">
                 {({ input }) => (
@@ -202,7 +173,7 @@ export class ContactForm extends Component {
                 )}
               </Field>
 
-              <Field name="file" type="file" component={Input}>
+              <Field name={'file'} type={'file'} component={Input}>
                 {({ input, meta }) => (
                   <FileUpload>
                     <label>
@@ -224,7 +195,7 @@ export class ContactForm extends Component {
               </Field>
               <Box marginBottom={'16px'}>
                 <Button
-                  type="submit"
+                  type={'submit'}
                   variant={buttonVariant({ invalid, dirty, pristine, submitting })}
                   disabled={submitting || pristine || invalid}>
                   Отправить
@@ -235,11 +206,11 @@ export class ContactForm extends Component {
                 {' '}
                 {this.state.message}{' '}
               </Text>
-              <Text vairant={'caption'} color={'black'}>
+              <Text variant={'caption'} color={'black'}>
                 Нажимая на кнопку «Отправить заявку», вы соглашаетесь на обработку персональных
                 данных в соответствии с политикой конфиденциальности.
               </Text>
-            </Flex>
+            </Box>
           </form>
         )}
       </Form>

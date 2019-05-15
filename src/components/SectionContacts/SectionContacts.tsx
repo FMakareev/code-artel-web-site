@@ -1,5 +1,5 @@
 import React from 'react';
-
+import styledComponents from 'styled-components';
 /** Components */
 import { Flex, Text, Box } from 'code-artel-ui-lib';
 import Wrapper from '../Wrapper/Wrapper';
@@ -9,12 +9,30 @@ import ContactForm from './ContactForm';
 import email from '../Icons/EmailIcon.svg';
 import phone from '../Icons/PhoneIcon.svg';
 import address from '../Icons/AddressIcon.svg';
+import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
+
+const WrapperWtyled = styledComponents(Wrapper)`
+  position: relative;
+
+  &:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    display: block;
+    width: 50%;
+    ${props => BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' })} 
+    
+  }
+`;
 
 const SectionContacts = () => (
-  <Wrapper id={'contacts'} color={true}>
+  <WrapperWtyled id={'contacts'} color={true}>
     <Container>
       <Flex flexWrap={'wrap'}>
-        <Flex flexDirection={'column'} width={'50%'} paddingRight={7}>
+        <Flex flexDirection={'column'} py={7} pr={7} width={'50%'} paddingRight={7}>
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant3'}
@@ -35,6 +53,7 @@ const SectionContacts = () => (
               <a href={'mailto:peter.uspenskii@code-artel.ru'}>peter.uspenskii@code-artel.ru </a>
             </Text>
           </Flex>
+
           <Flex marginBottom={4}>
             <img src={phone} />
             <Text variant={'body1_normal'} color={'black'} marginLeft={4}>
@@ -54,7 +73,7 @@ const SectionContacts = () => (
         </Flex>
       </Flex>
     </Container>
-  </Wrapper>
+  </WrapperWtyled>
 );
 
 export default SectionContacts;

@@ -9,33 +9,52 @@ import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
 import web from '../Icons/icon_webdev.svg';
 import blockchain from '../Icons/icon_blockchain.svg';
 import application from '../Icons/icon_application.svg';
-import tech_sup from '../Icons/icon_tech_sup.svg';
+import techSup from '../Icons/icon_tech_sup.svg';
 import escort from '../Icons/icon_escort.svg';
 import hardware from '../Icons/icon_hardware.svg';
 
-const webArr = [
-  'Корпоративные сайты',
-  'Интернет магазины',
-  'Сложные веб-сервисы и интеграции',
-  'Высоконагруженные проекты',
-  'Промосайты',
-  'Чат боты',
-  'Веб скарпинг',
+const services = [
+  {
+    icon: web,
+    title: 'Веб-разработка',
+    arr: [
+      'Корпоративные сайты',
+      'Интернет магазины',
+      'Сложные веб-сервисы и интеграции',
+      'Высоконагруженные проекты',
+      'Промосайты',
+      'Чат боты',
+      'Веб скарпинг',
+    ],
+  },
+  {
+    icon: blockchain,
+    title: 'Блокчейн',
+    arr: [
+      'Разработка сервисов с использованием существующих блокчейн платформ',
+      'Внедрение блокчейна в существущие сервисы',
+    ],
+  },
+  {
+    icon: application,
+    title: 'Разработка приложений',
+    arr: ['Мобильные приложения для IOS и Android', 'AR визитки'],
+  },
+  {
+    icon: techSup,
+    title: 'Сопровождение сайтов и приложений',
+    arr: ['Развитие технологически сложных веб-проектов', 'Сопровождение мобильных приложений'],
+  },
+  {
+    icon: escort,
+    title: 'Хостинг и техническая поддержка',
+    arr: ['Аренда серверов', 'Настройка и администрирование серверов'],
+  },
+  { icon: hardware, title: 'Разработка аппаратно-программных комплексов', arr: ['Интернет вещей'] },
 ];
-const blockainArr = [
-  'Разработка сервисов с использованием существующих блокчейн платформ',
-  'Внедрение блокчейна в существущие сервисы',
-];
-const applicatiionArr = ['Мобильные приложения для IOS и Android', 'AR визитки'];
-const tech_supArr = [
-  'Развитие технологически сложных веб-проектов',
-  'Сопровождение мобильных приложений',
-];
-const escortArr = ['Аренда серверов', 'Настройка и администрирование серверов'];
-const hardwareArr = ['Интернет вещей'];
 
 export const SectionServices = () => (
-  <Wrapper id={'services'}>
+  <Wrapper id={'services'} color={true}>
     <Container backgroundColor={'bright_blue'}>
       <Flex px={13} py={7} flexDirection={'column'}>
         <Box marginBottom={10}>
@@ -48,20 +67,11 @@ export const SectionServices = () => (
         </Box>
 
         <Flex justifyContent={'space-between'} flexWrap={'wrap'} marginBottom={11}>
-          <ServiceList icon={web} title={'Веб-разработка'} arr={webArr} />
-          <ServiceList icon={blockchain} title={'Блокчейн'} arr={blockainArr} />
-          <ServiceList icon={application} title={'Разработка приложений'} arr={applicatiionArr} />
-          <ServiceList
-            icon={tech_sup}
-            title={'Сопровождение сайтов и приложений'}
-            arr={tech_supArr}
-          />
-          <ServiceList icon={escort} title={'Хостинг и техническая поддержка'} arr={escortArr} />
-          <ServiceList
-            icon={hardware}
-            title={'Разработка аппаратно-программных комплексов'}
-            arr={hardwareArr}
-          />
+          {services.map((service, index) => (
+            <Box width={'33,3%'} key={index}>
+              <ServiceList icon={service.icon} title={service.title} arr={service.arr} />
+            </Box>
+          ))}
         </Flex>
 
         <Text variant={'subtitle1'} color={'white'} marginBottom={5}>

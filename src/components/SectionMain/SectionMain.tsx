@@ -8,12 +8,12 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import AnimatedText from './AnimatedText';
 
 const SectionMain = () => (
-  <Wrapper id={'main'} backgroundImage={'url(../../assets/images/bg.png)'}>
+  <Wrapper id={'main'} backgroundImage={'url(../../assets/images/bg.png)'} color={true}>
     <Container>
-      <Flex height={'100%'} flexDirection={'column'} justifyContent={'center'}>
+      <Flex height={'100%'} flexDirection={'column'} justifyContent={'center'} paddingLeft={'80px'}>
         <Box marginBottom={10}>
           <SectionHeader variant={'main'} title={'CODEARTEL'} description={'Мы разрабатываем'}>
-            <AnimatedText />
+            <AnimatedText variant={'yellow'} messages={['сервисы', 'приложения']} />
           </SectionHeader>
         </Box>
 

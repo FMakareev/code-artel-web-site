@@ -13,7 +13,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '64px',
       lineHeight: '72px',
-      fontWeight: 400,
+      fontWeight: 300,
     },
     h1_bold: {
       ...baseStyle,
@@ -25,7 +25,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '40px',
       lineHeight: '48px',
-      fontWeight: 400,
+      fontWeight: 300,
     },
     h2_bold: {
       ...baseStyle,
@@ -37,31 +37,31 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '32px',
       lineHeight: '40px',
-      fontWeight: 400,
+      fontWeight: 300,
     },
     h3_bold: {
       ...baseStyle,
       fontSize: '32px',
       lineHeight: '40px',
-      fontWeight: 400,
+      fontWeight: 700,
     },
     h4_normal: {
       ...baseStyle,
       fontSize: '24px',
       lineHeight: '32px',
-      fontWeight: 400,
+      fontWeight: 300,
     },
     h4_bold: {
       ...baseStyle,
       fontSize: '24px',
       lineHeight: '32px',
-      fontWeight: 400,
+      fontWeight: 700,
     },
     subtitle1: {
       ...baseStyle,
       fontSize: '24px',
       lineHeight: '32px',
-      fontWeight: 400,
+      fontWeight: 300,
     },
     subtitle2: {
       ...baseStyle,
@@ -73,7 +73,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '16px',
       lineHeight: '24px',
-      fontWeight: 400,
+      fontWeight: 300,
     },
     body1_bold: {
       ...baseStyle,
@@ -90,8 +90,9 @@ export const TextVariants = (theme: ITheme): any => {
     caption: {
       ...baseStyle,
       fontSize: '12px',
-      lineHeight: '20px',
-      fontWeight: 400,
+      lineHeight: '24px',
+      fontWeight: 300,
+      fontFamily: '"Raleway", sans-serif',
     },
     error: {
       ...baseStyle,

@@ -4,7 +4,7 @@ import React from 'react';
 import { Flex } from 'code-artel-ui-lib';
 
 export const Container = ({ children, backgroundColor }: any) => (
-  <Flex maxWidth={'1120px'} backgroundColor={backgroundColor}>
+  <Flex maxWidth={'1120px'} width={'100%'} backgroundColor={backgroundColor}>
     {children}
   </Flex>
 );

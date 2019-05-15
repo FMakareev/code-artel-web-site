@@ -34,6 +34,26 @@ const variants = {
       color: 'black',
     },
   },
+  portfolioInfo: {
+    title: {
+      variant: 'body1_bold',
+      color: 'yellow',
+    },
+    description: {
+      variant: 'h3_bold',
+      color: 'black',
+    },
+  },
+  aboutUs: {
+    title: {
+      variant: 'body1_bold',
+      color: 'white',
+    },
+    description: {
+      variant: 'h3_bold',
+      color: 'white',
+    },
+  },
 };
 
 interface Props {

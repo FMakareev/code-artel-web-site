@@ -6,6 +6,8 @@ import * as React from 'react';
 import SectionMain from '../../../../components/SectionMain/SectionMain';
 import SectionServices from '../../../../components/SectionServices/SectionServices';
 import SectionPortfolio from '../../../../components/SectionPortfolio/SectionPortfolio';
+import SectionAboutUs from '../../../../components/SectionAboutUs/SectionAboutUs';
+import SectionContacts from '../../../../components/SectionContacts/SectionContacts';
 import { Box } from 'code-artel-ui-lib';
 
 export const HomePage: React.FC<any> = () => (
@@ -13,6 +15,8 @@ export const HomePage: React.FC<any> = () => (
     <SectionMain />
     <SectionServices />
     <SectionPortfolio />
+    <SectionAboutUs />
+    <SectionContacts />
     {/*<Link to={'/contact'}>contacts</Link>*/}
   </Box>
 );

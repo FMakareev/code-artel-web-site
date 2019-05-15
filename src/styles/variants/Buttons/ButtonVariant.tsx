@@ -4,6 +4,7 @@ let baseStyle: any = {
   cursor: 'pointer',
   border: 'none',
   fontFamily: '"Raleway", sans-serif',
+  lineHeight: '24px',
 };
 
 export const ButtonVariant = (theme: ITheme): IVariantList => {
@@ -14,8 +15,6 @@ export const ButtonVariant = (theme: ITheme): IVariantList => {
     paddingBottom: theme.space && theme.space[3],
     paddingLeft: theme.space && theme.space[7],
     paddingRight: theme.space && theme.space[7],
-    // px: theme.space && theme.space[7],
-    // py: theme.space && theme.space[3],
     transition: theme.transition && theme.transition[0],
   };
   return {

@@ -2,17 +2,22 @@ import React, { Component } from 'react';
 
 import { Flex } from 'code-artel-ui-lib';
 
-export class PortfolioCase extends Component {
+interface Props {
+  work: any;
+}
+
+export class SliderPortfolioPreview extends Component<Props> {
   render() {
     return (
       <Flex
         width={'560px'}
         height={'354px'}
-        backgroundImage={'url(../../assets/images/placeholder.png)'}
+        backgroundImage={this.props.work.imagePreview}
         alignSelf={'center'}
+        marginBottom={9}
       />
     );
   }
 }
 
-export default PortfolioCase;
+export default SliderPortfolioPreview;

@@ -15,6 +15,7 @@ export class SliderPortfolioPreview extends Component<Props> {
         backgroundImage={this.props.work.imagePreview}
         alignSelf={'center'}
         marginBottom={9}
+        marginLeft={'-370px'}
       />
     );
   }

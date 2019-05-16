@@ -2,9 +2,12 @@ import React, { Component } from 'react';
 import styled from 'styled-components';
 
 /** Components */
-import { Box, Select, Button, Text, Flex } from 'code-artel-ui-lib';
+import { Box, Select, Button, Text, Flex, Input as InputDefault } from 'code-artel-ui-lib';
 import { Form, Field } from 'react-final-form';
 import Input from '../Input/Input';
+import InputRange from 'react-input-range';
+import 'react-input-range/lib/css/index.css';
+import Dropzone from 'react-dropzone';
 
 const ErrorStyled = styled.span`
   color: red;
@@ -31,18 +34,6 @@ const buttonVariant = ({ invalid, dirty, pristine, submitting }: any) => {
   return variant;
 };
 
-const inputVariant = ({ meta }: any) => {
-  let variant = 'default';
-  if (meta.active) {
-    variant = 'primary';
-  } else if (meta.dirty && meta.active) {
-    variant = 'error';
-  } else if (meta.touched && meta.invalid) {
-    variant = 'error';
-  }
-  return variant;
-};
-
 const required = (value: any) => (value ? undefined : 'Обязательно для заполнения');
 
 // const mustBeNumber = (value:number) => (isNaN(value) ? "Номер должен состоять из цифр" : undefined);
@@ -52,9 +43,10 @@ const required = (value: any) => (value ? undefined : 'Обязательно д
 // const composeValidators = (...validators: any) => (value: any) =>
 //     validators.reduce((error: any, validator: (arg0: any) => void) => error || validator(value), undefined);
 
-export class ContactForm extends Component {
+class ContactForm extends Component {
   state = {
     message: '',
+    price: 100000,
   };
 
   handleSubmit = (values: any) => {
@@ -89,12 +81,11 @@ export class ContactForm extends Component {
       });
   };
 
-  // handleFileName = () => {
-  //     const fileName: HTMLElement | null = document.getElementById("file").files[0].name;
-  //     const fileType: HTMLElement | null = document.getElementById("file").files[0].type;
-  //     const loadedFile: string = `${fileName} ${fileType}`;
-  //     return loadedFile;
-  //    }
+  splitPrice = () => {
+    const n = this.state.price.toString();
+    const newNum = n.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
+    return newNum;
+  };
 
   render() {
     return (
@@ -106,8 +97,8 @@ export class ContactForm extends Component {
                 <Field
                   name="name"
                   type="text"
-                  label={'Имя'}
-                  placeholder={'e.g. John Doe'}
+                  label="Имя"
+                  placeholder="e.g. John Doe"
                   validate={required}
                   component={Input}
                 />
@@ -117,8 +108,8 @@ export class ContactForm extends Component {
                   name="email"
                   type="email"
                   validate={required}
-                  placeholder={'e.g john.doe@mail.com'}
-                  label={'Почта'}
+                  placeholder="e.g john.doe@mail.com"
+                  label="Почта"
                   component={Input}
                 />
               </Box>
@@ -127,84 +118,102 @@ export class ContactForm extends Component {
                   name="phone"
                   type="tel"
                   validate={required}
-                  placeholder={'+7 900 000 00 00'}
-                  label={'Телефон'}
+                  placeholder="+7 900 000 00 00"
+                  label="Телефон"
                   component={Input}
                 />
               </Box>
-              <Box mb={5}>
-                <Field name="service" component={Select}>
-                  <option> Веб-разработка</option>
-                  <option> Блокчейн</option>
-                  <option> Мобильные приложения</option>
-                  <option> Сопровождение</option>
-                  <option> Хостинг и техническая поддержка</option>
-                  <option> Разработка аппратано-программных комплексов</option>
-                </Field>
-              </Box>
+
+              {/*<Field name='service' component={Select}>*/}
+              {/*  <Box mb={5}>*/}
+              {/*  <option> Веб-разработка</option>*/}
+              {/*  <option> Блокчейн</option>*/}
+              {/*  <option> Мобильные приложения</option>*/}
+              {/*  <option> Сопровождение</option>*/}
+              {/*  <option> Хостинг и техническая поддержка</option>*/}
+              {/*  <option> Разработка аппратано-программных комплексов</option>*/}
+              {/*  </Box>*/}
+              {/*</Field>*/}
+
               <Box mb={5}>
                 <Field
-                  name={'message'}
-                  type={'text'}
-                  validate={required}
-                  placeholder={'Сообщение'}
-                  label={'Сообщение'}
+                  name="message"
+                  type="text"
+                  placeholder="Сообщение"
+                  label="Сообщение"
                   component={Input}
                 />
               </Box>
 
-              <Field name="price" type="range" component="input">
-                {({ input }) => (
-                  <div>
-                    <Text variant={'body1_normal'} color={'back'}>
-                      {' '}
-                      Ваш бюджет:{' '}
-                    </Text>
-                    <input
-                      type={'range'}
-                      {...input}
-                      min={'10000'}
-                      max={'1000000'}
-                      value={'20000'}
-                      step={'10000'}
-                      id={'price'}
+              <Field name="price" type="range">
+                {({}) => (
+                  <Box width={'100%'}>
+                    <Flex>
+                      <Text variant={'body1_normal'} color={'back'}>
+                        {' '}
+                        Ваш бюджет: &nbsp;{' '}
+                      </Text>
+                      <Text variant={'body1_normal'} color={'yellow'}>
+                        {this.splitPrice()} ₽
+                      </Text>
+                    </Flex>
+                    <InputRange
+                      name={'price'}
+                      maxValue={500000}
+                      minValue={50000}
+                      step={50000}
+                      formatLabel={value => `${value}₽`}
+                      value={this.state.price}
+                      onChange={value => this.setState({ price: value })}
                     />
-                  </div>
+                  </Box>
                 )}
               </Field>
 
-              <Field name={'file'} type={'file'} component={Input}>
-                {({ input, meta }) => (
-                  <FileUpload>
-                    <label>
-                      <Input
-                        {...input}
-                        id={'file'}
-                        type={'file'}
-                        style={{ display: 'none' }}
-                        variant={inputVariant({ meta })}
-                      />
-                      {meta.error && meta.touched && <ErrorStyled> {meta.error} </ErrorStyled>}
-                      <Text variant={'body1_normal'} color={'black'}>
-                        <span style={{ textDecoration: 'underline' }}> Прикрепить файл </span> (до
-                        50мб)
-                      </Text>
-                    </label>
-                  </FileUpload>
+              <Field name="file" type="file">
+                {({}) => (
+                  <Box my={5}>
+                    <Dropzone maxSize={52428800}>
+                      {({ getRootProps, getInputProps, acceptedFiles }) => {
+                        return (
+                          <div className={'container'}>
+                            <div {...getRootProps({ className: 'dropzone' })}>
+                              <input {...getInputProps()} />
+                              <Text variant={'body1_normal'} color={'black'}>
+                                <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>
+                                  {' '}
+                                  Прикрепить файл{' '}
+                                </span>
+                                (до 50мб)
+                              </Text>
+                            </div>
+                            <div>
+                              {' '}
+                              {acceptedFiles.map(file => (
+                                <Text variant={'body1_normal'} color={'black'} key={file.path}>
+                                  {file.path} ({file.size} bytes)
+                                </Text>
+                              ))}{' '}
+                            </div>
+                          </div>
+                        );
+                      }}
+                    </Dropzone>
+                  </Box>
                 )}
               </Field>
-              <Box marginBottom={'16px'}>
+
+              <Box my={5}>
                 <Button
                   type={'submit'}
                   variant={buttonVariant({ invalid, dirty, pristine, submitting })}
                   disabled={submitting || pristine || invalid}>
-                  Отправить
+                  Отправить заявку
                 </Button>
               </Box>
 
               <Text vairant={'body1_normal'} color={'black'} width={'100%'} marginBottom={4}>
-                {' '}
-                {this.state.message}{' '}
+                {this.state.message}
               </Text>
               <Text variant={'caption'} color={'black'}>
                 Нажимая на кнопку «Отправить заявку», вы соглашаетесь на обработку персональных

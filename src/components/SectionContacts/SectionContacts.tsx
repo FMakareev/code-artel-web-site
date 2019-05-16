@@ -1,10 +1,12 @@
-import React from 'react';
+import * as React from 'react';
 import styledComponents from 'styled-components';
+
 /** Components */
 import { Flex, Text, Box } from 'code-artel-ui-lib';
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
+import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 import email from '../Icons/EmailIcon.svg';
 import phone from '../Icons/PhoneIcon.svg';
@@ -24,15 +26,14 @@ const WrapperWtyled = styledComponents(Wrapper)`
     display: block;
     width: 50%;
     ${props => BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' })} 
-    
   }
 `;
 
 const SectionContacts = () => (
-  <WrapperWtyled id={'contacts'} color={true}>
+  <WrapperWtyled id={'contacts'}>
     <Container>
       <Flex flexWrap={'wrap'}>
-        <Flex flexDirection={'column'} py={7} pr={7} width={'50%'} paddingRight={7}>
+        <Flex flexDirection={'column'} py={7} pr={7} width={'50%'}>
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant3'}
@@ -47,28 +48,16 @@ const SectionContacts = () => (
             можем поддержать ваш следующий шаг.
           </Text>
 
-          <Flex marginBottom={4}>
-            <img src={email} />
-            <Text variant={'body1_normal'} color={'black'} marginLeft={4}>
-              <a href={'mailto:peter.uspenskii@code-artel.ru'}>peter.uspenskii@code-artel.ru </a>
-            </Text>
-          </Flex>
-
-          <Flex marginBottom={4}>
-            <img src={phone} />
-            <Text variant={'body1_normal'} color={'black'} marginLeft={4}>
-              <a href={'tel:+ 79818544645'}> + 7 981 854 46 45 </a>
-            </Text>
-          </Flex>
-          <Flex marginBottom={4}>
-            <img src={address} />
-            <Text variant={'body1_normal'} color={'black'} marginLeft={5}>
-              Санкт-Петербург
-            </Text>
-          </Flex>
+          <ContactInfo
+            icon={email}
+            href={'mailto:peter.uspenskii@code-artel.ru'}
+            text={'peter.uspenskii@code-artel.ru'}
+          />
+          <ContactInfo icon={phone} href={'tel:+ 79818544645'} text={'+ 7 981 854 46 45'} />
+          <ContactInfo icon={address} href={''} text={'Санкт-Петербург'} />
         </Flex>
 
-        <Flex width={'50%'} backgroundColor={'bright_gray'} py={12} px={13}>
+        <Flex width={'50%'} py={12} px={13}>
           <ContactForm />
         </Flex>
       </Flex>

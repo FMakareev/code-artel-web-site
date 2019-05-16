@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import TextLoop from 'react-text-loop';
 
 /** Components */
@@ -16,10 +16,11 @@ interface Props {
   messages: any;
 }
 
-export class AnimatedText extends Component<Props> {
+export class AnimatedText extends React.Component<Props> {
   render() {
     const variantName: string = this.props.variant;
     const variantChosen = variants[variantName];
+
     return (
       <TextLoop>
         {this.props.messages.map((item: string, index: any) => (

@@ -13,7 +13,6 @@ const WrapperStyled = styledComponents(Wrapper)`
     content: '';
     display: block;
     ${props => BackgroundColorProperty({ ...props, backgroundColor: 'pink' })} 
-
     position: absolute;
     width: 70%;
     top: 0;
@@ -45,6 +44,18 @@ const stack = [
 ];
 
 const sliceArray = (array: any[] = [], count: number = 3): [][] => {
+  // let lengthSubArray: number  =  0;
+  //
+  // if (array.length % 3 === 0) {
+  //   lengthSubArray = array.length / count;
+  //   console.log(lengthSubArray);
+  //   return lengthSubArray;
+  // } else {
+  //   lengthSubArray = ~~(array.length / count);
+  //   const extraElements: number = array.length % count;
+  //   return { lengthSubArray: lengthSubArray, extraElements: extraElements};
+  // }
+
   const lengthSubArray: number = array.length / count;
 
   let newArray: any[] = [];
@@ -68,20 +79,18 @@ const SectionAboutUs = () => (
   <WrapperStyled id={'about'}>
     <Container>
       <Flex>
-        <Flex pt={12} pb={12} pr={7} flexDirection={'column'}>
+        <Flex py={12} pr={7} flexDirection={'column'}>
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant2'}
               title={'О НАС'}
-              description={'Преобразуем великолепные идеи'}>
+              description={'Преобразуем великолепные'}>
               <Flex>
-                <Text variant={'h3_bold'} color={'white'}>
-                  {' '}
-                  в великолепный{' '}
+                <Text variant={'h2_normal'} color={'white'}>
+                  идеи в великолепный
                 </Text>
-                <Text variant={'h3_bold'} color={'yellow'}>
-                  {' '}
-                  &nbsp; софт{' '}
+                <Text variant={'h2_normal'} color={'yellow'}>
+                  &nbsp; софт
                 </Text>
               </Flex>
             </SectionHeader>
@@ -93,7 +102,7 @@ const SectionAboutUs = () => (
             технологии до проектирования и производства радиоэлектроники.
           </Text>
 
-          <Flex flexDirection={'row'} flexWrap={'wrap'}>
+          <Flex flexWrap={'wrap'}>
             {sliceArray(stack, 3).map((column: any[], index: number) => {
               return (
                 <Box width={1 / 3} key={`column-${index}`} as={'ul'}>

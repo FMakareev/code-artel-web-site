@@ -1,5 +1,6 @@
-import React from 'react';
+import * as React from 'react';
 
+/** Components */
 import { Text, Flex } from 'code-artel-ui-lib';
 
 export const Footer = () => (

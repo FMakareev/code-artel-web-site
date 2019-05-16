@@ -98,9 +98,11 @@ export class SliderPortfolioControl extends Component<Props> {
           marginRight={7}>
           {portfolioData.map((item: any, index: number) => {
             if (currentPosition === index) {
-              return <CircularProgressbar value={percentage / counter} text={counter} />;
+              return (
+                <CircularProgressbar key={index} value={percentage / counter} text={counter} />
+              );
             }
-            return <Dot onClick={() => this.toggleItem(index)} />;
+            return <Dot key={index} onClick={() => this.toggleItem(index)} />;
           })}
         </Flex>
 

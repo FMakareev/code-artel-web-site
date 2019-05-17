@@ -59,7 +59,7 @@ const variants: any = {
 interface Props {
   variant?: any;
   title?: string;
-  description?: string;
+  description?: any;
   children?: any;
 }
 

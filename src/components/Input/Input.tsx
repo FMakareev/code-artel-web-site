@@ -17,7 +17,7 @@ const inputVariant = (meta: any = {}) => {
 export const Input: React.FC<any> = props => {
   console.log(props);
 
-  const { input, meta, label, placeholder } = props;
+  const { input, meta, label, placeholder, as } = props;
 
   return (
     <Box width={'100%'}>
@@ -31,6 +31,7 @@ export const Input: React.FC<any> = props => {
         placeholder={placeholder}
         size={'medium'}
         variant={inputVariant(meta)}
+        as={as}
       />
       {meta && meta.error && meta.touched && (
         <Text variant={'error'} px={5}>

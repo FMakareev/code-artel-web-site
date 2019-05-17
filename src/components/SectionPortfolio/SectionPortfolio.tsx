@@ -8,6 +8,8 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import SliderPortfolioPreview from './SliderPortfolioPreview';
 import SliderPortfolioControl from './SliderPortfolioControl';
 import SliderPortfolioInfo from './SliderPortfolioInfo';
+import styledComponents from 'styled-components';
+import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
 
 const portfolioData = [
   {
@@ -48,6 +50,23 @@ const portfolioData = [
   },
 ];
 
+const WrapperStyled = styledComponents(Wrapper)`
+  position: relative;
+
+  &:after{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    display: block;
+    width: 50%;
+    ${props => BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' })} 
+    
+  }
+`;
+
 export class SectionPortfolio extends React.Component<any, any> {
   static defaultProps: any = {
     portfolioData,
@@ -82,7 +101,7 @@ export class SectionPortfolio extends React.Component<any, any> {
     const work = portfolioData[currentPosition];
 
     return (
-      <Wrapper id={'portfolio'} color={true}>
+      <WrapperStyled pt={'80px'} pb={'160px'} id={'portfolio'} color={true}>
         <Container>
           <Flex flexDirection={'column'} width={'100%'}>
             <Box marginBottom={4}>
@@ -110,7 +129,7 @@ export class SectionPortfolio extends React.Component<any, any> {
             </Flex>
           </Flex>
         </Container>
-      </Wrapper>
+      </WrapperStyled>
     );
   }
 }

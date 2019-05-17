@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import * as React from 'react';
+import styledComponents from 'styled-components';
 
 /** Components */
 // @ts-ignore
 import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
+import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
 // @ts-ignore
 import logo_white from '../icons/logo_white.svg';
 // @ts-ignore
 import logo_gray from '../icons/logo_gray.svg';
 
-export const HeaderStyled = styled(Flex)`
+export const HeaderStyled = styledComponents(Flex)`
   position: fixed;
   width: 100%;
   height: 80px;
@@ -21,7 +22,7 @@ export const HeaderStyled = styled(Flex)`
   color: #fff;
 
   &.active {
-    background-color: #ffffff;
+    ${props => BackgroundColorProperty({ ...props, backgroundColor: 'white' })} 
     color: #000;
     border-bottom: 1px solid #e0e0e0;
   }
@@ -33,13 +34,12 @@ const text = [
   { name: 'Контакты', href: '#contacts' },
 ];
 
-class MenuList extends Component {
+class MenuList extends React.Component {
   render() {
     return text.map((item: any, index: any) => {
       return (
-        <Box as={'li'} key={index} marginLeft={'10px'} marginRight={'10px'} color={'inherit'}>
+        <Box as={'li'} key={index} mx={4} color={'inherit'}>
           <Button as={'a'} variant={'link'} padding={'0 !important'} href={item.href}>
-            {item.img}
             {item.name}
           </Button>
         </Box>
@@ -48,7 +48,7 @@ class MenuList extends Component {
   }
 }
 
-export class Header extends Component {
+export class Header extends React.Component {
   state = {
     isScrolled: false,
   };
@@ -80,7 +80,7 @@ export class Header extends Component {
       <HeaderStyled as={'header'} className={this.state.isScrolled ? 'active' : ''}>
         <Flex alignItems={'center'}>
           <img src={this.state.isScrolled ? logo_gray : logo_white} alt={'logo'} />
-          <Text variant={'body1_normal'} margin={'0 16px'} color={'inherit'}>
+          <Text variant={'body1_normal'} mx={5} color={'inherit'}>
             <a href={'#main'}>CODE ARTEL</a>
           </Text>
         </Flex>
@@ -92,7 +92,7 @@ export class Header extends Component {
             </Flex>
           </Flex>
 
-          <Button as={'a'} marginLeft={'10px'} href={'#contacts'}>
+          <Button as={'a'} marginLeft={4} href={'#contacts'}>
             Оставить заявку
           </Button>
         </Flex>

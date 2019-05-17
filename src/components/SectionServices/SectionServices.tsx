@@ -1,21 +1,22 @@
-import React from 'react';
+import * as React from 'react';
 
 /** Components */
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import ServiceList from './ServiceList';
+// @ts-ignore
 import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
-import web from '../Icons/icon_webdev.svg';
-import blockchain from '../Icons/icon_blockchain.svg';
-import application from '../Icons/icon_application.svg';
-import techSup from '../Icons/icon_tech_sup.svg';
-import escort from '../Icons/icon_escort.svg';
-import hardware from '../Icons/icon_hardware.svg';
+import icon_webdevSvg from '../Icons/icon_webdev.svg';
+import icon_blockchainSvg from '../Icons/icon_blockchain.svg';
+import icon_applicationSvg from '../Icons/icon_application.svg';
+import icon_tech_supSvg from '../Icons/icon_tech_sup.svg';
+import icon_escortSvg from '../Icons/icon_escort.svg';
+import hardwareSvg from '../Icons/icon_hardware.svg';
 
 const services = [
   {
-    icon: web,
+    icon: icon_webdevSvg,
     title: 'Веб-разработка',
     arr: [
       'Корпоративные сайты',
@@ -28,7 +29,7 @@ const services = [
     ],
   },
   {
-    icon: blockchain,
+    icon: icon_blockchainSvg,
     title: 'Блокчейн',
     arr: [
       'Разработка сервисов с использованием существующих блокчейн платформ',
@@ -36,27 +37,31 @@ const services = [
     ],
   },
   {
-    icon: application,
+    icon: icon_applicationSvg,
     title: 'Разработка приложений',
     arr: ['Мобильные приложения для IOS и Android', 'AR визитки'],
   },
   {
-    icon: techSup,
+    icon: icon_tech_supSvg,
     title: 'Сопровождение сайтов и приложений',
     arr: ['Развитие технологически сложных веб-проектов', 'Сопровождение мобильных приложений'],
   },
   {
-    icon: escort,
+    icon: icon_escortSvg,
     title: 'Хостинг и техническая поддержка',
     arr: ['Аренда серверов', 'Настройка и администрирование серверов'],
   },
-  { icon: hardware, title: 'Разработка аппаратно-программных комплексов', arr: ['Интернет вещей'] },
+  {
+    icon: hardwareSvg,
+    title: 'Разработка аппаратно-программных комплексов',
+    arr: ['Интернет вещей'],
+  },
 ];
 
 export const SectionServices = () => (
-  <Wrapper id={'services'} color={true}>
+  <Wrapper id={'services'}>
     <Container backgroundColor={'bright_blue'}>
-      <Flex px={13} py={7} flexDirection={'column'}>
+      <Flex px={13} py={12} flexDirection={'column'}>
         <Box marginBottom={10}>
           <SectionHeader
             variant={'variant2'}
@@ -75,9 +80,9 @@ export const SectionServices = () => (
         </Flex>
 
         <Text variant={'subtitle1'} color={'white'} marginBottom={5}>
-          {' '}
-          Хотите работать с нами над вашим продуктом?{' '}
+          Хотите работать с нами над вашим продуктом?
         </Text>
+
         <Button
           as={'a'}
           href={'#contacts'}

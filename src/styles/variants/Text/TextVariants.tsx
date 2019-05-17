@@ -106,6 +106,12 @@ export const TextVariants = (theme: ITheme): any => {
       lineHeight: '24px',
       color: theme.colors['yellow'],
     },
+    inherit: {
+      ...baseStyle,
+      fontSize: 'inherit',
+      lineHeight: 'inherit',
+      fontFamily: 'inherit',
+    },
   };
 };
 

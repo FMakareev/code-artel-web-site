@@ -64,27 +64,25 @@ try {
   console.log(e);
 }
 
+const Description = (
+  <React.Fragment>
+    Преобразуем великолепные идеи{' '}
+    <Text variant={'h2_bold'} as={'span'} display={'inline !important'} color={'white'}>
+      в великолепный
+    </Text>{' '}
+    <Text variant={'h2_bold'} as={'span'} display={'inline !important'} color={'yellow'}>
+      софт
+    </Text>
+  </React.Fragment>
+);
+
 const SectionAboutUs = () => (
   <WrapperStyled id={'about'}>
     <Container>
       <Flex>
         <Flex pt={12} pb={12} pr={7} flexDirection={'column'}>
           <Box marginBottom={6}>
-            <SectionHeader
-              variant={'variant2'}
-              title={'О НАС'}
-              description={'Преобразуем великолепные идеи'}>
-              <Flex>
-                <Text variant={'h3_bold'} color={'white'}>
-                  {' '}
-                  в великолепный{' '}
-                </Text>
-                <Text variant={'h3_bold'} color={'yellow'}>
-                  {' '}
-                  &nbsp; софт{' '}
-                </Text>
-              </Flex>
-            </SectionHeader>
+            <SectionHeader variant={'variant2'} title={'О НАС'} description={Description} />
           </Box>
 
           <Text variant={'body1_normal'} color={'white'} marginBottom={11}>

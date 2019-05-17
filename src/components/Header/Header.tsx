@@ -23,6 +23,7 @@ export const HeaderStyled = styled(Flex)`
   &.active {
     background-color: #ffffff;
     color: #000;
+    border-bottom: 1px solid #e0e0e0;
   }
 `;
 const text = [

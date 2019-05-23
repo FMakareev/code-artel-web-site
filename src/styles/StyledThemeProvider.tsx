@@ -11,23 +11,23 @@ import { InputVariant } from './variants/Inputs/InputVariant';
 import { TextVariants } from './variants/Text/TextVariants';
 
 export const Colors: IColors = {
-  white: '#ffffff',
-  yellow: '#E0C74C',
+  white: '#ffffff' /* color_base_base */,
+  yellow: '#E0C74C' /* color_typo_secondary */,
   light_yellow: '#FFFA7D',
   dark_yellow: '#AB9715',
-  pink: '#E04C7B',
-  dark_pink: '#AA094F',
-  light_pink: '#FF7FAA',
-  bright_blue: '#4CACE0',
+  pink: '#E04C7B' /* color_typo_primary */,
+  dark_pink: '#AA094F' /* color_bg_active */,
+  light_pink: '#FF7FAA' /* color_bg_hover */,
+  bright_blue: '#4CACE0' /* color_typo_secondary */,
   light_blue: '#267199',
   darkest_gray: '#666666',
-  dark_gray: '#B3B3B3',
+  dark_gray: '#B3B3B3' /* color_bg_disabled */,
   gray: '#CCCCCC',
   light_gray: '#E5E5E5',
   dark_blue: '#0C3A52',
-  bright_gray: '#F2F2F2',
+  bright_gray: '#F2F2F2' /* color_typo_third */,
   light_black: '#2C2C2C',
-  black: '#1C1C1C',
+  black: '#1C1C1C' /* color_typo_primary */,
 };
 
 export const Space: number[] = [0, 2, 4, 8, 12, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104];
@@ -45,6 +45,7 @@ export const ThemeCreate = (props: ITheme = defaultThemeProps): ITheme => {
   const { space, colors } = props;
 
   const Theme: ITheme = {
+    breakpoints: ['768px', '992px', '1120px'],
     space: space || Space,
     fontSizes: space || Space,
     lineHeight: space || Space,

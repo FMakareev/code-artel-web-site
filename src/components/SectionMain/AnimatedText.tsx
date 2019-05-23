@@ -11,26 +11,23 @@ const variants: any = {
   },
 };
 
-interface Props {
+interface PropsAnimatedText {
   variant: string;
   messages: any;
 }
 
-export class AnimatedText extends React.Component<Props> {
-  render() {
-    const variantName: string = this.props.variant;
-    const variantChosen = variants[variantName];
-
-    return (
-      <TextLoop>
-        {this.props.messages.map((item: string, index: any) => (
-          <Text key={index} variant={variantChosen.variant} color={variantChosen.color}>
-            {item}
-          </Text>
-        ))}
-      </TextLoop>
-    );
-  }
-}
+const AnimatedText = (props: PropsAnimatedText) => {
+  const variantName: string = props.variant;
+  const variantChosen = variants[variantName];
+  return (
+    <TextLoop>
+      {props.messages.map((item: string, index: any) => (
+        <Text key={index} variant={variantChosen.variant} color={variantChosen.color}>
+          {item}
+        </Text>
+      ))}
+    </TextLoop>
+  );
+};
 
 export default AnimatedText;

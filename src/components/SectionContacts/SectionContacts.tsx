@@ -27,13 +27,18 @@ const WrapperWtyled = styledComponents(Wrapper)`
     width: 50%;
     ${props => BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' })} 
   }
+   @media(max-width: 992px) {
+   &:after {
+    width: 100%;
+    }
+   }
 `;
 
 const SectionContacts = () => (
   <WrapperWtyled id={'contacts'}>
     <Container>
       <Flex flexWrap={'wrap'}>
-        <Flex flexDirection={'column'} py={7} pr={7} width={'50%'}>
+        <Flex flexDirection={'column'} py={7} px={[6, 6, 0]} pr={7} width={['100%', '60%', '50%']}>
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant3'}
@@ -57,7 +62,7 @@ const SectionContacts = () => (
           <ContactInfo icon={address} href={''} text={'Санкт-Петербург'} />
         </Flex>
 
-        <Flex width={'50%'} py={12} px={13}>
+        <Flex width={['100%', '100%', '50%']} py={12} px={13}>
           <ContactForm />
         </Flex>
       </Flex>

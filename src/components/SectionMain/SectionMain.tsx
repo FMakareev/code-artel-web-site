@@ -11,7 +11,11 @@ import AnimatedText from './AnimatedText';
 const SectionMain = () => (
   <Wrapper py={'228px'} id={'main'} backgroundImage={'url(../../assets/images/bg.png)'}>
     <Container>
-      <Flex height={'100%'} flexDirection={'column'} justifyContent={'center'} paddingLeft={13}>
+      <Flex
+        height={'100%'}
+        flexDirection={'column'}
+        justifyContent={'center'}
+        paddingLeft={[6, 13]}>
         <Box marginBottom={10}>
           <SectionHeader variant={'main'} title={'CODEARTEL'} description={'Мы разрабатываем'}>
             <AnimatedText variant={'yellow'} messages={['сервисы', 'приложения']} />
@@ -23,7 +27,7 @@ const SectionMain = () => (
           as={'a'}
           href={'#contacts'}
           display={'inline-block'}
-          maxWidth={'380px'}
+          maxWidth={['280px', '380px']}
           textAlign={'center'}>
           Получить бесплатную консультацию
         </Button>

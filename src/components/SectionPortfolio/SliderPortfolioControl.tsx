@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
-import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import { CircularProgressbar } from 'react-circular-progressbar';
 import '../../styles/CircularProgressbar.css';
 
 import { Text, Flex, Box } from 'code-artel-ui-lib';

@@ -6,7 +6,6 @@ export const ButtonSize = (): any => {
     },
     medium: {
       minHeight: '40px',
-      minWidth: '380px',
     },
   };
 };

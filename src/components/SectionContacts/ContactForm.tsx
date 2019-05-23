@@ -1,26 +1,11 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import * as React from 'react';
 
 /** Components */
-import { Box, Select, Button, Text, Flex, Input as InputDefault } from 'code-artel-ui-lib';
+import { Box, Button, Text } from 'code-artel-ui-lib';
 import { Form, Field } from 'react-final-form';
 import Input from '../Input/Input';
-import InputRange from 'react-input-range';
-import 'react-input-range/lib/css/index.css';
-import Dropzone from 'react-dropzone';
-
-const ErrorStyled = styled.span`
-  color: red;
-  font-size: 12px;
-  letter-spacing: 0.6px;
-  font-family: 'Raleway', sans-serif;
-`;
-
-const FileUpload = styled(Box)`
-  margin: 16px 0;
-  width: 100%;
-  cursor: pointer;
-`;
+import InputRangeCustom from './InputRangeCustom';
+import InputDropzoneCustom from './InputDropzoneCustom';
 
 const buttonVariant = ({ invalid, dirty, pristine, submitting }: any) => {
   let variant = 'default';
@@ -36,17 +21,15 @@ const buttonVariant = ({ invalid, dirty, pristine, submitting }: any) => {
 
 const required = (value: any) => (value ? undefined : 'Обязательно для заполнения');
 
-// const mustBeNumber = (value:number) => (isNaN(value) ? "Номер должен состоять из цифр" : undefined);
-//
-// const mailValidate = (min: any) => (value: any) => value.length >= min ? undefined: "Некорректный адрес эл.почты"
-//
-// const composeValidators = (...validators: any) => (value: any) =>
-//     validators.reduce((error: any, validator: (arg0: any) => void) => error || validator(value), undefined);
+// const setMutator = ([name], state, {changeValue}) => {
+//   changeValue(state, name, value => {
+//     value && value.toString()}
+//     )
+// };
 
-class ContactForm extends Component {
+class ContactForm extends React.Component {
   state = {
     message: '',
-    price: 100000,
   };
 
   handleSubmit = (values: any) => {
@@ -81,15 +64,9 @@ class ContactForm extends Component {
       });
   };
 
-  splitPrice = () => {
-    const n = this.state.price.toString();
-    const newNum = n.replace(/(\d)(?=(\d\d\d)+([^\d]|$))/g, '$1 ');
-    return newNum;
-  };
-
   render() {
     return (
-      <Form onSubmit={this.handleSubmit}>
+      <Form onSubmit={this.handleSubmit} initialValues={{ budget: 100000 }}>
         {({ handleSubmit, submitting, pristine, invalid, dirty }) => (
           <form onSubmit={handleSubmit}>
             <Box>
@@ -124,17 +101,6 @@ class ContactForm extends Component {
                 />
               </Box>
 
-              {/*<Field name='service' component={Select}>*/}
-              {/*  <Box mb={5}>*/}
-              {/*  <option> Веб-разработка</option>*/}
-              {/*  <option> Блокчейн</option>*/}
-              {/*  <option> Мобильные приложения</option>*/}
-              {/*  <option> Сопровождение</option>*/}
-              {/*  <option> Хостинг и техническая поддержка</option>*/}
-              {/*  <option> Разработка аппратано-программных комплексов</option>*/}
-              {/*  </Box>*/}
-              {/*</Field>*/}
-
               <Box mb={5}>
                 <Field
                   name="message"
@@ -145,63 +111,9 @@ class ContactForm extends Component {
                 />
               </Box>
 
-              <Field name="price" type="range">
-                {({}) => (
-                  <Box width={'100%'}>
-                    <Flex>
-                      <Text variant={'body1_normal'} color={'back'}>
-                        {' '}
-                        Ваш бюджет: &nbsp;{' '}
-                      </Text>
-                      <Text variant={'body1_normal'} color={'yellow'}>
-                        {this.splitPrice()} ₽
-                      </Text>
-                    </Flex>
-                    <InputRange
-                      name={'price'}
-                      maxValue={500000}
-                      minValue={50000}
-                      step={50000}
-                      formatLabel={value => `${value}₽`}
-                      value={this.state.price}
-                      onChange={value => this.setState({ price: value })}
-                    />
-                  </Box>
-                )}
-              </Field>
+              <Field name="budget" type="range" component={InputRangeCustom} />
 
-              <Field name="file" type="file">
-                {({}) => (
-                  <Box my={5}>
-                    <Dropzone maxSize={52428800}>
-                      {({ getRootProps, getInputProps, acceptedFiles }) => {
-                        return (
-                          <div className={'container'}>
-                            <div {...getRootProps({ className: 'dropzone' })}>
-                              <input {...getInputProps()} />
-                              <Text variant={'body1_normal'} color={'black'}>
-                                <span style={{ textDecoration: 'underline', cursor: 'pointer' }}>
-                                  {' '}
-                                  Прикрепить файл{' '}
-                                </span>
-                                (до 50мб)
-                              </Text>
-                            </div>
-                            <div>
-                              {' '}
-                              {acceptedFiles.map(file => (
-                                <Text variant={'body1_normal'} color={'black'} key={file.path}>
-                                  {file.path} ({file.size} bytes)
-                                </Text>
-                              ))}{' '}
-                            </div>
-                          </div>
-                        );
-                      }}
-                    </Dropzone>
-                  </Box>
-                )}
-              </Field>
+              <Field name="file" type="file" component={InputDropzoneCustom} />
 
               <Box my={5}>
                 <Button

@@ -20,6 +20,11 @@ const WrapperStyled = styledComponents(Wrapper)`
     left: 0;
     z-index: -1;
   }
+   @media(max-width: 992px) {
+   &:before {
+    width: 100%;
+    }
+   }
 `;
 
 const stack = [
@@ -44,18 +49,6 @@ const stack = [
 ];
 
 const sliceArray = (array: any[] = [], count: number = 3): [][] => {
-  // let lengthSubArray: number  =  0;
-  //
-  // if (array.length % 3 === 0) {
-  //   lengthSubArray = array.length / count;
-  //   console.log(lengthSubArray);
-  //   return lengthSubArray;
-  // } else {
-  //   lengthSubArray = ~~(array.length / count);
-  //   const extraElements: number = array.length % count;
-  //   return { lengthSubArray: lengthSubArray, extraElements: extraElements};
-  // }
-
   const lengthSubArray: number = array.length / count;
 
   let newArray: any[] = [];
@@ -78,8 +71,8 @@ try {
 const SectionAboutUs = () => (
   <WrapperStyled id={'about'}>
     <Container>
-      <Flex>
-        <Flex py={12} pr={7} flexDirection={'column'}>
+      <Flex flexWrap={['wrap', 'wrap', 'nowrap']}>
+        <Flex py={12} px={[6, 6, 0]} pr={7} flexDirection={'column'}>
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant2'}
@@ -102,7 +95,7 @@ const SectionAboutUs = () => (
             технологии до проектирования и производства радиоэлектроники.
           </Text>
 
-          <Flex flexWrap={'wrap'}>
+          <Flex flexWrap={'wrap'} justifyContent={'space-between'}>
             {sliceArray(stack, 3).map((column: any[], index: number) => {
               return (
                 <Box width={1 / 3} key={`column-${index}`} as={'ul'}>

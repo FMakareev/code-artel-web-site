@@ -28,7 +28,7 @@ export class SliderPortfolioInfo extends React.Component<Props> {
           </SectionHeader>
         </Box>
 
-        <Button size={'medium'}>
+        <Button size={'medium'} mb={5}>
           <a href={this.props.work.id}> Перейти на сайт проекта</a>
         </Button>
       </Box>

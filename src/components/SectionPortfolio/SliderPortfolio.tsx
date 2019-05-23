@@ -12,14 +12,14 @@ const portfolioData = [
     title: 'Antifake',
     description: 'is a system for supply accounting and tracking lot ',
     id: 'emcdpo.info',
-    imagePreview: 'url(../../assets/images/placeholder.png)',
+    imagePreview: '../../assets/images/placeholder.png',
   },
   {
     tags: 'business',
     title: 'Emernotar',
     description: 'is a service for asset protection using blockhing',
     id: 'emernotar.info',
-    imagePreview: 'url(../../assets/images/placeholder2.png)',
+    imagePreview: '../../assets/images/placeholder2.png',
   },
   {
     tags: 'business',
@@ -27,25 +27,29 @@ const portfolioData = [
     description:
       "is a service for user's credit history secure uploading and prividing banks with it",
     id: 'finvariant.com',
-    imagePreview: 'url(../../assets/images/placeholder.png)',
+    imagePreview: '../../assets/images/placeholder.png',
   },
   {
     tags: 'business',
     title: '4-ый проект',
     description: 'is a system for supply accounting and tracking lot ',
     id: 'emcdpo.info',
-    imagePreview: 'url(../../assets/images/placeholder2.png)',
+    imagePreview: '../../assets/images/placeholder2.png',
   },
   {
     tags: 'business',
     title: '5-ый проект',
     description: 'is a service for asset protection using blockhing',
     id: 'emernotar.info',
-    imagePreview: 'url(../../assets/images/placeholder.png)',
+    imagePreview: '../../assets/images/placeholder.png',
   },
 ];
 
-export class SliderPortfolio extends React.Component<any, any> {
+interface Props {
+  portfolioData: string;
+}
+
+export class SliderPortfolio extends React.Component<Props, any> {
   static defaultProps: any = {
     portfolioData,
   };

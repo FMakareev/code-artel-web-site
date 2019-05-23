@@ -23,31 +23,33 @@ const WrapperStyled = styledComponents(Wrapper)`
     width: 50%;
     ${props => BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' })} 
   }
+  
+  @media(max-width: 992px) {
+   &:after {
+    width: 100%;
+    }
+   }
 `;
 
-export class SectionPortfolio extends React.Component {
-  render() {
-    return (
-      <WrapperStyled id={'portfolio'}>
-        <Container>
-          <Flex flexDirection={'column'} width={'100%'} py={12}>
-            <Box marginBottom={4}>
-              <SectionHeader
-                variant={'variant3'}
-                title={'НАШИ РАБОТЫ'}
-                description={'Мы помогаем нашим клиентам'}>
-                <Text variant={'h3_bold'} color={'black'}>
-                  выиграть
-                </Text>
-              </SectionHeader>
-            </Box>
+const SectionPortfolio = () => (
+  <WrapperStyled id={'portfolio'}>
+    <Container>
+      <Flex flexDirection={'column'} width={'100%'} py={12} px={[6, 0]}>
+        <Box marginBottom={4}>
+          <SectionHeader
+            variant={'variant3'}
+            title={'НАШИ РАБОТЫ'}
+            description={'Мы помогаем нашим клиентам'}>
+            <Text variant={'h3_bold'} color={'black'}>
+              выиграть
+            </Text>
+          </SectionHeader>
+        </Box>
 
-            <SliderPortfolio />
-          </Flex>
-        </Container>
-      </WrapperStyled>
-    );
-  }
-}
+        <SliderPortfolio />
+      </Flex>
+    </Container>
+  </WrapperStyled>
+);
 
 export default SectionPortfolio;

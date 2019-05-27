@@ -14,36 +14,76 @@ export const TextVariants = (theme: ITheme): any => {
       fontSize: '64px',
       lineHeight: '72px',
       fontWeight: 300,
+      '@media(max-width: 768px)': {
+        fontSize: '48px',
+        lineHeight: '56px',
+      },
+      '@media(max-width: 480px)': {
+        fontSize: '40px',
+        lineHeight: '48px',
+      },
     },
     h1_bold: {
       ...baseStyle,
       fontSize: '64px',
       lineHeight: '72px',
       fontWeight: 700,
+      '@media(max-width: 768px)': {
+        fontSize: '48px',
+        lineHeight: '56px',
+      },
+      '@media(max-width: 480px)': {
+        fontSize: '40px',
+        lineHeight: '48px',
+      },
     },
     h2_normal: {
       ...baseStyle,
       fontSize: '40px',
       lineHeight: '48px',
       fontWeight: 300,
+      '@media(max-width: 768px)': {
+        fontSize: '32px',
+        lineHeight: '40px',
+      },
+      '@media(max-width: 480px)': {
+        fontSize: '24px',
+        lineHeight: '32px',
+      },
     },
     h2_bold: {
       ...baseStyle,
       fontSize: '40px',
       lineHeight: '48px',
       fontWeight: 700,
+      '@media(max-width: 768px)': {
+        fontSize: '32px',
+        lineHeight: '40px',
+      },
+      '@media(max-width: 480px)': {
+        fontSize: '24px',
+        lineHeight: '32px',
+      },
     },
     h3_normal: {
       ...baseStyle,
       fontSize: '32px',
       lineHeight: '40px',
       fontWeight: 300,
+      '@media(max-width: 768px)': {
+        fontSize: '24px',
+        lineHeight: '32px',
+      },
     },
     h3_bold: {
       ...baseStyle,
       fontSize: '32px',
       lineHeight: '40px',
       fontWeight: 700,
+      '@media(max-width: 768px)': {
+        fontSize: '24px',
+        lineHeight: '32px',
+      },
     },
     h4_normal: {
       ...baseStyle,

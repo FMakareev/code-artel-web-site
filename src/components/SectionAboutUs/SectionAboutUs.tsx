@@ -21,6 +21,11 @@ const WrapperStyled = styledComponents(Wrapper)`
     left: 0;
     z-index: -1;
   }
+   @media(max-width: 992px) {
+   &:before {
+    width: 100%;
+    }
+   }
 `;
 
 const stack = [
@@ -79,8 +84,8 @@ const Description = (
 const SectionAboutUs = () => (
   <WrapperStyled id={'about'}>
     <Container>
-      <Flex>
-        <Flex py={12} pr={7} flexDirection={'column'}>
+      <Flex flexWrap={['wrap', 'wrap', 'nowrap']}>
+        <Flex py={12} px={[6, 6, 0]} pr={7} flexDirection={'column'}>
           <Box marginBottom={6}>
             <SectionHeader variant={'variant2'} title={'О НАС'} description={Description} />
           </Box>
@@ -91,7 +96,7 @@ const SectionAboutUs = () => (
             технологии до проектирования и производства радиоэлектроники.
           </Text>
 
-          <Flex flexWrap={'wrap'}>
+          <Flex flexWrap={'wrap'} justifyContent={'space-between'}>
             {sliceArray(stack, 3).map((column: any[], index: number) => {
               return (
                 <Box width={1 / 3} key={`column-${index}`} as={'ul'}>

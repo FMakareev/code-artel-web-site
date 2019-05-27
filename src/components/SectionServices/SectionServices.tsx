@@ -61,7 +61,7 @@ const services = [
 export const SectionServices = () => (
   <Wrapper id={'services'}>
     <Container backgroundColor={'bright_blue'}>
-      <Flex px={13} py={12} flexDirection={'column'}>
+      <Flex px={[6, 13]} py={12} flexDirection={'column'}>
         <Box marginBottom={10}>
           <SectionHeader
             variant={'variant2'}
@@ -73,7 +73,7 @@ export const SectionServices = () => (
 
         <Flex justifyContent={'space-between'} flexWrap={'wrap'} marginBottom={11}>
           {services.map((service, index) => (
-            <Box width={'33,3%'} key={index}>
+            <Box width={['100%', '33,3%']} key={index}>
               <ServiceList icon={service.icon} title={service.title} arr={service.arr} />
             </Box>
           ))}

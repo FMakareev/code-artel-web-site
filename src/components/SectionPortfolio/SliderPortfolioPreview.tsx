@@ -7,20 +7,18 @@ interface Props extends PortfolioWork {
   [prop: string]: any;
 }
 
-export const SliderPortfolioPreview: React.FC<Props> = ({ imagePreview, title }) => (
+const SliderPortfolioPreview = (props: Props) => (
   <Flex
-    width={'560px'}
+    width={['100%', '560px']}
     height={'354px'}
     alignSelf={'center'}
     marginBottom={9}
     backgroundImage={'../../assets/images/placeholder.png'}
-    marginLeft={'-370px'}>
-    <Box maxWidth={'100%'} height={'auto'} as={'img'} src={imagePreview} alt={title} />
+    position={'relative'}>
+    <Box marginLeft={[0, -13]}>
+      <img src={props.work.imagePreview} width={'100%'} height={'100%'} />
+    </Box>
   </Flex>
 );
-
-SliderPortfolioPreview.defaultProps = {
-  imagePreview: '../../assets/images/placeholder.png',
-};
 
 export default SliderPortfolioPreview;

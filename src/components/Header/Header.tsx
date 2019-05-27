@@ -9,6 +9,8 @@ import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorP
 import logo_white from '../icons/logo_white.svg';
 // @ts-ignore
 import logo_gray from '../icons/logo_gray.svg';
+// import BurgerIcon from '../Icons/BurgerIcon';
+// import CloseBurger from '../Icons/CloseBurger';
 
 export const HeaderStyled = styledComponents(Flex)`
   position: fixed;
@@ -27,6 +29,7 @@ export const HeaderStyled = styledComponents(Flex)`
     border-bottom: 1px solid #e0e0e0;
   }
 `;
+
 const text = [
   { name: 'Услуги', href: '#services' },
   { name: 'Портфолио', href: '#portfolio' },

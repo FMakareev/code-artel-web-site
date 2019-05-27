@@ -21,22 +21,27 @@ interface Props {
   work: PortfolioWork;
 }
 
-export const SliderPortfolioInfo: React.FC<Props> = (props: Props) => (
-  <Box width={'280px'}>
-    <Box marginBottom={5}>
-      <SectionHeader
-        variant={'portfolioInfo'}
-        title={props.work.tags}
-        description={props.work.title}>
-        <Text variant={'body1_bold'} color={'black'} margin={'24px 0 0 0'}>
-          {props.work.description}
-        </Text>
-      </SectionHeader>
-    </Box>
-    <Button as={'a'} href={props.work.id} size={'medium'}>
-      Перейти на сайт проекта
-    </Button>
-  </Box>
-);
+export class SliderPortfolioInfo extends React.Component<Props> {
+  render() {
+    return (
+      <Box width={'280px'}>
+        <Box marginBottom={5}>
+          <SectionHeader
+            variant={'portfolioInfo'}
+            title={this.props.work.tags}
+            description={this.props.work.title}>
+            <Text variant={'body1_bold'} color={'black'} margin={'24px 0 0 0'}>
+              {this.props.work.description}
+            </Text>
+          </SectionHeader>
+        </Box>
+
+        <Button size={'medium'} mb={5}>
+          <a href={this.props.work.id}> Перейти на сайт проекта</a>
+        </Button>
+      </Box>
+    );
+  }
+}
 
 export default SliderPortfolioInfo;

@@ -1,24 +1,26 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
-import { Flex } from 'code-artel-ui-lib';
+import { Flex, Box } from 'code-artel-ui-lib';
+import { PortfolioWork } from './SliderPortfolioInfo';
 
-interface Props {
-  work: any;
+interface Props extends PortfolioWork {
+  [prop: string]: any;
 }
 
-export class SliderPortfolioPreview extends Component<Props> {
-  render() {
-    return (
-      <Flex
-        width={'560px'}
-        height={'354px'}
-        backgroundImage={this.props.work.imagePreview}
-        alignSelf={'center'}
-        marginBottom={9}
-        marginLeft={'-370px'}
-      />
-    );
-  }
-}
+export const SliderPortfolioPreview: React.FC<Props> = ({ imagePreview, title }) => (
+  <Flex
+    width={'560px'}
+    height={'354px'}
+    alignSelf={'center'}
+    marginBottom={9}
+    backgroundImage={'../../assets/images/placeholder.png'}
+    marginLeft={'-370px'}>
+    <Box maxWidth={'100%'} height={'auto'} as={'img'} src={imagePreview} alt={title} />
+  </Flex>
+);
+
+SliderPortfolioPreview.defaultProps = {
+  imagePreview: '../../assets/images/placeholder.png',
+};
 
 export default SliderPortfolioPreview;

@@ -4,22 +4,22 @@ import * as React from 'react';
 import { Flex } from 'code-artel-ui-lib';
 import SliderPortfolioPreview from './SliderPortfolioPreview';
 import SliderPortfolioControl from './SliderPortfolioControl';
-import SliderPortfolioInfo from './SliderPortfolioInfo';
+import SliderPortfolioInfo, { PortfolioWork } from './SliderPortfolioInfo';
 
-const portfolioData = [
+const portfolioData: PortfolioWork[] = [
   {
     tags: 'business',
     title: 'Antifake',
     description: 'is a system for supply accounting and tracking lot ',
     id: 'emcdpo.info',
-    imagePreview: 'url(../../assets/images/placeholder.png)',
+    imagePreview: 'https://www.fillmurray.com/640/360',
   },
   {
     tags: 'business',
     title: 'Emernotar',
     description: 'is a service for asset protection using blockhing',
     id: 'emernotar.info',
-    imagePreview: 'url(../../assets/images/placeholder2.png)',
+    imagePreview: '',
   },
   {
     tags: 'business',
@@ -27,26 +27,36 @@ const portfolioData = [
     description:
       "is a service for user's credit history secure uploading and prividing banks with it",
     id: 'finvariant.com',
-    imagePreview: 'url(../../assets/images/placeholder.png)',
+    imagePreview: 'https://www.fillmurray.com/640/360',
   },
   {
     tags: 'business',
     title: '4-ый проект',
     description: 'is a system for supply accounting and tracking lot ',
     id: 'emcdpo.info',
-    imagePreview: 'url(../../assets/images/placeholder2.png)',
+    imagePreview: 'https://www.fillmurray.com/640/450',
   },
   {
     tags: 'business',
     title: '5-ый проект',
     description: 'is a service for asset protection using blockhing',
     id: 'emernotar.info',
-    imagePreview: 'url(../../assets/images/placeholder.png)',
+    imagePreview: 'https://www.fillmurray.com/640/450',
   },
 ];
 
-export class SliderPortfolio extends React.Component<any, any> {
-  static defaultProps: any = {
+interface State {
+  currentPosition: number;
+}
+interface Props {
+  portfolioData: PortfolioWork[];
+}
+interface DefaultProps {
+  portfolioData: PortfolioWork[];
+}
+
+export class SliderPortfolio extends React.Component<Props, State> {
+  static defaultProps: DefaultProps = {
     portfolioData,
   };
 
@@ -64,7 +74,7 @@ export class SliderPortfolio extends React.Component<any, any> {
     }
   };
 
-  nextWork = () => {
+  nextWork = (): void => {
     if (this.state.currentPosition < portfolioData.length - 1) {
       this.setState({ currentPosition: this.state.currentPosition + 1 });
     } else {
@@ -76,14 +86,14 @@ export class SliderPortfolio extends React.Component<any, any> {
     const { portfolioData } = this.props;
     const { currentPosition } = this.state;
 
-    const work = portfolioData[currentPosition];
-
+    const work: PortfolioWork = portfolioData[currentPosition];
+    console.log(work);
     return (
       <Flex justifyContent={'space-between'} alignItems={'center'} flexWrap={'wrap'}>
         <SliderPortfolioInfo work={work} />
 
         <Flex flexDirection={'column'} alignItems={'center'}>
-          <SliderPortfolioPreview work={work} />
+          <SliderPortfolioPreview {...work} />
           <SliderPortfolioControl
             portfolioData={portfolioData}
             currentPosition={currentPosition}

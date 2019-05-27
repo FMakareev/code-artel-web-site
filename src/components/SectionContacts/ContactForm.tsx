@@ -36,13 +36,6 @@ const buttonVariant = ({ invalid, dirty, pristine, submitting }: any) => {
 
 const required = (value: any) => (value ? undefined : 'Обязательно для заполнения');
 
-// const mustBeNumber = (value:number) => (isNaN(value) ? "Номер должен состоять из цифр" : undefined);
-//
-// const mailValidate = (min: any) => (value: any) => value.length >= min ? undefined: "Некорректный адрес эл.почты"
-//
-// const composeValidators = (...validators: any) => (value: any) =>
-//     validators.reduce((error: any, validator: (arg0: any) => void) => error || validator(value), undefined);
-
 class ContactForm extends Component {
   state = {
     message: '',

@@ -8,12 +8,9 @@ import {
   Button,
 } from 'code-artel-ui-lib';
 import SectionHeader from '../SectionHeader/SectionHeader';
+import { PortfolioInfo } from '../../modules/home/Types';
 
-interface Props {
-  work: any;
-}
-
-export class SliderPortfolioInfo extends React.Component<Props> {
+export class SliderPortfolioInfo extends React.Component<PortfolioInfo> {
   render() {
     return (
       <Box width={'280px'}>

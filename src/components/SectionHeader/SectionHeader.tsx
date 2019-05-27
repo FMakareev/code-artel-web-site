@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
+import { HeaderSection } from '../../modules/home/Types/';
 
 const variants: any = {
   main: {
@@ -56,16 +57,9 @@ const variants: any = {
   },
 };
 
-interface Props {
-  variant?: any;
-  title?: string;
-  description?: string;
-  children?: any;
-}
-
-export class SectionHeader extends Component<Props> {
+export class SectionHeader extends Component<HeaderSection> {
   render() {
-    const variantName: string = this.props.variant;
+    const variantName = this.props.variant;
     const variantChosen = variants[variantName];
     return (
       <Flex flexDirection={'column'}>

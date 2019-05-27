@@ -2,22 +2,23 @@ import React from 'react';
 
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
+import { ListServices } from '../../modules/home/Types';
 
-export const ServiceList = ({ icon, title, arr }: any) => (
+export const ServiceList = (props: ListServices) => (
   <Flex
     flexDirection={'column'}
-    width={'294px'}
+    width={'90%'}
     alignItems={'flex-start'}
     justifyContent={'flex-start'}
     marginBottom={7}>
-    <img src={icon} />
+    <img src={props.icon} />
 
     <Text variant={'subtitle2'} color={'white'} py={5}>
-      {title}
+      {props.title}
     </Text>
 
     <ul>
-      {arr.map((item, index) => (
+      {props.arr.map((item, index) => (
         <li key={index}>
           <Text variant={'body1_normal'} color={'white'}>
             + {item}

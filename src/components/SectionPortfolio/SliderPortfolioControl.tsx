@@ -4,6 +4,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import '../../styles/CircularProgressbar.css';
 
 import { Text, Flex, Box } from 'code-artel-ui-lib';
+import { ControlSliderPortfolio, PortfolioData } from '../../modules/home/Types';
 
 export const Dot = styled(Box)`
   height: 8px;
@@ -13,17 +14,8 @@ export const Dot = styled(Box)`
   cursor: pointer;
 `;
 
-interface Props {
-  toggleItem: any;
-  currentPosition: number;
-  startCounter: number;
-  nextWork: () => void;
-
-  [prop: string]: any;
-}
-
-export class SliderPortfolioControl extends Component<Props> {
-  constructor(props) {
+export class SliderPortfolioControl extends Component<ControlSliderPortfolio> {
+  constructor(props: ControlSliderPortfolio) {
     super(props);
     this.state = this.initialState;
   }
@@ -96,7 +88,7 @@ export class SliderPortfolioControl extends Component<Props> {
           justifyContent={'space-between'}
           alignItems={'center'}
           marginRight={7}>
-          {portfolioData.map((item: any, index: number) => {
+          {portfolioData.map((item: PortfolioData, index: number) => {
             if (currentPosition === index) {
               return (
                 <CircularProgressbar key={index} value={percentage / counter} text={counter} />

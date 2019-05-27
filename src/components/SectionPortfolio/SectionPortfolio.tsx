@@ -8,10 +8,12 @@ import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import SliderPortfolio from './SliderPortfolio';
 import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
+import { PortfolioSection } from '../../modules/home/Types';
+
+// @ts-ignore
 
 const WrapperStyled = styledComponents(Wrapper)`
   position: relative;
-
   &:after{
     content: '';
     position: absolute;
@@ -23,7 +25,6 @@ const WrapperStyled = styledComponents(Wrapper)`
     width: 50%;
     ${props => BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' })} 
   }
-  
   @media(max-width: 992px) {
    &:after {
     width: 100%;
@@ -31,22 +32,19 @@ const WrapperStyled = styledComponents(Wrapper)`
    }
 `;
 
-const SectionPortfolio = () => (
+const SectionPortfolio = (props: PortfolioSection) => (
   <WrapperStyled id={'portfolio'}>
     <Container>
-      <Flex flexDirection={'column'} width={'100%'} py={12} px={[6, 0]}>
+      <Flex flexDirection={'column'} width={'100%'} py={12} px={6}>
         <Box marginBottom={4}>
-          <SectionHeader
-            variant={'variant3'}
-            title={'НАШИ РАБОТЫ'}
-            description={'Мы помогаем нашим клиентам'}>
+          <SectionHeader variant={'variant3'} title={props.title} description={props.description}>
             <Text variant={'h3_bold'} color={'black'}>
-              выиграть
+              {props.styledWord}
             </Text>
           </SectionHeader>
         </Box>
 
-        <SliderPortfolio />
+        <SliderPortfolio portfolioData={props.portfolioData} />
       </Flex>
     </Container>
   </WrapperStyled>

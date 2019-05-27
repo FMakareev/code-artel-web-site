@@ -1,6 +1,7 @@
 import * as React from 'react';
 
 /** Components */
+// @ts-ignore
 import { Box, Button, Text } from 'code-artel-ui-lib';
 import { Form, Field } from 'react-final-form';
 import Input from '../Input/Input';
@@ -21,13 +22,11 @@ const buttonVariant = ({ invalid, dirty, pristine, submitting }: any) => {
 
 const required = (value: any) => (value ? undefined : 'Обязательно для заполнения');
 
-// const setMutator = ([name], state, {changeValue}) => {
-//   changeValue(state, name, value => {
-//     value && value.toString()}
-//     )
-// };
+interface SectionContactState {
+  message: string;
+}
 
-class ContactForm extends React.Component {
+class ContactForm extends React.Component<any, SectionContactState> {
   state = {
     message: '',
   };
@@ -94,7 +93,6 @@ class ContactForm extends React.Component {
                 <Field
                   name="phone"
                   type="tel"
-                  validate={required}
                   placeholder="+7 900 000 00 00"
                   label="Телефон"
                   component={Input}

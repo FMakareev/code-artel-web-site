@@ -104,7 +104,7 @@ class NavList extends React.Component<NavListProps> {
         justifyContent={'space-around'}
         textAlign={['center', 'center', '']}
         alignItems={'center'}>
-        {menuListItem.map((item: string, index: number) => {
+        {menuListItem.map((item: any, index: number) => {
           return (
             <Text
               onClick={onClick}
@@ -172,12 +172,14 @@ export class Header extends React.Component {
     return (
       <HeaderWrapper>
         <HeaderStyled as={'header'} className={this.state.isScrolled ? 'active' : ''}>
-          <Flex alignItems={'center'}>
-            <img src={this.state.isScrolled ? logo_gray : logo_white} alt={'logo'} />
-            <Text variant={'body1_normal'} mx={5} color={'inherit'}>
-              <a href={'#main'}>CODE ARTEL</a>
-            </Text>
-          </Flex>
+          <Scrollchor to={'main'}>
+            <Flex alignItems={'center'}>
+              <img src={this.state.isScrolled ? logo_gray : logo_white} alt={'logo'} />
+              <Text variant={'body1_normal'} mx={5} color={'inherit'}>
+                CODE ARTEL
+              </Text>
+            </Flex>
+          </Scrollchor>
 
           <NavListWrapper
             className={`${this.state.isOpen ? 'open' : ''} NavListWrapper`}

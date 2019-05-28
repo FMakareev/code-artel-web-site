@@ -1,10 +1,9 @@
 export interface Section {
   title: string;
-  variant?: string;
+  description?: string;
 }
 
 export interface HeaderSection extends Section {
-  description: string;
   children?: any;
   width?: string;
 }
@@ -15,7 +14,6 @@ export interface TextAnimated {
 }
 
 export interface MainSection extends Section {
-  description: string;
   messages: string[];
   image: string;
   buttonText: string;
@@ -28,14 +26,12 @@ export interface ListServices {
 }
 
 export interface ServiceSection extends Section {
-  description: string;
   serviceList: ListServices[];
   callToActionText: string;
   buttonText: string;
 }
 /** PORTFOLIO */
 export interface PortfolioSection extends Section {
-  description: string;
   styledWord: string;
   portfolioData: PortfolioData[];
 }
@@ -43,7 +39,6 @@ export interface PortfolioSection extends Section {
 export interface PortfolioData {
   tags: string;
   title: string;
-  description: string;
   id: string;
   imagePreview: string;
   alt: string;
@@ -63,7 +58,6 @@ export interface ControlSliderPortfolio {
 }
 
 export interface AboutUsSection extends Section {
-  description: string[];
   styledWord: string;
   sectionText: string;
   stack: string[];
@@ -77,7 +71,6 @@ export interface InfoContact {
 }
 
 export interface ContactsSection extends Section {
-  description: string;
   sectionText: string;
   contactInfo: InfoContact[];
   agreement: string;

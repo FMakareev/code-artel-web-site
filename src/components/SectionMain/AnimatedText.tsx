@@ -18,11 +18,12 @@ const AnimatedText = (props: TextAnimated) => {
   const variantChosen = variants[variantName];
   return (
     <TextLoop>
-      {props.messages.map((item: string, index: number) => (
-        <Text key={index} variant={variantChosen.variant} color={variantChosen.color}>
-          {item}
-        </Text>
-      ))}
+      {props.messages &&
+        props.messages.map((item: string, index: number) => (
+          <Text key={index} variant={variantChosen.variant} color={variantChosen.color}>
+            {item}
+          </Text>
+        ))}
     </TextLoop>
   );
 };

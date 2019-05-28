@@ -1,0 +1,13 @@
+# Write your query or mutation here
+query{
+  sections{
+    id
+    title
+    description
+  }
+  services{
+    title
+    description
+  }
+
+}

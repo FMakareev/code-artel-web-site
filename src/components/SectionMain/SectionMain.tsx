@@ -7,9 +7,10 @@ import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import AnimatedText from './AnimatedText';
+import { MainSection } from '../../modules/home/Types/index';
 
-const SectionMain = () => (
-  <Wrapper py={'228px'} id={'main'} backgroundImage={'url(../../assets/images/bg.png)'}>
+const SectionMain = (props: MainSection) => (
+  <Wrapper py={'228px'} id={'main'} backgroundImage={props.image}>
     <Container>
       <Flex
         height={'100%'}
@@ -17,8 +18,8 @@ const SectionMain = () => (
         justifyContent={'center'}
         paddingLeft={[6, 13]}>
         <Box marginBottom={10}>
-          <SectionHeader variant={'main'} title={'CODEARTEL'} description={'Мы разрабатываем'}>
-            <AnimatedText variant={'yellow'} messages={['сервисы', 'приложения']} />
+          <SectionHeader variant={'main'} title={props.title} description={props.description}>
+            <AnimatedText variant={'yellow'} messages={props.messages} />
           </SectionHeader>
         </Box>
 
@@ -29,7 +30,7 @@ const SectionMain = () => (
           display={'inline-block'}
           maxWidth={['280px', '380px']}
           textAlign={'center'}>
-          Получить бесплатную консультацию
+          {props.buttonText}
         </Button>
       </Flex>
     </Container>

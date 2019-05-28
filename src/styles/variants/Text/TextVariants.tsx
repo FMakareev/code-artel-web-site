@@ -27,7 +27,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '64px',
       lineHeight: '72px',
-      fontWeight: 700,
+      fontWeight: 500,
       '@media(max-width: 768px)': {
         fontSize: '48px',
         lineHeight: '56px',
@@ -55,7 +55,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '40px',
       lineHeight: '48px',
-      fontWeight: 700,
+      fontWeight: 500,
       '@media(max-width: 768px)': {
         fontSize: '32px',
         lineHeight: '40px',
@@ -79,7 +79,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '32px',
       lineHeight: '40px',
-      fontWeight: 700,
+      fontWeight: 500,
       '@media(max-width: 768px)': {
         fontSize: '24px',
         lineHeight: '32px',
@@ -95,7 +95,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '24px',
       lineHeight: '32px',
-      fontWeight: 700,
+      fontWeight: 500,
     },
     subtitle1: {
       ...baseStyle,
@@ -107,7 +107,7 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '24px',
       lineHeight: '32px',
-      fontWeight: 700,
+      fontWeight: 500,
     },
     body1_normal: {
       ...baseStyle,
@@ -119,13 +119,13 @@ export const TextVariants = (theme: ITheme): any => {
       ...baseStyle,
       fontSize: '16px',
       lineHeight: '24px',
-      fontWeight: 700,
+      fontWeight: 300,
     },
     link: {
       ...baseStyle,
       fontSize: '16px',
       lineHeight: '24px',
-      fontWeight: 700,
+      fontWeight: 500,
     },
     caption: {
       ...baseStyle,

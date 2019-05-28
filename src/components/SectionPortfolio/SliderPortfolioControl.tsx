@@ -4,7 +4,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import '../../styles/CircularProgressbar.css';
 
 import { Text, Flex, Box } from 'code-artel-ui-lib';
-import { PortfolioWork } from './SliderPortfolioInfo';
+import { ControlSliderPortfolio, PortfolioData } from '../../modules/home/Types';
 
 export const Dot = styled(Box)`
   height: 8px;
@@ -14,26 +14,8 @@ export const Dot = styled(Box)`
   cursor: pointer;
 `;
 
-interface Props {
-  toggleItem: any;
-  currentPosition: number;
-  startCounter: number;
-  nextWork: () => void;
-  portfolioData: PortfolioWork[];
-  [prop: string]: any;
-}
-
-interface State {
-  counter: number;
-  setInterval: any;
-
-  [prop: string]: any;
-}
-
-export class SliderPortfolioControl extends Component<Props, State> {
-  state: State;
-
-  constructor(props: Props) {
+export class SliderPortfolioControl extends Component<ControlSliderPortfolio> {
+  constructor(props: ControlSliderPortfolio) {
     super(props);
     this.state = this.initialState;
   }
@@ -106,14 +88,10 @@ export class SliderPortfolioControl extends Component<Props, State> {
           justifyContent={'space-between'}
           alignItems={'center'}
           marginRight={7}>
-          {portfolioData.map((item: PortfolioWork, index: number) => {
+          {portfolioData.map((item: PortfolioData, index: number) => {
             if (currentPosition === index) {
               return (
-                <CircularProgressbar
-                  key={`${item.title}-${index}`}
-                  value={percentage / counter}
-                  text={`${counter}`}
-                />
+                <CircularProgressbar key={index} value={percentage / counter} text={counter} />
               );
             }
             return <Dot key={index} onClick={() => this.toggleItem(index)} />;

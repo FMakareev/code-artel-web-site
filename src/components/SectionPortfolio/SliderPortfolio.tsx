@@ -4,62 +4,14 @@ import * as React from 'react';
 import { Flex } from 'code-artel-ui-lib';
 import SliderPortfolioPreview from './SliderPortfolioPreview';
 import SliderPortfolioControl from './SliderPortfolioControl';
-import SliderPortfolioInfo, { PortfolioWork } from './SliderPortfolioInfo';
+import SliderPortfolioInfo from './SliderPortfolioInfo';
+import { PortfolioSlider, PortfolioData } from '../../modules/home/Types';
 
-const portfolioData: PortfolioWork[] = [
-  {
-    tags: 'business',
-    title: 'Antifake',
-    description: 'is a system for supply accounting and tracking lot ',
-    id: 'emcdpo.info',
-    imagePreview: 'https://www.fillmurray.com/640/360',
-  },
-  {
-    tags: 'business',
-    title: 'Emernotar',
-    description: 'is a service for asset protection using blockhing',
-    id: 'emernotar.info',
-    imagePreview: '',
-  },
-  {
-    tags: 'business',
-    title: 'The Bureau',
-    description:
-      "is a service for user's credit history secure uploading and prividing banks with it",
-    id: 'finvariant.com',
-    imagePreview: 'https://www.fillmurray.com/640/360',
-  },
-  {
-    tags: 'business',
-    title: '4-ый проект',
-    description: 'is a system for supply accounting and tracking lot ',
-    id: 'emcdpo.info',
-    imagePreview: 'https://www.fillmurray.com/640/450',
-  },
-  {
-    tags: 'business',
-    title: '5-ый проект',
-    description: 'is a service for asset protection using blockhing',
-    id: 'emernotar.info',
-    imagePreview: 'https://www.fillmurray.com/640/450',
-  },
-];
-
-interface State {
+interface StateSliderPortfolioState {
   currentPosition: number;
 }
-interface Props {
-  portfolioData: PortfolioWork[];
-}
-interface DefaultProps {
-  portfolioData: PortfolioWork[];
-}
 
-export class SliderPortfolio extends React.Component<Props, State> {
-  static defaultProps: DefaultProps = {
-    portfolioData,
-  };
-
+export class SliderPortfolio extends React.Component<PortfolioSlider, StateSliderPortfolioState> {
   state = {
     currentPosition: 0,
   };
@@ -74,8 +26,8 @@ export class SliderPortfolio extends React.Component<Props, State> {
     }
   };
 
-  nextWork = (): void => {
-    if (this.state.currentPosition < portfolioData.length - 1) {
+  nextWork = () => {
+    if (this.state.currentPosition < this.props.portfolioData.length - 1) {
       this.setState({ currentPosition: this.state.currentPosition + 1 });
     } else {
       this.setState({ currentPosition: 0 });
@@ -86,11 +38,11 @@ export class SliderPortfolio extends React.Component<Props, State> {
     const { portfolioData } = this.props;
     const { currentPosition } = this.state;
 
-    const work: PortfolioWork = portfolioData[currentPosition];
+    const work: PortfolioData = portfolioData[currentPosition];
 
     return (
       <Flex justifyContent={'space-between'} alignItems={'center'} flexWrap={'wrap'}>
-        <SliderPortfolioInfo work={work} />
+        <SliderPortfolioInfo {...work} />
 
         <Flex flexDirection={'column'} alignItems={'center'}>
           <SliderPortfolioPreview {...work} />

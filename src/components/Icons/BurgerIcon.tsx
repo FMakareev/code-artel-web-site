@@ -2,10 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HoverIcons = styled.div`
-    fill: #201B21;
-    cursor: pointer;
-    
-    }
+  fill: inherit;
+  cursor: pointer;
 `;
 
 export const BurgerIcon = () => {

@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HoverIcons = styled.div`
-    fill: #201B21;
-    cursor: pointer;
-    }
+  fill: #201b21;
+  cursor: pointer;
 `;
 
 export const CloseBurger = () => {

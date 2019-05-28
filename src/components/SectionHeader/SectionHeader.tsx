@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
-
 const variants: any = {
   main: {
     title: {

@@ -8,11 +8,10 @@ import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
-import email from '../Icons/EmailIcon.svg';
-import phone from '../Icons/PhoneIcon.svg';
-import address from '../Icons/AddressIcon.svg';
 import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
+import { ContactsSection, InfoContact } from '../../modules/home/Types/';
 
+// @ts-ignore
 const WrapperWtyled = styledComponents(Wrapper)`
   position: relative;
 
@@ -34,32 +33,26 @@ const WrapperWtyled = styledComponents(Wrapper)`
    }
 `;
 
-const SectionContacts = () => (
+const SectionContacts = (props: ContactsSection) => (
   <WrapperWtyled id={'contacts'}>
     <Container>
       <Flex flexWrap={'wrap'}>
-        <Flex flexDirection={'column'} py={7} px={[6, 6, 0]} pr={7} width={['100%', '60%', '50%']}>
+        <Flex flexDirection={'column'} py={7} px={6} pr={7} width={['100%', '60%', '50%']}>
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant3'}
-              title={'КОНТАКТЫ'}
-              description={'Мы ищем партнеров, а не клиентов'}
+              title={props.title}
+              description={props.description}
             />
           </Box>
 
           <Text variant={'body1_normal'} color={'black'} marginBottom={11}>
-            Мы всегда находимся в поиске ориентированных на ценность компаний и людей, которые хотят
-            оказать большое влияние. Напишите нам, мы хотели бы услышать о вашей компании и как мы
-            можем поддержать ваш следующий шаг.
+            {props.sectionText}
           </Text>
 
-          <ContactInfo
-            icon={email}
-            href={'mailto:peter.uspenskii@code-artel.ru'}
-            text={'peter.uspenskii@code-artel.ru'}
-          />
-          <ContactInfo icon={phone} href={'tel:+ 79818544645'} text={'+ 7 981 854 46 45'} />
-          <ContactInfo icon={address} href={''} text={'Санкт-Петербург'} />
+          {props.contactInfo.map((contact: InfoContact, index: number) => (
+            <ContactInfo key={index} icon={contact.icon} href={contact.href} text={contact.text} />
+          ))}
         </Flex>
 
         <Flex width={['100%', '100%', '50%']} py={12} px={13}>

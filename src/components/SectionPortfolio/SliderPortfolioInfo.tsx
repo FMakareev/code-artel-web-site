@@ -8,36 +8,25 @@ import {
   Button,
 } from 'code-artel-ui-lib';
 import SectionHeader from '../SectionHeader/SectionHeader';
+import { PortfolioData } from '../../modules/home/Types';
 
-export interface PortfolioWork {
-  tags?: string;
-  title?: string;
-  description?: string;
-  imagePreview?: string;
-  id: string;
-}
-
-interface Props {
-  work: PortfolioWork;
-}
-
-export class SliderPortfolioInfo extends React.Component<Props> {
+export class SliderPortfolioInfo extends React.Component<PortfolioData> {
   render() {
     return (
       <Box width={'280px'}>
         <Box marginBottom={5}>
           <SectionHeader
             variant={'portfolioInfo'}
-            title={this.props.work.tags}
-            description={this.props.work.title}>
+            title={this.props.tags}
+            description={this.props.title}>
             <Text variant={'body1_bold'} color={'black'} margin={'24px 0 0 0'}>
-              {this.props.work.description}
+              {this.props.description}
             </Text>
           </SectionHeader>
         </Box>
 
         <Button size={'medium'} mb={5}>
-          <a href={this.props.work.id}> Перейти на сайт проекта</a>
+          <a href={this.props.id}> Перейти на сайт проекта</a>
         </Button>
       </Box>
     );

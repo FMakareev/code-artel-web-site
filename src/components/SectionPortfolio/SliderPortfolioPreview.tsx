@@ -16,7 +16,11 @@ const SliderPortfolioPreview = (props: Props) => (
     backgroundImage={'../../assets/images/placeholder.png'}
     position={'relative'}>
     <Box marginLeft={[0, -13]}>
-      <img src={props.work.imagePreview} width={'100%'} height={'100%'} />
+      <img
+        src={props.imagePreview || '../../assets/images/placeholder.png'}
+        width={'100%'}
+        height={'100%'}
+      />
     </Box>
   </Flex>
 );

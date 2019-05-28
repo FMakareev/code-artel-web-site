@@ -87,7 +87,7 @@ export class SliderPortfolio extends React.Component<Props, State> {
     const { currentPosition } = this.state;
 
     const work: PortfolioWork = portfolioData[currentPosition];
-    console.log(work);
+
     return (
       <Flex justifyContent={'space-between'} alignItems={'center'} flexWrap={'wrap'}>
         <SliderPortfolioInfo work={work} />

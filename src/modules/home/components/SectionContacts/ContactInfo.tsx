@@ -2,7 +2,7 @@ import * as React from 'react';
 
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
-import { InfoContact } from '../../modules/home/Types';
+import { InfoContact } from '../../Types';
 
 const ContactInfo = (props: InfoContact) => (
   <Flex marginBottom={5}>

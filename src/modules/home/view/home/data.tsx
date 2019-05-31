@@ -1,35 +1,33 @@
 // @ts-ignore
-import icon_webdevSvg from '../../../../components/Icons/icon_webdev.svg';
+import icon_webdevSvg from '../../components/Icons/icon_webdev.svg';
 // @ts-ignore
-import icon_blockchainSvg from '../../../../components/Icons/icon_blockchain.svg';
+import icon_blockchainSvg from '../../components/Icons/icon_blockchain.svg';
 // @ts-ignore
-import icon_applicationSvg from '../../../../components/Icons/icon_application.svg';
+import icon_applicationSvg from '../../components/Icons/icon_application.svg';
 // @ts-ignore
-import icon_tech_supSvg from '../../../../components/Icons/icon_tech_sup.svg';
+import icon_tech_supSvg from '../../components/Icons/icon_tech_sup.svg';
 // @ts-ignore
-import icon_escortSvg from '../../../../components/Icons/icon_escort.svg';
+import icon_escortSvg from '../../components/Icons/icon_escort.svg';
 // @ts-ignore
-import hardwareSvg from '../../../../components/Icons/icon_hardware.svg';
+import hardwareSvg from '../../components/Icons/icon_hardware.svg';
 // @ts-ignore
-import EmailIconSvg from '../../../../components/Icons/EmailIcon.svg';
+import EmailIconSvg from '../../components/Icons/EmailIcon.svg';
 // @ts-ignore
-import PhoneIconSvg from '../../../../components/Icons/PhoneIcon.svg';
+import PhoneIconSvg from '../../components/Icons/PhoneIcon.svg';
 // @ts-ignore
-import AddressIconSvg from '../../../../components/Icons/AddressIcon.svg';
+import AddressIconSvg from '../../components/Icons/AddressIcon.svg';
 
 import { LandingData } from '../../Types';
 
 export const data: LandingData = {
   main: {
-    title: 'CODEARTEL',
+    title: 'CODE ARTEL',
     description: 'Мы разрабатываем',
-    messages: ['сервисы', 'приложения'],
-    image: 'url(../../assets/images/bg.png)',
-    buttonText: 'Получить бесплатную консультацию',
+    serviceList: ['сервисы', 'приложения'],
   },
   services: {
     title: 'УСЛУГИ',
-    description: 'Комплексные услуги, которые флормируют цифровое преобразование',
+    description: 'Комплексные услуги, которые формируют цифровое преобразование',
     serviceList: [
       {
         icon: icon_webdevSvg,
@@ -73,27 +71,26 @@ export const data: LandingData = {
         arr: ['Интернет вещей'],
       },
     ],
-    callToActionText: 'Хотите работать с нами над вашим продуктом?',
-    buttonText: 'Связаться',
   },
   portfolio: {
     title: 'НАШИ РАБОТЫ',
-    description: 'Мы помогаем нашим клиентам',
-    styledWord: 'выиграть',
+    description: 'Мы помогаем нашим клиентам выиграть',
     portfolioData: [
       {
         tags: 'business',
         title: 'Antifake',
         description: 'is a system for supply accounting and tracking lot',
-        id: 'emcdpo.info',
+        href: 'emcdpo.info',
+        id: 1,
         imagePreview: '../../assets/images/antifake.png',
         alt: 'is a system for supply accounting and tracking lot',
       },
       {
         tags: 'business',
         title: 'Emernotar',
-        description: 'is a service for asset protection using blockhing',
-        id: 'emernotar.io',
+        description: 'is a service for asset protection using blockchain',
+        href: 'emernotar.io',
+        id: 2,
         imagePreview: '../../assets/images/emernotar.png',
         alt: 'is a service for asset protection using blockhing',
       },
@@ -102,7 +99,8 @@ export const data: LandingData = {
         title: 'The Bureau',
         description:
           "is a service for user's credit history secure uploading and prividing banks with it",
-        id: 'finvariant.com',
+        href: 'finvariant.com',
+        id: 3,
         imagePreview: '../../assets/images/bureau.png',
         alt: "is a service for user's credit history secure uploading and prividing banks with it",
       },
@@ -110,7 +108,8 @@ export const data: LandingData = {
         tags: 'business',
         title: '4-ый проект',
         description: 'is a system for supply accounting and tracking lot ',
-        id: 'emcdpo.info',
+        href: 'emcdpo.info',
+        id: 4,
         imagePreview: '../../assets/images/placeholder.png',
         alt: '',
       },
@@ -118,7 +117,8 @@ export const data: LandingData = {
         tags: 'business',
         title: '5-ый проект',
         description: 'is a service for asset protection using blockhing',
-        id: 'emernotar.info',
+        href: 'emernotar.info',
+        id: 5,
         imagePreview: '../../assets/images/placeholder.png',
         alt: '',
       },
@@ -128,7 +128,7 @@ export const data: LandingData = {
     title: 'О НАС',
     description: ['Преобразуем великолепные', 'идеи в великолепный'],
     styledWord: 'софт',
-    sectionText:
+    content:
       'Члены нашей команды обладают разнообразными компетенциями и навыками, ' +
       'что позволяет нам выполнять широкий спектр услуг: от сложных web-сервисов, ' +
       'с применением блокчейн технологии до проектирования и производства радиоэлектроники.',
@@ -152,12 +152,11 @@ export const data: LandingData = {
       'java',
       'custom solution',
     ],
-    img: '../../assets/images/aboutUs.png',
   },
   contacts: {
     title: 'КОНТАКТЫ',
     description: 'Мы ищем партнеров, а не клиентов',
-    sectionText:
+    content:
       'Мы всегда находимся в поиске ориентированных на ценность компаний и людей, ' +
       'которые хотят оказать большое влияние. Напишите нам, мы хотели бы услышать о вашей ' +
       'компании и как мы можем поддержать ваш следующий шаг.',
@@ -178,8 +177,5 @@ export const data: LandingData = {
         text: 'Санкт-Петербург',
       },
     ],
-    agreement:
-      'Нажимая на кнопку «Отправить заявку», ' +
-      'вы соглашаетесь на обработку персональных данных в соответствии с политикой конфиденциальности.',
   },
 };

@@ -8,8 +8,8 @@ import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
-import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
-import { ContactsSection, InfoContact } from '../../modules/home/Types/';
+import BackgroundColorProperty from '../../../../styles/styleProperty/BackgroundColorProperty';
+import { ContactsSection, InfoContact } from '../../Types';
 
 // @ts-ignore
 const WrapperWtyled = styledComponents(Wrapper)`
@@ -33,7 +33,7 @@ const WrapperWtyled = styledComponents(Wrapper)`
    }
 `;
 
-const SectionContacts = (props: ContactsSection) => (
+const SectionContacts = ({ sections, contacts }: ContactsSection) => (
   <WrapperWtyled id={'contacts'}>
     <Container>
       <Flex flexWrap={'wrap'}>
@@ -41,21 +41,26 @@ const SectionContacts = (props: ContactsSection) => (
           <Box marginBottom={6}>
             <SectionHeader
               variant={'variant3'}
-              title={props.title}
-              description={props.description}
+              title={sections[4].title}
+              description={sections[4].description}
             />
           </Box>
 
           <Text variant={'body1_normal'} color={'black'} marginBottom={11}>
-            {props.sectionText}
+            {sections[4].content}
           </Text>
 
-          {props.contactInfo.map((contact: InfoContact, index: number) => (
-            <ContactInfo key={index} icon={contact.icon} href={contact.href} text={contact.text} />
+          {contacts.map((contact: InfoContact, index: number) => (
+            <ContactInfo
+              key={index}
+              icon={contact.icon.image.name}
+              href={contact.href}
+              text={contact.contact}
+            />
           ))}
         </Flex>
 
-        <Flex width={['100%', '100%', '50%']} py={12} px={13}>
+        <Flex width={['100%', '100%', '50%']} py={12} px={[6, 13, 13]}>
           <ContactForm />
         </Flex>
       </Flex>

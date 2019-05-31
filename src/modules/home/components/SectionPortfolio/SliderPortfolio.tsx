@@ -5,7 +5,7 @@ import { Flex } from 'code-artel-ui-lib';
 import SliderPortfolioPreview from './SliderPortfolioPreview';
 import SliderPortfolioControl from './SliderPortfolioControl';
 import SliderPortfolioInfo from './SliderPortfolioInfo';
-import { PortfolioSlider, PortfolioData } from '../../modules/home/Types';
+import { PortfolioSlider, PortfolioData } from '../../Types';
 
 interface StateSliderPortfolioState {
   currentPosition: number;

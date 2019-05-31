@@ -4,10 +4,30 @@ query{
     id
     title
     description
+    content
   }
   services{
+    icons {
+      image {name}
+    }
     title
     description
   }
-
+  portfolioworks {
+    tags {
+      name
+    }
+    title
+    description
+    link
+    images { alt image {name}}
+  }
+  stacks{
+    stack
+  }
+  contacts {
+    contact
+    href
+    icon {image {name} }
+  }
 }

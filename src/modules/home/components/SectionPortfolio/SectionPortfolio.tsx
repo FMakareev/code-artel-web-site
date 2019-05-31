@@ -8,8 +8,8 @@ import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 
 import SliderPortfolio from './SliderPortfolio';
-import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
-import { PortfolioSection } from '../../modules/home/Types';
+import BackgroundColorProperty from '../../../../styles/styleProperty/BackgroundColorProperty';
+import { PortfolioSection } from '../../Types';
 
 // @ts-ignore
 
@@ -32,20 +32,20 @@ const WrapperStyled = styledComponents(Wrapper)`
     }
    }
 `;
-
-const SectionPortfolio = (props: PortfolioSection) => (
+// { title, description, portfolioData }
+const SectionPortfolio = ({ sections, portfolioworks }: PortfolioSection) => (
   <WrapperStyled id={'portfolio'}>
     <Container>
       <Flex flexDirection={'column'} width={'100%'} py={12} px={6}>
-        <Box marginBottom={4}>
-          <SectionHeader variant={'variant3'} title={props.title} description={props.description}>
-            <Text variant={'h3_bold'} color={'black'}>
-              {props.styledWord}
-            </Text>
-          </SectionHeader>
+        <Box marginBottom={4} width={['100%', '100%', '50%']}>
+          <SectionHeader
+            variant={'variant3'}
+            title={sections[2].title}
+            description={sections[2].description}
+          />
         </Box>
 
-        <SliderPortfolio portfolioData={props.portfolioData} />
+        <SliderPortfolio portfolioData={portfolioworks} />
       </Flex>
     </Container>
   </WrapperStyled>

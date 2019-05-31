@@ -7,23 +7,23 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import ServiceList from './ServiceList';
 // @ts-ignore
 import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
-import { ServiceSection, ListServices } from '../../modules/home/Types';
+import { ServiceSection, ListServices } from '../../Types';
 
-export const SectionServices = (props: ServiceSection) => (
+export const SectionServices = ({ title, description, serviceList }: ServiceSection) => (
   <Wrapper id={'services'}>
     <Container backgroundColor={'bright_blue'}>
       <Flex px={[6, 13]} py={12} flexDirection={'column'}>
         <Box marginBottom={10}>
           <SectionHeader
             variant={'variant2'}
-            title={props.title}
-            description={props.description}
+            title={title}
+            description={description}
             width={'70%'}
           />
         </Box>
 
         <Flex justifyContent={'space-between'} flexWrap={['wrap']} marginBottom={11}>
-          {props.serviceList.map((service: ListServices, index: number) => (
+          {serviceList.map((service: ListServices, index: number) => (
             <Box width={['100%', '50%', '33.333%']} key={index}>
               <ServiceList icon={service.icon} title={service.title} arr={service.arr} />
             </Box>
@@ -31,7 +31,7 @@ export const SectionServices = (props: ServiceSection) => (
         </Flex>
 
         <Text variant={'subtitle1'} color={'white'} marginBottom={5}>
-          {props.callToActionText}
+          Хотите работать с нами над вашим продуктом?
         </Text>
 
         <Button
@@ -40,7 +40,7 @@ export const SectionServices = (props: ServiceSection) => (
           display={'inline-block'}
           maxWidth={'152px'}
           textAlign={'center'}>
-          {props.buttonText}
+          Связаться
         </Button>
       </Flex>
     </Container>

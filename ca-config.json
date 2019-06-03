@@ -10,7 +10,7 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:5001'",
       "endpoint_client": "'http://localhost:5001'",
-      "port": 3000
+      "port": 1338
     },
     "start:ssr:dev":  {
       "NODE_ENV": "development",
@@ -22,7 +22,7 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:5001'",
       "endpoint_client": "'http://localhost:5001'",
-      "port": 3001
+      "port": 1339
     },
     "build:ssr:prod": {
       "NODE_ENV": "production",
@@ -34,7 +34,7 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:5001'",
       "endpoint_client": "'http://localhost:5001'",
-      "port": 3000
+      "port": 1338
     },
     "build:ssr:dev": {
       "NODE_ENV": "development",
@@ -46,10 +46,10 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:5001'",
       "endpoint_client": "'http://localhost:5001'",
-      "port": 3000
+      "port": 1338
     },
     "start:ssr:server": {
-      "port": 3000,
+      "port": 1338,
       "public": "dist"
     }
   },
@@ -59,14 +59,14 @@
       "hmr": true,
       "watch": true,
       "client_entry": "./src/client/index.tsx",
-      "port": 3000
+      "port": 1338
     },
     "start:csr:dev":{
       "NODE_ENV": "development",
       "hmr": true,
       "watch": true,
       "client_entry": "./src/client/index.tsx",
-      "port": 3000
+      "port": 1338
     },
     "build:csr:prod":{
       "NODE_ENV": "production",
@@ -74,7 +74,7 @@
       "hmr": false,
       "client_entry": "./src/client/index.tsx",
       "output": "dist",
-      "port": 3000
+      "port": 1338
     },
     "build:csr:dev":{
       "NODE_ENV": "development",
@@ -82,10 +82,10 @@
       "hmr": false,
       "client_entry": "./src/client/index.tsx",
       "output": "dist",
-      "port": 3000
+      "port": 1338
     },
     "start:csr:server": {
-      "port": 3005,
+      "port": 1340,
       "public": "dist"
     }
   }

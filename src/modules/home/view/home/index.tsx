@@ -10,7 +10,11 @@ import SectionContacts from '../../components/SectionContacts/SectionContacts';
 import { Box } from 'code-artel-ui-lib';
 // @ts-ignore
 import SectionListGraphql from '../../graphqls/SectionList.graphql';
-import { data as DATA } from './data';
+
+const searchSection = (sections: [], template) => {
+  const section = sections.filter(section => section.template === template);
+  return section;
+};
 
 const request = ({ data, loading, error }: any) => {
   if (loading) {
@@ -22,10 +26,13 @@ const request = ({ data, loading, error }: any) => {
   }
 
   console.log(data);
+  // console.log(...searchSection(data.sections, 'main'));
+  // console.log(...data.services);
+
   return (
     <Box>
-      <SectionMain {...data} />
-      <SectionServices {...DATA.services} />
+      <SectionMain {...searchSection(data.sections, 'main')} {...data} />
+      <SectionServices {...data} />
       <SectionPortfolio {...data} />
       <SectionAboutUs {...data} />
       <SectionContacts {...data} />

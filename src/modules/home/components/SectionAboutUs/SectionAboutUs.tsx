@@ -63,31 +63,8 @@ const Description = (
   </React.Fragment>
 );
 
-const stack = [
-  'html',
-  'css',
-  'react.js',
-  'typescript',
-  'apollo',
-  'node.js',
-  'python',
-  'asyncio',
-  'mongodb',
-  'postgresql',
-  'elasticsearch',
-  'graphene',
-  'redis',
-  'go',
-  'docker',
-  'react native',
-  'java',
-  'custom solution',
-];
-
 const SectionAboutUs = ({ sections, stacks }: AboutUsSection) => {
-  // const stackParser = parse(stacks[0].stack);
-  // console.log(stackParser);
-  console.log(stacks[0].stack);
+  const stackParser = parse(stacks[0].stack);
   return (
     <WrapperStyled id={'about'}>
       <Container>
@@ -106,14 +83,12 @@ const SectionAboutUs = ({ sections, stacks }: AboutUsSection) => {
             </Text>
 
             <Flex flexWrap={'wrap'} justifyContent={'space-between'}>
-              {sliceArray(stack, 3).map((column: string[], index: number) => {
+              {sliceArray(stackParser, 3).map((column: string[], index: number) => {
                 return (
                   <Box width={['50%', 1 / 3, 1 / 3]} key={`column-${index}`} as={'ul'}>
-                    {/*{parse('<li> fdgf</li>')}*/}
-
                     {column.map((item: string, index: number) => (
-                      <Text as={'li'} variant={'body1_normal'} color={'white'} key={`${index}`}>
-                        + {item}
+                      <Text variant={'body1_normal'} color={'white'} key={`${index}`}>
+                        {item}
                       </Text>
                     ))}
                   </Box>

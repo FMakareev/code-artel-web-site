@@ -9,9 +9,14 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import AnimatedText from './AnimatedText';
 import { MainSection } from '../../Types';
 
-const SectionMain = ({ sections, services }: MainSection) => {
-  const servicesArr = services.map(service => service.title);
-  console.log(services);
+// вот здесь проблема, передаю в modules/home/view/home/index.tsx
+const SectionMain = ({ section, services }) => {
+  let filteredSirvices = services
+    .filter(service => service.isMain === true)
+    .map(service => service.title);
+  console.log('sgsgg');
+  console.log(section);
+  // console.log(description);
   return (
     <Wrapper py={'228px'} id={'main'} backgroundImage={'url(../../assets/images/bg.png)'}>
       <Container>
@@ -21,11 +26,8 @@ const SectionMain = ({ sections, services }: MainSection) => {
           justifyContent={'center'}
           paddingLeft={[6, 13]}>
           <Box marginBottom={10}>
-            <SectionHeader
-              variant={'main'}
-              title={sections[0].title}
-              description={sections[0].description}>
-              <AnimatedText variant={'yellow'} serviceList={servicesArr} />
+            <SectionHeader variant={'main'} title={section.title} description={section.description}>
+              <AnimatedText variant={'yellow'} serviceList={filteredSirvices} />
             </SectionHeader>
           </Box>
 

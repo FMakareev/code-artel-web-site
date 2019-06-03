@@ -5,13 +5,20 @@ query{
     title
     description
     content
+    template
   }
   services{
     icons {
-      image {name}
+      id
+      image{
+        id
+        name
+        url
+      }
     }
     title
     description
+    isMain
   }
   portfolioworks {
     tags {
@@ -20,7 +27,14 @@ query{
     title
     description
     link
-    images { alt image {name}}
+    images{
+      id
+      image{
+        id
+        name
+        url
+      }
+    }
   }
   stacks{
     stack
@@ -28,6 +42,13 @@ query{
   contacts {
     contact
     href
-    icon {image {name} }
+    icon {
+      id
+      image{
+        id
+        name
+        url
+      }
+    }
   }
 }

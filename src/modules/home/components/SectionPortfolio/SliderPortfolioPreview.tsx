@@ -13,7 +13,7 @@ const SliderPortfolioPreview = ({ images }: PortfolioData) => {
       position={'relative'}>
       <Box marginLeft={[0, 0, -13]}>
         <img
-          src={images[0].image.name || '../../assets/images/placeholder.png'}
+          src={images[0].image.url || '../../assets/images/placeholder.png'}
           alt={images[0].alt}
           width={'100%'}
           height={'100%'}

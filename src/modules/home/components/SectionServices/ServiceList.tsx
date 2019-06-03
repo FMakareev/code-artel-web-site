@@ -19,11 +19,9 @@ export const ServiceList = ({ icon, title, arr }: Service) => (
 
     <ul>
       {arr.map((item, index) => (
-        <li key={index}>
-          <Text variant={'body1_normal'} color={'white'}>
-            + {item}
-          </Text>
-        </li>
+        <Text key={index} variant={'body1_normal'} color={'white'}>
+          {item}
+        </Text>
       ))}
     </ul>
   </Flex>

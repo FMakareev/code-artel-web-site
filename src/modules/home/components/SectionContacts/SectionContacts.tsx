@@ -53,7 +53,7 @@ const SectionContacts = ({ sections, contacts }: ContactsSection) => (
           {contacts.map((contact: InfoContact, index: number) => (
             <ContactInfo
               key={index}
-              icon={contact.icon.image.name}
+              icon={contact.icon.image.url}
               href={contact.href}
               text={contact.contact}
             />

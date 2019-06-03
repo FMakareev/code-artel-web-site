@@ -2,6 +2,8 @@ import * as React from 'react';
 
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
+import { Section } from '../../Types';
+
 const variants: any = {
   main: {
     title: {
@@ -54,8 +56,8 @@ const variants: any = {
     },
   },
 };
-import { Section } from '../../Types';
 
+// @ts-ignore
 const SectionHeader = ({ variant, title, description, children }: Section) => {
   const variantName: string = variant;
   const variantChosen = variants[variantName];

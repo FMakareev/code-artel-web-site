@@ -7,22 +7,27 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import ServiceList from './ServiceList';
 // @ts-ignore
 import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
-import { ServiceSection, ListServices } from '../../Types';
+import { ServiceSection, ListServices, Section } from '../../Types';
 import parse from 'html-react-parser';
 
-export const SectionServices = ({ sections, services }: ServiceSection) => {
-  const filteredSirvices = services.filter(service => service.isMain === false);
+export const SectionServices = ({ section, serviceList }: ServiceSection) => {
+  const filteredSirvices = serviceList.filter(service => service.isMain === false);
   return (
     <Wrapper id={'services'}>
       <Container backgroundColor={'bright_blue'}>
         <Flex px={[6, 13]} py={12} flexDirection={'column'}>
           <Box marginBottom={10}>
-            <SectionHeader
-              variant={'variant2'}
-              title={sections[1].title}
-              description={sections[1].description}
-              width={'70%'}
-            />
+            {section.map((item: Section, index: number) => {
+              return (
+                <SectionHeader
+                  key={index}
+                  variant={'variant2'}
+                  width={'70%'}
+                  title={item.title}
+                  description={item.description}
+                />
+              );
+            })}
           </Box>
 
           <Flex justifyContent={'space-between'} flexWrap={['wrap']} marginBottom={11}>

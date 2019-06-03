@@ -13,6 +13,7 @@ const variants: any = {
   },
 };
 
+// @ts-ignore
 const AnimatedText = ({ variant, serviceList }: TextAnimated) => {
   const variantName: string = variant;
   const variantChosen = variants[variantName];

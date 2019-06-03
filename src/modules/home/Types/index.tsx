@@ -1,6 +1,7 @@
 export interface Section {
   title: string;
   description?: string;
+  content?: string;
 }
 
 export interface TextAnimated {
@@ -8,34 +9,39 @@ export interface TextAnimated {
 }
 
 export interface MainSection extends Section {
-  serviceList: string[];
+  section: object[];
+  serviceList: Service[];
 }
 
 export interface Service {
   icon: string;
   title: string;
   arr: string[];
+  isMain?: boolean;
 }
 
 export interface ServiceSection extends Section {
+  section: object[];
   serviceList: Service[];
 }
 /** PORTFOLIO */
 export interface PortfolioSection extends Section {
-  portfolioData: PortfolioWork[];
+  section: object[];
+  portfolioWorks: PortfolioWork[];
 }
 
 export interface PortfolioWork {
   tags: string;
   title: string;
+  description: string;
   id: number;
-  href: string;
+  link: string;
   imagePreview: string;
   alt: string;
 }
 
 export interface PortfolioSlider {
-  portfolioData: PortfolioWork[];
+  portfolioWorks: PortfolioWork[];
 }
 
 export interface ControlSliderPortfolio {
@@ -47,8 +53,7 @@ export interface ControlSliderPortfolio {
 }
 
 export interface AboutUsSection extends Section {
-  styledWord: string;
-  content: string;
+  section: object[];
   stack: string[];
 }
 
@@ -59,7 +64,7 @@ export interface InfoContact {
 }
 
 export interface ContactsSection extends Section {
-  content: string;
+  section: object[];
   contactInfo: InfoContact[];
 }
 

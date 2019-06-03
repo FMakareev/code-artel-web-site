@@ -6,12 +6,7 @@ import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import BackgroundColorProperty from '../../../../styles/styleProperty/BackgroundColorProperty';
-import { AboutUsSection } from '../../Types';
-import ReactHtmlParser, {
-  processNodes,
-  convertNodeToElement,
-  htmlparser2,
-} from 'react-html-parser';
+import { AboutUsSection, Section } from '../../Types';
 import parse from 'html-react-parser';
 
 // @ts-ignore
@@ -63,24 +58,34 @@ const Description = (
   </React.Fragment>
 );
 
-const SectionAboutUs = ({ sections, stacks }: AboutUsSection) => {
-  const stackParser = parse(stacks[0].stack);
+const SectionAboutUs = ({ section, stack }: AboutUsSection) => {
+  const stackParser = parse(stack[0].stack);
+  console.log(section);
   return (
     <WrapperStyled id={'about'}>
       <Container>
         <Flex flexWrap={['wrap', 'wrap', 'nowrap']}>
           <Flex py={12} px={6} flexDirection={'column'}>
             <Box marginBottom={6}>
-              <SectionHeader
-                variant={'variant2'}
-                title={sections[3].title}
-                description={Description}
-              />
+              {section.map((item: Section, index: number) => {
+                return (
+                  <SectionHeader
+                    key={index}
+                    variant={'variant2'}
+                    title={item.title}
+                    description={Description}
+                  />
+                );
+              })}
             </Box>
 
-            <Text variant={'body1_normal'} color={'white'} marginBottom={11}>
-              {sections[3].content}
-            </Text>
+            {section.map((section: Section, index: number) => {
+              return (
+                <Text key={index} variant={'body1_normal'} color={'white'} marginBottom={11}>
+                  {section.content}
+                </Text>
+              );
+            })}
 
             <Flex flexWrap={'wrap'} justifyContent={'space-between'}>
               {sliceArray(stackParser, 3).map((column: string[], index: number) => {

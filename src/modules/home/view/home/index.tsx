@@ -11,8 +11,8 @@ import { Box } from 'code-artel-ui-lib';
 // @ts-ignore
 import SectionListGraphql from '../../graphqls/SectionList.graphql';
 
-const searchSection = (sections: [], template) => {
-  const section = sections.filter(section => section.template === template);
+const searchSection = (sections: object[], sectionTemplate: string) => {
+  const section = sections.filter((section: object) => section.template === sectionTemplate);
   return section;
 };
 
@@ -20,22 +20,26 @@ const request = ({ data, loading, error }: any) => {
   if (loading) {
     return 'Загрузка';
   }
-
   if (error) {
     return 'error';
   }
-
   console.log(data);
-  // console.log(...searchSection(data.sections, 'main'));
-  // console.log(...data.services);
-
   return (
     <Box>
-      <SectionMain {...searchSection(data.sections, 'main')} {...data} />
-      <SectionServices {...data} />
-      <SectionPortfolio {...data} />
-      <SectionAboutUs {...data} />
-      <SectionContacts {...data} />
+      <SectionMain section={searchSection(data.sections, 'main')} serviceList={data.services} />
+      <SectionServices
+        section={searchSection(data.sections, 'service')}
+        serviceList={data.services}
+      />
+      <SectionPortfolio
+        section={searchSection(data.sections, 'portfolio')}
+        portfolioWorks={data.portfolioworks}
+      />
+      <SectionAboutUs section={searchSection(data.sections, 'aboutus')} stack={data.stacks} />
+      <SectionContacts
+        section={searchSection(data.sections, 'contacts')}
+        contactInfo={data.contacts}
+      />
     </Box>
   );
 };

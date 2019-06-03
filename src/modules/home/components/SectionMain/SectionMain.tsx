@@ -7,16 +7,12 @@ import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import AnimatedText from './AnimatedText';
-import { MainSection } from '../../Types';
+import { MainSection, Section } from '../../Types';
 
-// вот здесь проблема, передаю в modules/home/view/home/index.tsx
-const SectionMain = ({ section, services }) => {
-  let filteredSirvices = services
+const SectionMain = ({ section, serviceList }: MainSection) => {
+  const filteredServices = serviceList
     .filter(service => service.isMain === true)
     .map(service => service.title);
-  console.log('sgsgg');
-  console.log(section);
-  // console.log(description);
   return (
     <Wrapper py={'228px'} id={'main'} backgroundImage={'url(../../assets/images/bg.png)'}>
       <Container>
@@ -26,9 +22,17 @@ const SectionMain = ({ section, services }) => {
           justifyContent={'center'}
           paddingLeft={[6, 13]}>
           <Box marginBottom={10}>
-            <SectionHeader variant={'main'} title={section.title} description={section.description}>
-              <AnimatedText variant={'yellow'} serviceList={filteredSirvices} />
-            </SectionHeader>
+            {section.map((item: Section, index: number) => {
+              return (
+                <SectionHeader
+                  key={index}
+                  variant={'main'}
+                  title={item.title}
+                  description={item.description}>
+                  <AnimatedText variant={'yellow'} serviceList={filteredServices} />
+                </SectionHeader>
+              );
+            })}
           </Box>
 
           <Button

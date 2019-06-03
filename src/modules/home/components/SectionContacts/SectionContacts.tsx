@@ -9,7 +9,7 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 import ContactInfo from './ContactInfo';
 import ContactForm from './ContactForm';
 import BackgroundColorProperty from '../../../../styles/styleProperty/BackgroundColorProperty';
-import { ContactsSection, InfoContact } from '../../Types';
+import { ContactsSection, InfoContact, Section } from '../../Types';
 
 // @ts-ignore
 const WrapperWtyled = styledComponents(Wrapper)`
@@ -33,24 +33,31 @@ const WrapperWtyled = styledComponents(Wrapper)`
    }
 `;
 
-const SectionContacts = ({ sections, contacts }: ContactsSection) => (
+const SectionContacts = ({ section, contactInfo }: ContactsSection) => (
   <WrapperWtyled id={'contacts'}>
     <Container>
       <Flex flexWrap={'wrap'}>
         <Flex flexDirection={'column'} py={7} px={6} pr={7} width={['100%', '60%', '50%']}>
           <Box marginBottom={6}>
-            <SectionHeader
-              variant={'variant3'}
-              title={sections[4].title}
-              description={sections[4].description}
-            />
+            {section.map((section: Section, index: number) => (
+              <SectionHeader
+                key={index}
+                variant={'variant3'}
+                title={section.title}
+                description={section.description}
+              />
+            ))}
           </Box>
 
-          <Text variant={'body1_normal'} color={'black'} marginBottom={11}>
-            {sections[4].content}
-          </Text>
+          {section.map((section: Section, index: number) => {
+            return (
+              <Text key={index} variant={'body1_normal'} color={'black'} marginBottom={11}>
+                {section.content}
+              </Text>
+            );
+          })}
 
-          {contacts.map((contact: InfoContact, index: number) => (
+          {contactInfo.map((contact: InfoContact, index: number) => (
             <ContactInfo
               key={index}
               icon={contact.icon.image.url}

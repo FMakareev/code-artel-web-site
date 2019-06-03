@@ -9,10 +9,9 @@ import SectionHeader from '../SectionHeader/SectionHeader';
 
 import SliderPortfolio from './SliderPortfolio';
 import BackgroundColorProperty from '../../../../styles/styleProperty/BackgroundColorProperty';
-import { PortfolioSection } from '../../Types';
+import { PortfolioSection, Section } from '../../Types';
 
 // @ts-ignore
-
 const WrapperStyled = styledComponents(Wrapper)`
   position: relative;
   &:after{
@@ -32,20 +31,24 @@ const WrapperStyled = styledComponents(Wrapper)`
     }
    }
 `;
-// { title, description, portfolioData }
-const SectionPortfolio = ({ sections, portfolioworks }: PortfolioSection) => (
+const SectionPortfolio = ({ section, portfolioWorks }: PortfolioSection) => (
   <WrapperStyled id={'portfolio'}>
     <Container>
       <Flex flexDirection={'column'} width={'100%'} py={12} px={6}>
         <Box marginBottom={4} width={['100%', '100%', '50%']}>
-          <SectionHeader
-            variant={'variant3'}
-            title={sections[2].title}
-            description={sections[2].description}
-          />
+          {section.map((item: Section, index: number) => {
+            return (
+              <SectionHeader
+                key={index}
+                variant={'variant3'}
+                title={item.title}
+                description={item.description}
+              />
+            );
+          })}
         </Box>
 
-        <SliderPortfolio portfolioData={portfolioworks} />
+        <SliderPortfolio portfolioWorks={portfolioWorks} />
       </Flex>
     </Container>
   </WrapperStyled>

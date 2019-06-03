@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
@@ -54,32 +54,24 @@ const variants: any = {
     },
   },
 };
+import { Section } from '../../Types';
 
-interface Props {
-  variant?: any;
-  title?: string;
-  description?: any;
-  children?: any;
-}
+const SectionHeader = ({ variant, title, description, children }: Section) => {
+  const variantName: string = variant;
+  const variantChosen = variants[variantName];
+  return (
+    <Flex flexDirection={'column'}>
+      <Text variant={variantChosen.title.variant} color={variantChosen.title.color}>
+        {title}
+      </Text>
 
-export class SectionHeader extends Component<Props> {
-  render() {
-    const variantName: string = this.props.variant;
-    const variantChosen = variants[variantName];
-    return (
-      <Flex flexDirection={'column'}>
-        <Text variant={variantChosen.title.variant} color={variantChosen.title.color}>
-          {this.props.title}
-        </Text>
+      <Text variant={variantChosen.description.variant} color={variantChosen.description.color}>
+        {description}
+      </Text>
 
-        <Text variant={variantChosen.description.variant} color={variantChosen.description.color}>
-          {this.props.description}
-        </Text>
-
-        {this.props.children}
-      </Flex>
-    );
-  }
-}
+      {children}
+    </Flex>
+  );
+};
 
 export default SectionHeader;

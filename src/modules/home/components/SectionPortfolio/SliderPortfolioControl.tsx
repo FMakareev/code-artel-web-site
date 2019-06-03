@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 import { CircularProgressbar } from 'react-circular-progressbar';
-import '../../styles/CircularProgressbar.css';
+import '../../../../styles/CircularProgressbar.css';
 
 import { Text, Flex, Box } from 'code-artel-ui-lib';
 import { ControlSliderPortfolio, PortfolioData } from '../../modules/home/Types';

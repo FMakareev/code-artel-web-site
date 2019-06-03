@@ -4,7 +4,7 @@ import TextLoop from 'react-text-loop';
 
 /** Components */
 import { Text } from 'code-artel-ui-lib';
-import { TextAnimated } from '../../modules/home/Types';
+import { TextAnimated } from '../../Types';
 
 const variants: any = {
   yellow: {
@@ -13,13 +13,13 @@ const variants: any = {
   },
 };
 
-const AnimatedText = (props: TextAnimated) => {
-  const variantName: string = props.variant;
+const AnimatedText = ({ variant, serviceList }: TextAnimated) => {
+  const variantName: string = variant;
   const variantChosen = variants[variantName];
   return (
     <TextLoop>
-      {props.messages &&
-        props.messages.map((item: string, index: number) => (
+      {serviceList &&
+        serviceList.map((item: string, index: number) => (
           <Text key={index} variant={variantChosen.variant} color={variantChosen.color}>
             {item}
           </Text>

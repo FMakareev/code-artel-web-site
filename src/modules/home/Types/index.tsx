@@ -3,77 +3,64 @@ export interface Section {
   description?: string;
 }
 
-export interface HeaderSection extends Section {
-  children?: any;
-  width?: string;
-}
-
 export interface TextAnimated {
-  messages: string[];
-  variant: string;
+  serviceList: string[];
 }
 
 export interface MainSection extends Section {
-  messages: string[];
-  image: string;
-  buttonText: string;
+  serviceList: string[];
 }
 
-export interface ListServices {
+export interface Service {
   icon: string;
   title: string;
   arr: string[];
 }
 
 export interface ServiceSection extends Section {
-  serviceList: ListServices[];
-  callToActionText: string;
-  buttonText: string;
+  serviceList: Service[];
 }
 /** PORTFOLIO */
 export interface PortfolioSection extends Section {
-  styledWord: string;
-  portfolioData: PortfolioData[];
+  portfolioData: PortfolioWork[];
 }
 
-export interface PortfolioData {
+export interface PortfolioWork {
   tags: string;
   title: string;
-  id: string;
+  id: number;
+  href: string;
   imagePreview: string;
   alt: string;
 }
 
 export interface PortfolioSlider {
-  portfolioData: PortfolioData[];
+  portfolioData: PortfolioWork[];
 }
 
 export interface ControlSliderPortfolio {
-  toggleItem: any;
+  toggleItem: () => void;
   currentPosition: number;
   startCounter: number;
   nextWork: () => void;
-
   [prop: string]: any;
 }
 
 export interface AboutUsSection extends Section {
   styledWord: string;
-  sectionText: string;
+  content: string;
   stack: string[];
-  img: string;
 }
 
 export interface InfoContact {
   icon: string;
   href: string;
-  text: string;
+  contact: string;
 }
 
 export interface ContactsSection extends Section {
-  sectionText: string;
+  content: string;
   contactInfo: InfoContact[];
-  agreement: string;
 }
 
 export interface LandingData {

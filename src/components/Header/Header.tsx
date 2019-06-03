@@ -7,11 +7,11 @@ import Scrollchor from 'react-scrollchor';
 import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
 import BackgroundColorProperty from '../../styles/styleProperty/BackgroundColorProperty';
 // @ts-ignore
-import logo_white from '../icons/logo_white.svg';
+import logo_white from '../../modules/home/components/Icons/logo_white.svg';
 // @ts-ignore
-import logo_gray from '../icons/logo_gray.svg';
-import BurgerIcon from '../Icons/BurgerIcon';
-import CloseBurger from '../Icons/CloseBurger';
+import logo_gray from '../../modules/home/components/Icons/logo_gray.svg';
+import BurgerIcon from '../../modules/home/components/Icons/BurgerIcon';
+import CloseBurger from '../../modules/home/components/Icons/CloseBurger';
 
 // @ts-ignore
 export const HeaderStyled = styledComponents(Flex)`
@@ -171,7 +171,7 @@ export class Header extends React.Component {
 
   render() {
     return (
-      <HeaderWrapper>
+      <HeaderWrapper onClick={this.handleClickForButtonBurger}>
         <HeaderStyled as={'header'} className={this.state.isScrolled ? 'active' : ''}>
           <Scrollchor to={'main'}>
             <Flex alignItems={'center'}>

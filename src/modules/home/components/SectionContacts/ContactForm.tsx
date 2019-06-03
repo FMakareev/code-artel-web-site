@@ -109,9 +109,13 @@ class ContactForm extends React.Component<any, SectionContactState> {
                 />
               </Box>
 
-              <Field name="budget" type="range" component={InputRangeCustom} />
+              <Box mb={5}>
+                <Field name="budget" type="range" component={InputRangeCustom} />
+              </Box>
 
-              <Field name="file" type="file" component={InputDropzoneCustom} />
+              <Box mb={5}>
+                <Field name="file" type="file" component={InputDropzoneCustom} />
+              </Box>
 
               <Box my={5}>
                 <Button

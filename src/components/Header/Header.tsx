@@ -12,6 +12,7 @@ import logo_white from '../../modules/home/components/Icons/logo_white.svg';
 import logo_gray from '../../modules/home/components/Icons/logo_gray.svg';
 import BurgerIcon from '../../modules/home/components/Icons/BurgerIcon';
 import CloseBurger from '../../modules/home/components/Icons/CloseBurger';
+import findClassInPath from '../../utils/findClassPath';
 
 // @ts-ignore
 export const HeaderStyled = styledComponents(Flex)`
@@ -127,11 +128,27 @@ class NavList extends React.Component<NavListProps> {
   }
 }
 
-export class Header extends React.Component {
-  state = {
-    isScrolled: false,
-    isOpen: false,
-  };
+interface State {
+  isScrolled: boolean;
+  isOpen: boolean;
+}
+
+export class Header extends React.Component<any, State> {
+  app: any;
+  state: State;
+
+  constructor(props: any) {
+    super(props);
+    this.state = this.initialState;
+    this.app = document.getElementById('app');
+  }
+
+  get initialState(): State {
+    return {
+      isScrolled: false,
+      isOpen: false,
+    };
+  }
 
   toggleBg = () => {
     if (window.scrollY > 80 && !this.state.isScrolled) {
@@ -153,6 +170,7 @@ export class Header extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.toggleBg);
+    this.app && this.app.removeEventListener('click', this.navListClickHandle);
   }
 
   toggleBurger = (isOpen: any) => (isOpen ? <CloseBurger /> : <BurgerIcon />);
@@ -166,9 +184,39 @@ export class Header extends React.Component {
   };
 
   handleClickForButtonBurger = () => {
-    this.toggleNav(!this.state.isOpen);
+    try {
+      this.toggleNav(!this.state.isOpen);
+      if (this.state.isOpen) {
+        this.app && this.app.removeEventListener('click', this.navListClickHandle);
+      } else {
+        this.app && this.app.addEventListener('click', this.navListClickHandle);
+      }
+    } catch (error) {
+      console.error('Error handleClickForButtonComment: ', error);
+    }
   };
 
+  navListClickHandle = (event: any) => {
+    try {
+      const { isOpen } = this.state;
+      if (Array.isArray(event.path) && isOpen) {
+        if (findClassInPath(event.path, 'NavListWrapper') >= 0) {
+          return null;
+        }
+
+        if (
+          findClassInPath(event.path, 'NavListWrapper') < 0 ||
+          findClassInPath(event.path, 'NavListWrapper') >= 0
+        ) {
+          this.toggleNav(false);
+          this.app && this.app.removeEventListener('click', this.navListClickHandle);
+        }
+      }
+      return null;
+    } catch (error) {
+      console.error('Error navListClickHandle: ', error);
+    }
+  };
   render() {
     return (
       <HeaderWrapper onClick={this.handleClickForButtonBurger}>

@@ -49,7 +49,7 @@
       "port": 3021
     },
     "start:ssr:server": {
-      "port": 3022,
+      "port": 3021,
       "public": "dist"
     }
   },

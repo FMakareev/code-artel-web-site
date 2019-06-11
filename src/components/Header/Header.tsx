@@ -13,6 +13,7 @@ import logo_gray from '../../modules/home/components/Icons/logo_gray.svg';
 import BurgerIcon from '../../modules/home/components/Icons/BurgerIcon';
 import CloseBurger from '../../modules/home/components/Icons/CloseBurger';
 import findClassInPath from '../../utils/findClassPath';
+import { isBrowser } from '../../shared/constants';
 
 // @ts-ignore
 export const HeaderStyled = styledComponents(Flex)`
@@ -140,7 +141,7 @@ export class Header extends React.Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = this.initialState;
-    this.app = document.getElementById('app');
+    this.app = isBrowser ? document.getElementById('app') : null;
   }
 
   get initialState(): State {
@@ -217,6 +218,7 @@ export class Header extends React.Component<any, State> {
       console.error('Error navListClickHandle: ', error);
     }
   };
+
   render() {
     return (
       <HeaderWrapper onClick={this.handleClickForButtonBurger}>

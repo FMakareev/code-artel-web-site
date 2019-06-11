@@ -5,8 +5,9 @@ import { client } from '../apollo/index.client';
 import AppProvidersClient from '../containers/AppProvidersClient';
 
 import { RouterConfig } from '../shared/config/router';
+import { isBrowser } from '../shared/constants';
 
-const appContainer = document.getElementById('app');
+const appContainer = isBrowser ? document.getElementById('app') : null;
 
 reactLoadable.preloadReady().then(() => {
   render(<AppProvidersClient routes={RouterConfig} client={client} />, appContainer);

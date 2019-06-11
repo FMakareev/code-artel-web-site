@@ -28,6 +28,10 @@ export const GlobalStyle = createGlobalStyle`
   img {
     display: block;
   }
+  
+  .display-none {
+    display: none;
+  }
 
   /** ❗ setting app container  */
   #app {

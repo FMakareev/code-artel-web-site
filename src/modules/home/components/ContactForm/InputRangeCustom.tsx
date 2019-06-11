@@ -1,7 +1,12 @@
 import * as React from 'react';
 import { Box, Flex, Text } from 'code-artel-ui-lib';
-import InputRange from 'react-input-range';
+import reactInputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
+import styledComponents from 'styled-components';
+
+const InputRangeStyled = styledComponents(reactInputRange)`
+
+`;
 
 export const InputRangeCustom: React.FC<any> = props => {
   const { input } = props;
@@ -26,12 +31,24 @@ export const InputRangeCustom: React.FC<any> = props => {
           {splitPrice(input.value)} ₽
         </Text>
       </Flex>
-      <InputRange
+      <InputRangeStyled
         {...input}
         name={'budget'}
         maxValue={500000}
         minValue={50000}
         step={50000}
+        classNames={{
+          activeTrack: 'input-range__track input-range__track--active',
+          disabledInputRange: 'input-range input-range--disabled',
+          inputRange: 'input-range',
+          labelContainer: 'input-range__label-container',
+          maxLabel: 'input-range__label input-range__label--max',
+          minLabel: 'input-range__label input-range__label--min',
+          slider: 'input-range__slider',
+          sliderContainer: 'input-range__slider-container',
+          track: 'input-range__track input-range__track--background',
+          valueLabel: 'display-none',
+        }}
         onChange={value => input.onChange(value)}
       />
     </Box>

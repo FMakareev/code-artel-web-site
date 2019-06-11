@@ -1,72 +1,56 @@
-export interface Section {
-  title: string;
+export interface IBaseModel {
+  _id?: string;
+  id?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+/** */
+export interface ISection extends IBaseModel {
+  title?: string;
   description?: string;
+  content?: string;
+  template?: string;
+  isMain?: string;
+}
+
+/** */
+export interface ITag extends IBaseModel {
+  name: string;
 }
 
 export interface TextAnimated {
-  serviceList: string[];
+  services: string[];
+  variant: string;
 }
 
-export interface MainSection extends Section {
-  serviceList: string[];
+export interface IMainSectionProps extends ISection {
+  services: string[];
 }
 
-export interface Service {
-  icon: string;
-  title: string;
-  arr: string[];
+export interface IFeedback extends IBaseModel {
+  name: string;
+  email: string;
+  phone: string;
+  message: string;
+  budget: string;
+  attachment: UploadFile | string;
 }
 
-export interface ServiceSection extends Section {
-  serviceList: Service[];
-}
-/** PORTFOLIO */
-export interface PortfolioSection extends Section {
-  portfolioData: PortfolioWork[];
-}
-
-export interface PortfolioWork {
-  tags: string;
-  title: string;
-  id: number;
-  href: string;
-  imagePreview: string;
-  alt: string;
+export interface UploadFile extends IBaseModel {
+  name?: string;
+  hash?: string;
+  sha256?: string;
+  ext?: string;
+  mime?: string;
+  size?: string;
+  url?: string;
+  provider?: string;
+  public_id?: string;
 }
 
-export interface PortfolioSlider {
-  portfolioData: PortfolioWork[];
-}
-
-export interface ControlSliderPortfolio {
-  toggleItem: () => void;
-  currentPosition: number;
-  startCounter: number;
-  nextWork: () => void;
+export interface IImage extends IBaseModel {
+  image?: UploadFile;
+  alt?: string;
   [prop: string]: any;
-}
-
-export interface AboutUsSection extends Section {
-  styledWord: string;
-  content: string;
-  stack: string[];
-}
-
-export interface InfoContact {
-  icon: string;
-  href: string;
-  contact: string;
-}
-
-export interface ContactsSection extends Section {
-  content: string;
-  contactInfo: InfoContact[];
-}
-
-export interface LandingData {
-  main: MainSection;
-  services: ServiceSection;
-  portfolio: PortfolioSection;
-  aboutUs: AboutUsSection;
-  contacts: ContactsSection;
 }

@@ -4,30 +4,30 @@ import * as React from 'react';
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import ServiceList from './ServiceList';
+import ServiceItem from './ServiceItem';
 // @ts-ignore
 import { Flex, Box, Text, Button } from 'code-artel-ui-lib';
-import { ServiceSection, ListServices } from '../../Types';
+import { ServiceSectionProps, IService } from './types';
 
-export const SectionServices = ({ title, description, serviceList }: ServiceSection) => (
+export const SectionServices: React.FC<ServiceSectionProps> = ({
+  title,
+  description,
+  services,
+}: ServiceSectionProps) => (
   <Wrapper id={'services'}>
     <Container backgroundColor={'bright_blue'}>
       <Flex px={[6, 13]} py={12} flexDirection={'column'}>
-        <Box marginBottom={10}>
-          <SectionHeader
-            variant={'variant2'}
-            title={title}
-            description={description}
-            width={'70%'}
-          />
+        <Box width={'70%'} marginBottom={10}>
+          <SectionHeader variant={'variant2'} title={title} description={description} />
         </Box>
 
-        <Flex justifyContent={'space-between'} flexWrap={['wrap']} marginBottom={11}>
-          {serviceList.map((service: ListServices, index: number) => (
-            <Box width={['100%', '50%', '33.333%']} key={index}>
-              <ServiceList icon={service.icon} title={service.title} arr={service.arr} />
-            </Box>
-          ))}
+        <Flex justifyContent={'flex-start'} flexWrap={['wrap']} marginBottom={11}>
+          {services &&
+            services.map((service: IService, index: number) => (
+              <Box width={['100%', '50%', '33.333%']} key={index}>
+                <ServiceItem {...service} />
+              </Box>
+            ))}
         </Flex>
 
         <Text variant={'subtitle1'} color={'white'} marginBottom={5}>

@@ -1,9 +1,9 @@
 import * as React from 'react';
 
 import { Flex, Box } from 'code-artel-ui-lib';
-import { PortfolioData } from '../../Types';
+import { IPortfolioWork } from './types';
 
-const SliderPortfolioPreview = ({ images }: PortfolioData) => {
+export const SliderPortfolioPreview = ({ images }: IPortfolioWork) => {
   return (
     <Flex
       width={['100%', '100%', '495px']}
@@ -13,8 +13,8 @@ const SliderPortfolioPreview = ({ images }: PortfolioData) => {
       position={'relative'}>
       <Box marginLeft={[0, 0, -13]}>
         <img
-          src={images[0].image.name || '../../assets/images/placeholder.png'}
-          alt={images[0].alt}
+          src={'../../assets/images/placeholder.png'}
+          alt={images && images[0] && images[0].alt}
           width={'100%'}
           height={'100%'}
         />
@@ -22,5 +22,6 @@ const SliderPortfolioPreview = ({ images }: PortfolioData) => {
     </Flex>
   );
 };
-
+///(images && images[0] && images[0].image) &&
+//           images[0].image.name ||
 export default SliderPortfolioPreview;

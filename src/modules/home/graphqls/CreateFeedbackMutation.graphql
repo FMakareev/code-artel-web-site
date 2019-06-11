@@ -1,0 +1,27 @@
+mutation(
+$name: String,
+$email: String,
+$phone: String,
+$message: String,
+$budget: Int
+) {
+  createFeedback(
+    input: {
+      data: {
+        name: $name
+        email: $email
+        phone: $phone
+        message: $message
+        budget: $budget
+      }
+    }
+  ) {
+    feedback {
+      name
+      email
+      phone
+      message
+      budget
+    }
+  }
+}

@@ -5,21 +5,21 @@ import { Flex } from 'code-artel-ui-lib';
 import SliderPortfolioPreview from './SliderPortfolioPreview';
 import SliderPortfolioControl from './SliderPortfolioControl';
 import SliderPortfolioInfo from './SliderPortfolioInfo';
-import { PortfolioSlider, PortfolioData } from '../../Types';
+import { IPortfolioSliderProps, IPortfolioWork } from './types';
 
-interface StateSliderPortfolioState {
+interface ISliderPortfolioState {
   currentPosition: number;
 }
 
-export class SliderPortfolio extends React.Component<PortfolioSlider, StateSliderPortfolioState> {
+export class SliderPortfolio extends React.Component<IPortfolioSliderProps, ISliderPortfolioState> {
   state = {
     currentPosition: 0,
   };
 
   toggleItem = (index: number): void => {
-    const { portfolioData } = this.props;
+    const { portfolioworks } = this.props;
 
-    if (index <= portfolioData.length - 1) {
+    if (index <= portfolioworks.length - 1) {
       this.setState({ currentPosition: index });
     } else {
       this.setState({ currentPosition: 0 });
@@ -27,7 +27,8 @@ export class SliderPortfolio extends React.Component<PortfolioSlider, StateSlide
   };
 
   nextWork = () => {
-    if (this.state.currentPosition < this.props.portfolioData.length - 1) {
+    const { portfolioworks } = this.props;
+    if (this.state.currentPosition < portfolioworks.length - 1) {
       this.setState({ currentPosition: this.state.currentPosition + 1 });
     } else {
       this.setState({ currentPosition: 0 });
@@ -35,10 +36,10 @@ export class SliderPortfolio extends React.Component<PortfolioSlider, StateSlide
   };
 
   render() {
-    const { portfolioData } = this.props;
+    const { portfolioworks } = this.props;
     const { currentPosition } = this.state;
 
-    const work: PortfolioData = portfolioData[currentPosition];
+    const work: IPortfolioWork = portfolioworks[currentPosition];
 
     return (
       <Flex justifyContent={'space-between'} alignItems={'center'} flexWrap={'wrap'}>
@@ -46,13 +47,15 @@ export class SliderPortfolio extends React.Component<PortfolioSlider, StateSlide
 
         <Flex flexDirection={'column'} alignItems={'center'}>
           <SliderPortfolioPreview {...work} />
-          <SliderPortfolioControl
-            portfolioData={portfolioData}
-            currentPosition={currentPosition}
-            nextWork={this.nextWork}
-            toggleItem={this.toggleItem}
-            startCounter={5}
-          />
+          {portfolioworks.length > 1 && (
+            <SliderPortfolioControl
+              portfolioworks={portfolioworks}
+              currentPosition={currentPosition}
+              nextWork={this.nextWork}
+              toggleItem={this.toggleItem}
+              startCounter={5}
+            />
+          )}
         </Flex>
       </Flex>
     );

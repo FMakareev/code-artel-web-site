@@ -7,13 +7,13 @@ import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 import AnimatedText from './AnimatedText';
-import { MainSection } from '../../Types';
+import { IMainSectionProps } from '../../Types';
+import { IService } from '../SectionServices/types';
+// @ts-ignore
 
-const SectionMain = ({ sections, services }: MainSection) => {
-  const servicesArr = services.map(service => service.title);
-  console.log(services);
+const SectionMain = ({ title, description, services }: IMainSectionProps) => {
   return (
-    <Wrapper py={'228px'} id={'main'} backgroundImage={'url(../../assets/images/bg.png)'}>
+    <Wrapper py={'228px'} id={'main'} backgroundImage={'url(/assets/images/bg.jpg)'}>
       <Container>
         <Flex
           height={'100%'}
@@ -21,11 +21,13 @@ const SectionMain = ({ sections, services }: MainSection) => {
           justifyContent={'center'}
           paddingLeft={[6, 13]}>
           <Box marginBottom={10}>
-            <SectionHeader
-              variant={'main'}
-              title={sections[0].title}
-              description={sections[0].description}>
-              <AnimatedText variant={'yellow'} serviceList={servicesArr} />
+            <SectionHeader variant={'main'} title={title} description={description}>
+              {services && (
+                <AnimatedText
+                  variant={'yellow'}
+                  services={services.map((service: IService) => service.title)}
+                />
+              )}
             </SectionHeader>
           </Box>
 

@@ -15,8 +15,6 @@ const inputVariant = (meta: any = {}) => {
 };
 
 export const Input: React.FC<any> = props => {
-  console.log(props);
-
   const { input, meta, label, placeholder, as } = props;
 
   return (

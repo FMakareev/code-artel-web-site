@@ -6,7 +6,7 @@ export const fileLoaderConfig = {
       options: {
         emitFile: true,
         useRelativePath: false,
-        name: 'assets/media/[name].[ext]',
+        name: 'assets/[name].[ext]',
         // outputPath: '/assets',
         // publicPath: '/assets',
       },

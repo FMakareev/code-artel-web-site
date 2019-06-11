@@ -13,13 +13,19 @@ const variants: any = {
   },
 };
 
-const AnimatedText = ({ variant, serviceList }: TextAnimated) => {
-  const variantName: string = variant;
-  const variantChosen = variants[variantName];
+const AnimatedText = ({ variant, services }: TextAnimated) => {
+  const variantChosen = variants[variant];
+  if (services.length === 1) {
+    return (
+      <Text variant={variantChosen.variant} color={variantChosen.color}>
+        {services[0]}
+      </Text>
+    );
+  }
   return (
     <TextLoop>
-      {serviceList &&
-        serviceList.map((item: string, index: number) => (
+      {services &&
+        services.map((item: string, index: number) => (
           <Text key={index} variant={variantChosen.variant} color={variantChosen.color}>
             {item}
           </Text>

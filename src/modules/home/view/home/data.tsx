@@ -9,7 +9,7 @@ import icon_tech_supSvg from '../../components/Icons/icon_tech_sup.svg';
 // @ts-ignore
 import icon_escortSvg from '../../components/Icons/icon_escort.svg';
 // @ts-ignore
-import hardwareSvg from '../../components/Icons/icon_hardware.svg';
+import icon_hardwareSvg from '../../components/Icons/icon_hardware.svg';
 // @ts-ignore
 import EmailIconSvg from '../../components/Icons/EmailIcon.svg';
 // @ts-ignore
@@ -17,58 +17,58 @@ import PhoneIconSvg from '../../components/Icons/PhoneIcon.svg';
 // @ts-ignore
 import AddressIconSvg from '../../components/Icons/AddressIcon.svg';
 
-import { LandingData } from '../../Types';
+import { ISection } from '../../Types';
+import { IService } from '../../components/SectionServices/types';
+import { IPortfolioWork } from '../../components/SectionPortfolio/types';
+import { IStack } from '../../components/SectionAboutUs/types';
 
-export const data: LandingData = {
+export const data = {
   main: {
     title: 'CODE ARTEL',
     description: 'Мы разрабатываем',
-    serviceList: ['сервисы', 'приложения'],
   },
   services: {
     title: 'УСЛУГИ',
     description: 'Комплексные услуги, которые формируют цифровое преобразование',
-    serviceList: [
+    services: [
       {
-        icon: icon_webdevSvg,
+        icons: icon_webdevSvg,
         title: 'Веб-разработка',
-        arr: [
-          'Корпоративные сайты',
-          'Интернет магазины',
-          'Сложные веб-сервисы и интеграции',
-          'Высоконагруженные проекты',
-          'Промосайты',
-          'Чат боты',
-          'Веб скарпинг',
-        ],
+        description:
+          '<ol><li>Корпоративные&nbsp;</li><li>Интернет магазины</li><li>Сложные веб-сервисы и интеграции</li><li>Высоконагруженные проекты</li><li>Промосайты</li><li>Чат боты</li><li>Веб скрапинг<br><br ></li></ol>',
+        isMain: true,
       },
       {
-        icon: icon_blockchainSvg,
+        icons: icon_blockchainSvg,
         title: 'Блокчейн',
-        arr: [
-          'Разработка сервисов с использованием существующих блокчейн платформ',
-          'Внедрение блокчейна в существущие сервисы',
-        ],
+        description:
+          '<ol><li>Разработка сервисов с использованием существующих блокчейн платформ</li><li>Внедрение блокчейна в существующие сервисы<br>​​​​​​​<br><br></li></ol>',
+        isMain: true,
       },
       {
-        icon: icon_applicationSvg,
+        icons: icon_applicationSvg,
         title: 'Разработка приложений',
-        arr: ['Мобильные приложения для IOS и Android', 'AR визитки'],
+        description:
+          '<ol><li>Мобильные приложения по IOS и Android</li><li>AR визитки<br><br><br><br></li></ol>',
+        isMain: true,
       },
       {
-        icon: icon_tech_supSvg,
+        icons: icon_tech_supSvg,
         title: 'Сопровождение сайтов и приложений',
-        arr: ['Развитие технологически сложных веб-проектов', 'Сопровождение мобильных приложений'],
+        description: '',
+        isMain: true,
       },
       {
-        icon: icon_escortSvg,
+        icons: icon_escortSvg,
         title: 'Хостинг и техническая поддержка',
-        arr: ['Аренда серверов', 'Настройка и администрирование серверов'],
+        description: '',
+        isMain: true,
       },
       {
-        icon: hardwareSvg,
+        icons: icon_hardwareSvg,
         title: 'Разработка аппаратно-программных комплексов',
-        arr: ['Интернет вещей'],
+        description: '',
+        isMain: true,
       },
     ],
   },
@@ -126,7 +126,7 @@ export const data: LandingData = {
   },
   aboutUs: {
     title: 'О НАС',
-    description: ['Преобразуем великолепные', 'идеи в великолепный'],
+    description: '',
     styledWord: 'софт',
     content:
       'Члены нашей команды обладают разнообразными компетенциями и навыками, ' +
@@ -178,4 +178,188 @@ export const data: LandingData = {
       },
     ],
   },
+};
+
+export const StabServices: IService[] = [
+  {
+    icons: [
+      {
+        alt: 'Test',
+        image: {
+          name: icon_webdevSvg,
+        },
+      },
+    ],
+    title: 'Веб-разработка',
+    description:
+      '<ol><li>Корпоративные&nbsp;</li><li>Интернет магазины</li><li>Сложные веб-сервисы и интеграции</li><li>Высоконагруженные проекты</li><li>Промосайты</li><li>Чат боты</li><li>Веб скрапинг<br><br ></li></ol>',
+    isMain: true,
+  },
+  {
+    icons: [
+      {
+        alt: 'Test',
+        image: {
+          name: icon_blockchainSvg,
+        },
+      },
+    ],
+    title: 'Блокчейн',
+    description:
+      '<ol><li>Разработка сервисов с использованием существующих блокчейн платформ</li><li>Внедрение блокчейна в существующие сервисы<br>​​​​​​​<br><br></li></ol>',
+    isMain: true,
+  },
+  {
+    icons: [
+      {
+        alt: 'Test',
+        image: {
+          name: icon_applicationSvg,
+        },
+      },
+    ],
+    title: 'Разработка приложений',
+    description:
+      '<ol><li>Мобильные приложения по IOS и Android</li><li>AR визитки<br><br><br><br></li></ol>',
+    isMain: true,
+  },
+  {
+    icons: [
+      {
+        alt: 'Test',
+        image: {
+          name: icon_tech_supSvg,
+        },
+      },
+    ],
+    title: 'Сопровождение сайтов и приложений',
+    description:
+      '<ol><li>Развитие технологически сложных веб-проектов</li><li>Сопровождение мобильных приложений&nbsp;<br><br><br><br><br><br></li></ol>',
+    isMain: true,
+  },
+  {
+    icons: [
+      {
+        alt: 'Test',
+        image: {
+          name: icon_escortSvg,
+        },
+      },
+    ],
+    title: 'Хостинг и техническая поддержка',
+    description:
+      '<ol><li>Аренда серверов</li><li>Настройка и администрирование серверов<br><br><br><br><br><br><br><br></li></ol>',
+    isMain: true,
+  },
+  {
+    icons: [
+      {
+        alt: 'Test',
+        image: {
+          name: icon_hardwareSvg,
+        },
+      },
+    ],
+    title: 'Разработка аппаратно-программных комплексов',
+    description:
+      '<ol><li>Интернет вещей</li><li>​​​​​​​Заказная разработка<br><br><br><br><br><br><br><br></li></ol>',
+    isMain: true,
+  },
+];
+
+export const StabSections: ISection[] = [
+  {
+    id: '5ced3681a223dc4b3',
+    title: 'CODE ARTEL',
+    description: 'Мы разрабатываем',
+  },
+  {
+    id: '5ced3681a223dc2b1487a4b3',
+    title: 'услуги',
+    description: 'Комплексные услуги, которые формируют цифровое преобразование',
+  },
+  {
+    id: '5ced3681a223dc2b1487a4b3',
+    title: 'Наши работы',
+    description: 'Мы помогаем нашим клиентам <strong>выиграть</strong>',
+  },
+  {
+    id: '5ced3681a223dc2b1487a4b3',
+    title: 'О НАС',
+    description:
+      'Преобразуем великолепные <strong>идеи</strong> в великолепный <strong>софт</strong>',
+    content:
+      'Члены нашей команды обладают разнообразными компетенциями и навыками, что позволяет нам выполнять широкий спектр услуг: от сложных web-сервисов, с применением блокчейн технологии до проектирования и производства радиоэлектроники. ',
+  },
+];
+
+export const StabPortfolioWorks: IPortfolioWork[] = [
+  {
+    title: 'Test',
+    description: 'Test',
+    images: [
+      {
+        alt: 'Test',
+        image: {
+          name: '1_6ahbWjp_g9hqhaTDSJOL1Q.png',
+        },
+      },
+    ],
+  },
+];
+
+const StabStack: IStack[] = [
+  {
+    name: 'react.js',
+  },
+  {
+    name: 'typescript',
+  },
+  {
+    name: 'apollo',
+  },
+  {
+    name: 'node.js',
+  },
+  {
+    name: 'python',
+  },
+  {
+    name: 'asyncio',
+  },
+  {
+    name: 'mongodb',
+  },
+  {
+    name: 'postgresql',
+  },
+  {
+    name: 'elasticsearch',
+  },
+  {
+    name: 'graphene',
+  },
+  {
+    name: 'redis',
+  },
+  {
+    name: 'go',
+  },
+  {
+    name: 'docker',
+  },
+  {
+    name: 'react native',
+  },
+  {
+    name: 'java',
+  },
+];
+
+const data: any = {
+  sections: StabSections,
+  services: StabServices,
+  portfolioworks: StabPortfolioWorks,
+  stacks: StabStack,
+  contacts: [],
 };

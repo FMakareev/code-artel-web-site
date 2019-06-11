@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
+import * as React from 'react';
+import styledComponents from 'styled-components';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import '../../../../styles/CircularProgressbar.css';
 
 import { Text, Flex, Box } from 'code-artel-ui-lib';
-import { ControlSliderPortfolio, PortfolioData } from '../../modules/home/Types';
+import { ISliderPortfolioControlProps } from './types';
 
-export const Dot = styled(Box)`
+export const Dot = styledComponents(Box)`
   height: 8px;
   width: 8px;
   border-radius: 50%;
@@ -14,8 +14,16 @@ export const Dot = styled(Box)`
   cursor: pointer;
 `;
 
-export class SliderPortfolioControl extends Component<ControlSliderPortfolio> {
-  constructor(props: ControlSliderPortfolio) {
+export interface ISliderPortfolioControlState {
+  counter: any;
+  setInterval: any;
+}
+
+export class SliderPortfolioControl extends React.Component<
+  ISliderPortfolioControlProps,
+  ISliderPortfolioControlState
+> {
+  constructor(props: ISliderPortfolioControlProps) {
     super(props);
     this.state = this.initialState;
   }
@@ -79,22 +87,24 @@ export class SliderPortfolioControl extends Component<ControlSliderPortfolio> {
     const percentage = 100;
 
     const { counter } = this.state;
-    const { portfolioData, currentPosition } = this.props;
+    const { portfolioworks, currentPosition } = this.props;
 
     return (
       <Flex>
-        <Flex
-          width={'168px'}
-          justifyContent={'space-between'}
-          alignItems={'center'}
-          marginRight={7}>
-          {portfolioData.map((item: PortfolioData, index: number) => {
+        <Flex width={'168px'} justifyContent={'flex-end'} alignItems={'center'} marginRight={7}>
+          {portfolioworks.map((_, index: number) => {
             if (currentPosition === index) {
               return (
-                <CircularProgressbar key={index} value={percentage / counter} text={counter} />
+                <Flex alignItems={'center'} width={'24px'}>
+                  <CircularProgressbar key={index} value={percentage / counter} text={counter} />
+                </Flex>
               );
             }
-            return <Dot key={index} onClick={() => this.toggleItem(index)} />;
+            return (
+              <Flex justifyContent={'center'} width={'24px'}>
+                <Dot key={index} onClick={() => this.toggleItem(index)} />
+              </Flex>
+            );
           })}
         </Flex>
 

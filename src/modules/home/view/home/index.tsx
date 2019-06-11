@@ -10,7 +10,14 @@ import SectionContacts from '../../components/SectionContacts/SectionContacts';
 import { Box } from 'code-artel-ui-lib';
 // @ts-ignore
 import SectionListGraphql from '../../graphqls/SectionList.graphql';
-import { data as DATA } from './data';
+import { ISection } from '../../Types';
+
+const getSectionDateByTemplateName = (
+  sections: ISection[],
+  templateName: string,
+): ISection | undefined => {
+  return sections.find((item: ISection) => item.template === templateName);
+};
 
 const request = ({ data, loading, error }: any) => {
   if (loading) {
@@ -22,13 +29,24 @@ const request = ({ data, loading, error }: any) => {
   }
 
   console.log(data);
+  const { sections, services, portfolioworks, stacks, contacts, socialnetworks } = data;
   return (
     <Box>
-      <SectionMain {...data} />
-      <SectionServices {...DATA.services} />
-      <SectionPortfolio {...data} />
-      <SectionAboutUs {...data} />
-      <SectionContacts {...data} />
+      <SectionMain
+        services={services.filter((item: ISection) => item.isMain)}
+        {...getSectionDateByTemplateName(sections, 'main')}
+      />
+      <SectionServices services={services} {...getSectionDateByTemplateName(sections, 'service')} />
+      <SectionPortfolio
+        portfolioworks={portfolioworks}
+        {...getSectionDateByTemplateName(sections, 'portfolio')}
+      />
+      <SectionAboutUs stacks={stacks} {...getSectionDateByTemplateName(sections, 'aboutus')} />
+      <SectionContacts
+        socialNetworks={socialnetworks}
+        contacts={contacts}
+        {...getSectionDateByTemplateName(sections, 'aboutus')}
+      />
     </Box>
   );
 };

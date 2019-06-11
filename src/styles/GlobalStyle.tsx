@@ -22,6 +22,13 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
   }
 
+  p {
+  margin: 0;
+  }
+  img {
+    display: block;
+  }
+
   /** ❗ setting app container  */
   #app {
     position: relative;

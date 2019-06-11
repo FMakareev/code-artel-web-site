@@ -58,6 +58,11 @@ const start = () => {
     https: false,
     historyApiFallback: true,
     watchContentBase: true,
+    disableHostCheck: true,
+    // watchOptions: {
+    //   aggregateTimeout: 1000,
+    //   // poll: 1000
+    // }
   };
 
   /** запуск и прослушивание webpack-dev-server */

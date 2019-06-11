@@ -2,6 +2,9 @@ import * as React from 'react';
 
 /** Components */
 import { Flex, Text } from 'code-artel-ui-lib';
+import { ISection } from '../../Types';
+import StringToReact from '../../../../components/StringToReact/StringToReact';
+
 const variants: any = {
   main: {
     title: {
@@ -54,24 +57,40 @@ const variants: any = {
     },
   },
 };
-import { Section } from '../../Types';
 
-const SectionHeader = ({ variant, title, description, children }: Section) => {
-  const variantName: string = variant;
-  const variantChosen = variants[variantName];
+export interface ISectionHeaderVariant {
+  title: {
+    variant: string;
+    color: string;
+  };
+  description: {
+    variant: string;
+    color: string;
+  };
+}
+
+export interface ISectionHeaderProps extends ISection {
+  children?: any;
+  variant?: string;
+}
+
+export const SectionHeader = ({ variant, title, description, children }: ISectionHeaderProps) => {
+  const variantChosen: ISectionHeaderVariant = variants[variant || 'main'];
   return (
     <Flex flexDirection={'column'}>
       <Text variant={variantChosen.title.variant} color={variantChosen.title.color}>
-        {title}
+        {title && <StringToReact content={title} />}
       </Text>
-
       <Text variant={variantChosen.description.variant} color={variantChosen.description.color}>
-        {description}
+        {description && <StringToReact content={description} />}
       </Text>
-
       {children}
     </Flex>
   );
+};
+
+SectionHeader.defaultProps = {
+  variant: 'main',
 };
 
 export default SectionHeader;

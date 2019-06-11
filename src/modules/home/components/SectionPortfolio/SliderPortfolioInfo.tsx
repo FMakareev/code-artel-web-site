@@ -8,12 +8,15 @@ import {
   Button,
 } from 'code-artel-ui-lib';
 import SectionHeader from '../SectionHeader/SectionHeader';
-import { PortfolioWork } from '../../Types';
+import { IPortfolioWork } from './types';
 
-const SliderPortfolioInfo = ({ tags, title, description, id, link }: PortfolioWork) => (
+export const SliderPortfolioInfo = ({ tags, title, description, id, link }: IPortfolioWork) => (
   <Box width={'280px'} id={id}>
     <Box marginBottom={5}>
-      <SectionHeader variant={'portfolioInfo'} title={tags[0].name} description={title}>
+      <SectionHeader
+        variant={'portfolioInfo'}
+        title={tags && tags[0] && tags[0].name}
+        description={title}>
         <Text variant={'body1_bold'} color={'black'} margin={'24px 0 0 0'}>
           {description}
         </Text>

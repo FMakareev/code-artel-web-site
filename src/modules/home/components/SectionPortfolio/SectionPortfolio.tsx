@@ -2,16 +2,19 @@ import * as React from 'react';
 import styledComponents from 'styled-components';
 
 /** Components */
-import { Flex, Text, Box } from 'code-artel-ui-lib';
+import {
+  Flex,
+  // @ts-ignore
+  Text,
+  Box,
+} from 'code-artel-ui-lib';
 import Wrapper from '../Wrapper/Wrapper';
 import Container from '../Container/Container';
 import SectionHeader from '../SectionHeader/SectionHeader';
 
 import SliderPortfolio from './SliderPortfolio';
 import BackgroundColorProperty from '../../../../styles/styleProperty/BackgroundColorProperty';
-import { PortfolioSection } from '../../Types';
-
-// @ts-ignore
+import { IPortfolioSectionProps } from './types';
 
 const WrapperStyled = styledComponents(Wrapper)`
   position: relative;
@@ -22,30 +25,29 @@ const WrapperStyled = styledComponents(Wrapper)`
     right: 0;
     bottom: 0;
     z-index: -1;
-    display: block;
     width: 50%;
-    ${props => BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' })} 
-  }
-  @media(max-width: 992px) {
-   &:after {
-    width: 100%;
-    }
+    display: none;
+    ${props => {
+      // @ts-ignore
+      return BackgroundColorProperty({ ...props, backgroundColor: 'bright_gray' });
+    }}
+  @media(min-width: 992px) {
+    display: block;
    }
 `;
-// { title, description, portfolioData }
-const SectionPortfolio = ({ sections, portfolioworks }: PortfolioSection) => (
+
+export const SectionPortfolio = ({
+  portfolioworks,
+  title,
+  description,
+}: IPortfolioSectionProps) => (
   <WrapperStyled id={'portfolio'}>
     <Container>
       <Flex flexDirection={'column'} width={'100%'} py={12} px={6}>
-        <Box marginBottom={4} width={['100%', '100%', '50%']}>
-          <SectionHeader
-            variant={'variant3'}
-            title={sections[2].title}
-            description={sections[2].description}
-          />
+        <Box marginBottom={4} width={['100%', '100%', '50%', '50%']}>
+          <SectionHeader variant={'variant3'} title={title} description={description} />
         </Box>
-
-        <SliderPortfolio portfolioData={portfolioworks} />
+        {portfolioworks && <SliderPortfolio portfolioworks={portfolioworks} />}
       </Flex>
     </Container>
   </WrapperStyled>

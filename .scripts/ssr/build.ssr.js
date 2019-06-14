@@ -8,8 +8,12 @@ import { init as createIndex } from '../../.tools/createIndex';
 
 const build = async () => {
   await Clear();
-  createIndex();
-  getVariablesesEnvironment();
+
+  /** в process.env добавляются настройки из ca-config.json */
+  const env = getVariablesesEnvironment();
+
+  /** создаем index.tsx в src/modules */
+  createIndex(env);
 
   const clientConfig = browserConfigGenerator();
   const serverConfig = serverConfigGenerator();

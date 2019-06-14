@@ -24,11 +24,12 @@ const start = async () => {
   /** Удалить временные файлы */
   await clear();
 
-  /** создаем index.tsx в src/modules */
-  createIndex();
-
   /** в process.env добавляются настройки из ca-config.json */
-  getVariablesesEnvironment();
+ const env = getVariablesesEnvironment();
+
+  /** создаем index.tsx в src/modules */
+  createIndex(env);
+
 
 
   const app = express();

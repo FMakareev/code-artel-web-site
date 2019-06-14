@@ -36,8 +36,6 @@ export class ContactForm extends React.Component<any, SectionContactState> {
     message: '',
   };
 
-  fileUpload = (values: IFeedback) => {};
-
   handleSubmit = (values: IFeedback): any => {
     console.log(values);
     const { mutate } = this.props;
@@ -55,6 +53,7 @@ export class ContactForm extends React.Component<any, SectionContactState> {
   render() {
     return (
       <Form
+        // @ts-ignore
         onSubmit={this.handleSubmit}
         initialValues={{
           budget: 100000,

@@ -10,7 +10,7 @@ export const InputDropzoneCustom: React.FC<FieldRenderProps<any>> = ({
 }: FieldRenderProps<any>) => (
   <Box my={5}>
     <ReactDropzone
-      onDrop={acceptedFiles => acceptedFiles && onChange(acceptedFiles[0])}
+      onDrop={(acceptedFiles: any[]) => acceptedFiles && onChange(acceptedFiles[0])}
       maxSize={52428800}>
       {({ getRootProps, getInputProps, acceptedFiles }) => {
         return (
@@ -25,8 +25,8 @@ export const InputDropzoneCustom: React.FC<FieldRenderProps<any>> = ({
               </Text>
             </div>
             <div>
-              {acceptedFiles.map(file => (
-                <Text variant={'body1_normal'} color={'black'} key={file.path}>
+              {acceptedFiles.map((file: any, index) => (
+                <Text variant={'body1_normal'} color={'black'} key={index}>
                   {file && file.path} ({file.size} bytes)
                 </Text>
               ))}

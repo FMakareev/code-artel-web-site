@@ -62,10 +62,10 @@ const createIndex = (modulesList, src) => {
 };
 
 /** @desc */
-export const init = () => {
+export const init = (env) => {
   console.info('run createIndex');
-  const env = getCliParams();
-
+  // const env = getCliParams();
+  console.log('ENV: ', env);
   /** @desc путь к целевой дирректории */
   const src = `${process.cwd()}/src/modules/`;
   console.log(src);
@@ -75,7 +75,7 @@ export const init = () => {
     switch (key) {
       case 'exclude': {
         console.log('exclude');
-        const excludeModules = value.split(',');
+        const excludeModules = value;
         for (let i = 0; i < excludeModules.length; i += 1) {
           if (findIndex(modulesList, module => module === excludeModules[i]) !== -1) {
             modulesList.splice(findIndex(modulesList, module => module === excludeModules[i]), 1);
@@ -88,7 +88,7 @@ export const init = () => {
       }
       case 'include': {
         console.log('include');
-        const includeModules = value.split(',');
+        const includeModules = value;
         let newModulesList = [];
         for (let i = 0; i < includeModules.length; i += 1) {
           if (findIndex(modulesList, module => module === includeModules[i]) !== -1) {

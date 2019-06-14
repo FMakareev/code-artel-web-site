@@ -10,6 +10,7 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:1337'",
       "endpoint_client": "'http://localhost:1337'",
+      "include": ["home","router"],
       "port": 3021
     },
     "start:ssr:dev":  {
@@ -22,6 +23,7 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:1337'",
       "endpoint_client": "'http://localhost:1337'",
+      "include": ["home","router"],
       "port": 3021
     },
     "build:ssr:prod": {
@@ -34,6 +36,7 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:1337'",
       "endpoint_client": "''",
+      "include": ["home","router"],
       "port": 3021
     },
     "build:ssr:dev": {
@@ -46,6 +49,7 @@
       "output": "dist",
       "endpoint_server": "'http://localhost:1337'",
       "endpoint_client": "''",
+      "include": ["home","router"],
       "port": 3021
     },
     "start:ssr:server": {

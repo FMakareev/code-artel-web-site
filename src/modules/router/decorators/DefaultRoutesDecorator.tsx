@@ -1,5 +1,5 @@
 import { IRoute } from '..';
-import layoutApp from '../components/layoutApp/layoutApp';
+import LayoutApp from '../components/LayoutApp/LayoutApp';
 import { LAYOUT_ROOT, LAYOUT_APP, LAYOUT_ADMIN, LAYOUT_AUTH } from '../shared/layouts';
 import { PageNotFound as _PageNotFound } from '../components';
 import GetCurrentRouteHOC from './GetCurrentRouteHOC';
@@ -11,7 +11,6 @@ export interface ILayout {
   /** путь лейаута, он добавляется в начало принадлежащих лейауту маршрутов*/
   path: string;
   /** компонент лейаута */
-  // component(component: JSX.Element): JSX.Element,
   component: any;
   /** маршруты лейаута */
   routes: IRoute[];
@@ -37,25 +36,25 @@ export const _defaultRoutesLayout: IRoutesLayout = {
   [LAYOUT_ROOT]: {
     layout: LAYOUT_ROOT,
     path: '/',
-    component: GetCurrentRouteHOC(layoutApp),
+    component: GetCurrentRouteHOC(LayoutApp),
     routes: [],
   },
   [LAYOUT_APP]: {
     layout: LAYOUT_APP,
     path: `/${LAYOUT_APP}`,
-    component: GetCurrentRouteHOC(layoutApp),
+    component: GetCurrentRouteHOC(LayoutApp),
     routes: [],
   },
   [LAYOUT_ADMIN]: {
     layout: LAYOUT_ADMIN,
     path: `/${LAYOUT_ADMIN}`,
-    component: GetCurrentRouteHOC(layoutApp),
+    component: GetCurrentRouteHOC(LayoutApp),
     routes: [],
   },
   [LAYOUT_AUTH]: {
     layout: LAYOUT_AUTH,
     path: `/${LAYOUT_AUTH}`,
-    component: GetCurrentRouteHOC(layoutApp),
+    component: GetCurrentRouteHOC(LayoutApp),
     routes: [],
   },
 };
@@ -67,9 +66,9 @@ export const DefaultRoutesDecorator = (props: IRoutesDecoratorProps): IRoutesLay
   /** */
   routes.forEach((route: IRoute) => {
     /** */
-    for (let layoutKey in routesLayout) {
+    for (const layoutKey in routesLayout) {
       if (routesLayout.hasOwnProperty(layoutKey)) {
-        let layout: ILayout = routesLayout[layoutKey];
+        const layout: ILayout = routesLayout[layoutKey];
         if (layoutKey === route.layout && layout.routes) {
           layout.routes.push({
             ...route,
@@ -82,12 +81,12 @@ export const DefaultRoutesDecorator = (props: IRoutesDecoratorProps): IRoutesLay
   });
 
   /** */
-  for (let layoutKey in routesLayout) {
+  for (const layoutKey in routesLayout) {
     if (routesLayout.hasOwnProperty(layoutKey)) {
-      let layout: ILayout = routesLayout[layoutKey];
+      const layout: ILayout = routesLayout[layoutKey];
       layout.routes.push({
         component: PageNotFound,
-        path: `*`,
+        path: '*',
       });
     }
   }

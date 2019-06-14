@@ -2,7 +2,7 @@
 import * as React from 'react';
 import styledComponents from 'styled-components';
 
-const Table = styledComponents.table`
+const Table: any = styledComponents.table`
   border-collapse: collapse;
   border-spacing: 0;
   padding: 0;
@@ -11,12 +11,12 @@ const Table = styledComponents.table`
   width: 100%;
 `;
 
-const TableContent = styledComponents.table`
+const TableContent: any = styledComponents.table`
   width: 280px;
   margin: auto;
 `;
 
-const TableCard = styledComponents.table`
+const TableCard: any = styledComponents.table`
   background: #ffffff;
   border-collapse: collapse;
   border-radius: 6px;
@@ -31,27 +31,27 @@ const TableCard = styledComponents.table`
   width: 580px;
 `;
 
-const TBody = styledComponents.tbody`
+const TBody: any = styledComponents.tbody`
   width: 100%;
 `;
 
-const TR = styledComponents.tr`
+const TR: any = styledComponents.tr`
   width: 100%;
 `;
 
-const TD = styledComponents.td`
+const TD: any = styledComponents.td`
   width: 100%;
 `;
-const Title = styledComponents.h3`
+const Title: any = styledComponents.h3`
   width: 100%;
   text-align: left;
 `;
-const Text = styledComponents.p`
+const Text: any = styledComponents.p`
   width: 100%;
   text-align: left;
 `;
 
-const Image = styledComponents.img`
+const Image: any = styledComponents.img`
   -ms-interpolation-mode: bicubic;
   clear: both;
   display: block;

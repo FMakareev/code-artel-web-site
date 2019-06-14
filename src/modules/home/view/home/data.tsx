@@ -22,7 +22,7 @@ import { IService } from '../../components/SectionServices/types';
 import { IPortfolioWork } from '../../components/SectionPortfolio/types';
 import { IStack } from '../../components/SectionAboutUs/types';
 
-export const data = {
+export const dataold: any = {
   main: {
     title: 'CODE ARTEL',
     description: 'Мы разрабатываем',

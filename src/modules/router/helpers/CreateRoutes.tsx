@@ -50,9 +50,7 @@ export const CreateRoutes = (
     } else {
       console.error(
         `Error: in the module ${moduleName} there is no component at
-            the address ${
-              modulesRoutes[i].path
-            }. Make sure that you added the "load: () => import('...')"
+            the address ${modulesRoutes[i].path}. Make sure that you added the "load: () => import('...')"
             property with the component import or React component. `,
       );
     }

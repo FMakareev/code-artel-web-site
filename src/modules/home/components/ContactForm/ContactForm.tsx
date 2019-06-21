@@ -57,10 +57,6 @@ export class ContactForm extends React.Component<any, SectionContactState> {
         onSubmit={this.handleSubmit}
         initialValues={{
           budget: 100000,
-          name: 'asda',
-          email: 'as',
-          phone: 'as',
-          message: 'asf',
         }}>
         {({ handleSubmit, submitting, pristine, invalid, dirty, submitError }) => {
           // console.log(handleSubmit, submitting, pristine, invalid, dirty, error);

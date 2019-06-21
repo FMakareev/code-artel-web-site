@@ -14,7 +14,7 @@ export const ServiceItem = ({ title, icons, description }: IService) => (
     justifyContent={'flex-start'}
     marginBottom={7}>
     <Box maxWidth={'45px'}>
-      <Image maxWidth={'100%'} {...icons && icons[0]} />
+      <Image maxWidth={'100%'} {...(icons && icons[0])} />
     </Box>
     <Text variant={'subtitle2'} color={'white'} py={5}>
       {title}

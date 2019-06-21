@@ -27,23 +27,19 @@ export class FormRegistration extends React.Component {
 
         setTimeout(() => {
           console.log(23, response);
-          this.setState(
-            (): any => {
-              return {
-                redirect: '/login',
-              };
-            },
-          );
+          this.setState((): any => {
+            return {
+              redirect: '/login',
+            };
+          });
           return response;
         }, 3000);
       })
       .catch(err => {
         console.log(1, err);
-        this.setState(
-          (): any => {
-            return { error: true };
-          },
-        );
+        this.setState((): any => {
+          return { error: true };
+        });
       });
   };
 

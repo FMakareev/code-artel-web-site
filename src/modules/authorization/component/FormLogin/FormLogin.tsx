@@ -32,11 +32,9 @@ export class FormLogin extends React.Component<React.FC<any>> {
       })
       .catch(err => {
         console.log(1, err);
-        this.setState(
-          (): any => {
-            return { error: true };
-          },
-        );
+        this.setState((): any => {
+          return { error: true };
+        });
       });
   };
 

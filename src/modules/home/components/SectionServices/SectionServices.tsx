@@ -23,11 +23,13 @@ export const SectionServices: React.FC<ServiceSectionProps> = ({
 
         <Flex justifyContent={'flex-start'} flexWrap={['wrap']} marginBottom={11}>
           {services &&
-            services.map((service: IService, index: number) => (
-              <Box width={['100%', '50%', '33.333%']} key={index}>
-                <ServiceItem {...service} />
-              </Box>
-            ))}
+            services
+              .filter((item: IService) => !item.isMain)
+              .map((service: IService, index: number) => (
+                <Box width={['100%', '50%', '33.333%']} key={index}>
+                  <ServiceItem {...service} />
+                </Box>
+              ))}
         </Flex>
 
         <Text variant={'subtitle1'} color={'white'} marginBottom={5}>

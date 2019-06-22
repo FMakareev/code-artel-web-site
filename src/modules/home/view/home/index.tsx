@@ -45,7 +45,7 @@ const request = ({ data, loading, error }: any) => {
       <SectionContacts
         socialNetworks={socialnetworks}
         contacts={contacts}
-        {...getSectionDateByTemplateName(sections, 'aboutus')}
+        {...getSectionDateByTemplateName(sections, 'contacts')}
       />
     </Box>
   );
